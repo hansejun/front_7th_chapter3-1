@@ -1,55 +1,28 @@
+import { DEFAULT_USERS, USERS_STORAGE_KEY } from './user-constants.config';
 import type { User } from './user-type.model';
 import {
   checkEmailDuplicated,
   checkUsernameDuplicated,
+  createNewUser,
+  createNewUsers,
+  createUpdatedUser,
+  createUpdatedUsers,
+  filterUserById,
+  findUserById,
+  getUserById,
+  isUserAlreadyExistsByEmail,
+  isUserAlreadyExistsByUsername,
 } from './user-utils.lib';
 
-const STORAGE_KEY = 'users_data';
-
+// TODO: 로컬 스토리지 유틸 shared로 이동
 const getUsers = (): User[] => {
-  const data = localStorage.getItem(STORAGE_KEY);
-  return data
-    ? JSON.parse(data)
-    : [
-        {
-          id: 1,
-          username: 'admin',
-          email: 'admin@example.com',
-          role: 'admin',
-          status: 'active',
-          createdAt: '2024-01-01',
-          lastLogin: '2024-01-20',
-        },
-        {
-          id: 2,
-          username: 'john_doe',
-          email: 'john@example.com',
-          role: 'user',
-          status: 'active',
-          createdAt: '2024-01-05',
-          lastLogin: '2024-01-19',
-        },
-        {
-          id: 3,
-          username: 'jane_smith',
-          email: 'jane@example.com',
-          role: 'moderator',
-          status: 'active',
-          createdAt: '2024-01-10',
-        },
-        {
-          id: 4,
-          username: 'bob',
-          email: 'bob@example.com',
-          role: 'user',
-          status: 'suspended',
-          createdAt: '2024-01-15',
-        },
-      ];
+  const data = localStorage.getItem(USERS_STORAGE_KEY);
+  return data ? JSON.parse(data) : DEFAULT_USERS;
 };
 
+// TODO: 로컬 스토리지 유틸 shared로 이동
 const saveUsers = (users: User[]) => {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(users));
+  localStorage.setItem(USERS_STORAGE_KEY, JSON.stringify(users));
 };
 
 export const userService = {
@@ -59,7 +32,7 @@ export const userService = {
 
   async getById(id: number): Promise<User | null> {
     const users = getUsers();
-    return users.find(u => u.id === id) || null;
+    return getUserById(users, id);
   },
 
   async create(userData: Omit<User, 'id' | 'createdAt'>): Promise<User> {
@@ -73,14 +46,10 @@ export const userService = {
       throw new Error('Email already exists');
     }
 
-    const newUser: User = {
-      id: Math.max(...users.map(u => u.id), 0) + 1,
-      ...userData,
-      createdAt: new Date().toISOString().split('T')[0],
-    };
+    const newUser: User = createNewUser(users, userData);
+    const newUsers = createNewUsers(users, newUser);
 
-    users.push(newUser);
-    saveUsers(users);
+    saveUsers(newUsers);
     return newUser;
   },
 
@@ -89,40 +58,36 @@ export const userService = {
     userData: Partial<Omit<User, 'id' | 'createdAt'>>,
   ): Promise<User> {
     const users = getUsers();
-    const index = users.findIndex(u => u.id === id);
+    const user = findUserById(users, id);
 
-    if (index === -1) {
+    if (!user) {
       throw new Error('User not found');
     }
 
-    if (
-      userData.username &&
-      users.some(u => u.username === userData.username && u.id !== id)
-    ) {
+    if (isUserAlreadyExistsByUsername(users, userData)) {
       throw new Error('Username already exists');
     }
 
-    if (
-      userData.email &&
-      users.some(u => u.email === userData.email && u.id !== id)
-    ) {
+    if (isUserAlreadyExistsByEmail(users, userData)) {
       throw new Error('Email already exists');
     }
 
-    users[index] = { ...users[index], ...userData };
-    saveUsers(users);
-    return users[index];
+    const updatedUser = createUpdatedUser(user, userData);
+    const updatedUsers = createUpdatedUsers(users, updatedUser);
+
+    saveUsers(updatedUsers);
+    return updatedUser;
   },
 
   async delete(id: number): Promise<void> {
     const users = getUsers();
-    const filtered = users.filter(u => u.id !== id);
+    const filteredUsers = filterUserById(users, id);
 
-    if (filtered.length === users.length) {
+    if (users.length === filteredUsers.length) {
       throw new Error('User not found');
     }
 
-    saveUsers(filtered);
+    saveUsers(filteredUsers);
   },
 
   async checkUsernameAvailable(username: string): Promise<boolean> {
