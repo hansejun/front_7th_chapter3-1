@@ -114,7 +114,10 @@ export const ManagementPage: React.FC = () => {
 
     try {
       if (entityType === 'user') {
-        await userService.update(selectedItem.id, formData);
+        await userService.update({
+          id: selectedItem.id,
+          userData: formData,
+        });
       } else {
         await postService.update(selectedItem.id, formData);
       }

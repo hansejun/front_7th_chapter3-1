@@ -53,10 +53,13 @@ export const userService = {
     return newUser;
   },
 
-  async update(
-    id: number,
-    userData: Partial<Omit<User, 'id' | 'createdAt'>>,
-  ): Promise<User> {
+  async update({
+    id,
+    userData,
+  }: {
+    id: number;
+    userData: Partial<Omit<User, 'id' | 'createdAt'>>;
+  }): Promise<User> {
     const users = getUsers();
     const user = findUserById(users, id);
 
