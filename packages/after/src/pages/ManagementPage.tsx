@@ -6,9 +6,9 @@ import {
   FormSelect,
   FormTextarea,
 } from '../shared/components/molecules';
-import { postService } from '../services/postService';
+import { postService } from '../entities/post/post-service.api';
 import { type User, userService } from '@/entities/user';
-import type { Post } from '../services/postService';
+import type { Post } from '@/entities/post';
 import '../styles/components.css';
 
 type EntityType = 'user' | 'post';

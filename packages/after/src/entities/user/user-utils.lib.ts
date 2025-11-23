@@ -57,7 +57,7 @@ export const isUserAlreadyExistsByEmail = (
   users: User[],
   compareUser: Partial<User>,
 ) => {
-  if (compareUser.email) return false;
+  if (!compareUser.email) return false;
 
   return users.some(
     u =>

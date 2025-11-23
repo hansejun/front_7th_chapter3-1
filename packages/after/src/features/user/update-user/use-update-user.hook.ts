@@ -3,10 +3,6 @@ import { useUsers } from '@/entities/user/use-users.hook';
 import { useMutation } from '@/shared/hooks';
 import { useState } from 'react';
 
-interface UpdateUserProps {
-  initialUser: User;
-}
-
 export const useUpdateUser = (initialUser: User) => {
   const { refetch: refetchUsers } = useUsers();
 
