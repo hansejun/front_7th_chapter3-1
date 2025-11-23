@@ -1,5 +1,5 @@
-import { CreateUserForm } from './create-user-form';
-import { useCreateUser } from './use-create-user';
+import { CreateUserForm } from './create-user-form.ui';
+import { useCreateUser } from './use-create-user.hook';
 
 interface CreateUserModalProps {
   onCloseModal: () => void;

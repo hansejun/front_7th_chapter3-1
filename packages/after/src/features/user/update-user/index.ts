@@ -1,1 +1,1 @@
-export * from './update-user-modal';
+export * from './update-user-modal.ui';

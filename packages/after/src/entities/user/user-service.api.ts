@@ -9,7 +9,6 @@ import {
   createUpdatedUsers,
   filterUserById,
   findUserById,
-  getUserById,
   isUserAlreadyExistsByEmail,
   isUserAlreadyExistsByUsername,
 } from './user-utils.lib';
@@ -32,7 +31,7 @@ export const userService = {
 
   async getById(id: number): Promise<User | null> {
     const users = getUsers();
-    return getUserById(users, id);
+    return findUserById(users, id);
   },
 
   async create(userData: Omit<User, 'id' | 'createdAt'>): Promise<User> {

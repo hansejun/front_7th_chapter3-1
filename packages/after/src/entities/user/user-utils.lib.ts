@@ -86,7 +86,3 @@ export const createUpdatedUser = (user: User, userData: Partial<User>) => {
 export const filterUserById = (users: User[], id: number) => {
   return users.filter(u => u.id !== id);
 };
-
-export const getUserById = (users: User[], id: number): User | null => {
-  return users.find(u => u.id === id) ?? null;
-};

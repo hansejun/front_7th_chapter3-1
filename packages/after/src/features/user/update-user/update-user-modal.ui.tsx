@@ -1,6 +1,6 @@
 import type { User } from '@/entities/user';
-import { useUpdateUser } from './use-update-user';
-import { UpdateUserForm } from './update-user-form';
+import { useUpdateUser } from './use-update-user.hook';
+import { UpdateUserForm } from './update-user-form.ui';
 
 interface UpdateUserModalProps {
   user: User;
