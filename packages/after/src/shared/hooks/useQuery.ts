@@ -9,7 +9,7 @@ interface UseQueryOptions<T> {
 
 interface UseQueryResult<T> {
   data: T | null;
-  loading: boolean;
+  isLoading: boolean;
   error: Error | null;
   refetch: () => Promise<void>;
 }
@@ -21,7 +21,7 @@ export function useQuery<T = unknown>(
   const { initialData, enabled = true, onSuccess, onError } = options ?? {};
 
   const [data, setData] = useState<T | null>(initialData ?? null);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error | null>(null);
 
   const queryFnRef = useRef(queryFn);
@@ -42,7 +42,7 @@ export function useQuery<T = unknown>(
 
   const fetchData = useCallback(async () => {
     try {
-      setLoading(true);
+      setIsLoading(true);
       setError(null);
 
       const result = await queryFnRef.current();
@@ -59,7 +59,7 @@ export function useQuery<T = unknown>(
         onErrorRef.current(error);
       }
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   }, []);
 
@@ -71,7 +71,7 @@ export function useQuery<T = unknown>(
 
   return {
     data,
-    loading,
+    isLoading,
     error,
     refetch: fetchData,
   };
