@@ -9,7 +9,7 @@ import {
 import { postService } from '../entities/post/post-service.api';
 import { type User, userService } from '@/entities/user';
 import type { Post } from '@/entities/post';
-import '../styles/components.css';
+import '@/app/styles/components.css';
 
 type EntityType = 'user' | 'post';
 type Entity = User | Post;
