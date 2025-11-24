@@ -1,10 +1,10 @@
 import type { Post } from '@/entities/post';
 import { useUpdatePost } from './use-update-post.model';
 import { UpdatePostForm } from './update-post-form.ui';
+import type { BaseModalProps } from '@/shared/model/hooks';
 
-interface UpdatePostModalProps {
+interface UpdatePostModalProps extends BaseModalProps {
   post: Post;
-  onCloseModal: () => void;
 }
 
 export const UpdatePostModal = ({

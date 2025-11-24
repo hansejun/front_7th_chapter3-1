@@ -2,14 +2,18 @@ import React from 'react';
 import { Header } from './shared/components/organisms';
 import { ManagementPage } from './pages/ManagementPage';
 import '@/app/styles/components.css';
+import { ModalRoot } from './app/providers/modal';
 
 export const App: React.FC = () => {
   return (
-    <div style={{ minHeight: '100vh', backgroundColor: '#f7fafc' }}>
-      <Header />
-      <main>
-        <ManagementPage />
-      </main>
-    </div>
+    <>
+      <div style={{ minHeight: '100vh', backgroundColor: '#f7fafc' }}>
+        <Header />
+        <main>
+          <ManagementPage />
+        </main>
+      </div>
+      <ModalRoot />
+    </>
   );
 };

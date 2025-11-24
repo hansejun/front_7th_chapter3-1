@@ -1,10 +1,10 @@
 import type { User } from '@/entities/user';
 import { useUpdateUser } from './use-update-user.model';
 import { UpdateUserForm } from './update-user-form.ui';
+import type { BaseModalProps } from '@/shared/model/hooks';
 
-interface UpdateUserModalProps {
+interface UpdateUserModalProps extends BaseModalProps {
   user: User;
-  onCloseModal: () => void;
 }
 
 export const UpdateUserModal = ({
