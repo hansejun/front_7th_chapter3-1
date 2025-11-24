@@ -1,6 +1,8 @@
+import Modal from '@/shared/ui/modal';
 import { CreatePostForm } from './create-post-form.ui';
 import { useCreatePost } from './use-create-post.model';
 import type { BaseModalProps } from '@/shared/model/hooks';
+import { Button } from '@/shared/ui/button';
 
 interface CreatePostModalProps extends BaseModalProps {}
 
@@ -13,8 +15,15 @@ export const CreatePostModal = ({ onCloseModal }: CreatePostModalProps) => {
   };
 
   return (
-    <div>
-      <CreatePostForm form={form} onSubmit={handleSubmit} />
-    </div>
+    <Modal onClose={onCloseModal} size="large">
+      <Modal.Header>게시글 만들기</Modal.Header>
+      <Modal.Content>
+        <CreatePostForm form={form} onSubmit={handleSubmit} />
+      </Modal.Content>
+      <Modal.Footer>
+        <Button onClick={onCloseModal}>취소</Button>
+        <Button onClick={() => onCreatePost(onCloseModal)}>생성</Button>
+      </Modal.Footer>
+    </Modal>
   );
 };

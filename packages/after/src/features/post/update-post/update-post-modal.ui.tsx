@@ -2,20 +2,17 @@ import type { Post } from '@/entities/post';
 import { useUpdatePost } from './use-update-post.model';
 import { UpdatePostForm } from './update-post-form.ui';
 import type { BaseModalProps } from '@/shared/model/hooks';
+import Modal from '@/shared/ui/modal';
+import { Button } from '@/shared/ui/button';
 
 interface UpdatePostModalProps extends BaseModalProps {
   post: Post;
 }
 
-export const UpdatePostModal = ({
-  post,
-  onCloseModal,
-}: UpdatePostModalProps) => {
+export const UpdatePostModal = ({ post, onCloseModal }: UpdatePostModalProps) => {
   const { form, onUpdatePost } = useUpdatePost(post);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
+  const handleSubmit = () => {
     onUpdatePost({
       onSuccess: () => {
         onCloseModal();
@@ -23,8 +20,15 @@ export const UpdatePostModal = ({
     });
   };
   return (
-    <div>
-      <UpdatePostForm form={form} onSubmit={handleSubmit} />
-    </div>
+    <Modal onClose={onCloseModal} size="large">
+      <Modal.Header>게시글 수정</Modal.Header>
+      <Modal.Content>
+        <UpdatePostForm form={form} onSubmit={handleSubmit} />
+      </Modal.Content>
+      <Modal.Footer>
+        <Button onClick={onCloseModal}>취소</Button>
+        <Button onClick={() => handleSubmit()}>수정 완료</Button>
+      </Modal.Footer>
+    </Modal>
   );
 };

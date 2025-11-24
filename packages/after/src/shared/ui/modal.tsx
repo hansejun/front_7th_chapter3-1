@@ -23,7 +23,7 @@ interface ModalContextType {
 interface ModalProps
   extends VariantProps<typeof modalContentVariants>,
     React.HTMLAttributes<HTMLDivElement> {
-  open: boolean;
+  open?: boolean;
   onClose: () => void;
   children: React.ReactNode;
 }
@@ -66,14 +66,7 @@ const Overlay = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-const Modal = ({
-  open,
-  onClose,
-  size,
-  children,
-  className,
-  ...props
-}: ModalProps) => {
+const Modal = ({ open = true, onClose, size, children, className, ...props }: ModalProps) => {
   // ESC 키로 모달 닫기
   useEffect(() => {
     if (!open) return;
@@ -111,31 +104,19 @@ const Modal = ({
   );
 };
 
-const Header = ({
-  children,
-  className,
-  ...props
-}: ModalHeaderProps) => {
+const Header = ({ children, className, ...props }: ModalHeaderProps) => {
   const { onClose } = useModalContext();
   return (
     <div className={cn('modal-header', className)} {...props}>
       <h3 className="modal-title">{children}</h3>
-      <button
-        className="modal-close"
-        onClick={onClose}
-        aria-label="Close modal"
-      >
+      <button className="modal-close" onClick={onClose} aria-label="Close modal">
         ×
       </button>
     </div>
   );
 };
 
-const Content = ({
-  children,
-  className,
-  ...props
-}: ModalContentProps) => {
+const Content = ({ children, className, ...props }: ModalContentProps) => {
   return (
     <div className={cn('modal-body', className)} {...props}>
       {children}
@@ -143,11 +124,7 @@ const Content = ({
   );
 };
 
-const Footer = ({
-  children,
-  className,
-  ...props
-}: ModalFooterProps) => {
+const Footer = ({ children, className, ...props }: ModalFooterProps) => {
   return (
     <div className={cn('modal-footer', className)} {...props}>
       {children}
