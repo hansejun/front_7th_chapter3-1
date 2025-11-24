@@ -1,3 +1,4 @@
+import { createStorageAdapter } from '@/shared/lib/storage';
 import { DEFAULT_USERS, USERS_STORAGE_KEY } from './user-constants.config';
 import type { User } from './user-type.model';
 import {
@@ -13,29 +14,24 @@ import {
   isUserAlreadyExistsByUsername,
 } from './user-utils.lib';
 
-// TODO: 로컬 스토리지 유틸 shared로 이동
-const getUsers = (): User[] => {
-  const data = localStorage.getItem(USERS_STORAGE_KEY);
-  return data ? JSON.parse(data) : DEFAULT_USERS;
-};
 
-// TODO: 로컬 스토리지 유틸 shared로 이동
-const saveUsers = (users: User[]) => {
-  localStorage.setItem(USERS_STORAGE_KEY, JSON.stringify(users));
-};
+const userStorage = createStorageAdapter<User[]>(
+  USERS_STORAGE_KEY,
+  DEFAULT_USERS
+);
 
 export const userService = {
   async getAll(): Promise<User[]> {
-    return getUsers();
+    return userStorage.get();
   },
 
   async getById(id: number): Promise<User | null> {
-    const users = getUsers();
+    const users = userStorage.get();
     return findUserById(users, id);
   },
 
   async create(userData: Omit<User, 'id' | 'createdAt'>): Promise<User> {
-    const users = getUsers();
+    const users = userStorage.get();
 
     if (checkUsernameDuplicated(users, userData.username)) {
       throw new Error('Username already exists');
@@ -48,7 +44,7 @@ export const userService = {
     const newUser: User = createNewUser(users, userData);
     const newUsers = createNewUsers(users, newUser);
 
-    saveUsers(newUsers);
+    userStorage.set(newUsers);
     return newUser;
   },
 
@@ -59,7 +55,7 @@ export const userService = {
     id: number;
     userData: Partial<Omit<User, 'id' | 'createdAt'>>;
   }): Promise<User> {
-    const users = getUsers();
+    const users = userStorage.get();
     const user = findUserById(users, id);
 
     if (!user) {
@@ -77,28 +73,28 @@ export const userService = {
     const updatedUser = createUpdatedUser(user, userData);
     const updatedUsers = createUpdatedUsers(users, updatedUser);
 
-    saveUsers(updatedUsers);
+    userStorage.set(updatedUsers);
     return updatedUser;
   },
 
   async delete(id: number): Promise<void> {
-    const users = getUsers();
+    const users = userStorage.get();
     const filteredUsers = filterUserById(users, id);
 
     if (users.length === filteredUsers.length) {
       throw new Error('User not found');
     }
 
-    saveUsers(filteredUsers);
+    userStorage.set(filteredUsers);
   },
 
   async checkUsernameAvailable(username: string): Promise<boolean> {
-    const users = getUsers();
+    const users = userStorage.get();
     return !checkUsernameDuplicated(users, username);
   },
 
   async checkEmailAvailable(email: string): Promise<boolean> {
-    const users = getUsers();
+    const users = userStorage.get();
     return !checkEmailDuplicated(users, email);
   },
 };
