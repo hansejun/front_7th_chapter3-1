@@ -1,12 +1,14 @@
 import { userService, type User } from '@/entities/user';
 import { useUsers } from '@/entities/user/use-users.model';
 import { useMutation } from '@/shared/model/hooks';
+import { useAlert } from '@/shared/model/hooks/use-alert';
 import { useState } from 'react';
 
 export const useUpdateUser = (initialUser: User) => {
   const { refetch: refetchUsers } = useUsers();
 
   const { mutate } = useMutation(userService.update);
+  const { onOpenAlert } = useAlert();
 
   // TODO: useHookForm + zod 사용
   const [form] = useState(initialUser);
@@ -27,14 +29,18 @@ export const useUpdateUser = (initialUser: User) => {
           // 2. selectedItem(null);
           onSuccess?.();
           // 3. form 초기화
-          // 4. 성공 알럿 보여주기('사용자가 수정되었습니다.')
+          onOpenAlert({ title: '성공', type: 'success', message: '사용자가 수정되었습니다.' });
         },
-        onError: error => {
+        onError: (error) => {
           console.error(error);
           onError?.(error);
-          // 1. 에러 알럿 보여주기 (error.message || '수정에 실패했습니다.')
+          onOpenAlert({
+            title: '오류',
+            type: 'error',
+            message: error.message || '수정에 실패했습니다.',
+          });
         },
-      },
+      }
     );
   };
 
