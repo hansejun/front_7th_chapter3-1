@@ -1,6 +1,6 @@
 import { userService } from '@/entities/user';
-import { useUsers } from '@/entities/user/use-users.hook';
-import { useMutation } from '@/shared/hooks';
+import { useUsers } from '@/entities/user/use-users.model';
+import { useMutation } from '@/shared/model/hooks';
 import { useState } from 'react';
 
 export const useCreateUser = () => {

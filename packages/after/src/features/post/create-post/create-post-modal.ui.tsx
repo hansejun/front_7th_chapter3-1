@@ -1,5 +1,5 @@
 import { CreatePostForm } from './create-post-form.ui';
-import { useCreatePost } from './use-create-post.hook';
+import { useCreatePost } from './use-create-post.model';
 
 interface CreatePostModalProps {
   onCloseModal: () => void;

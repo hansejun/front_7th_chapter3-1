@@ -1,5 +1,5 @@
 import type { User } from '@/entities/user';
-import { useUpdateUser } from './use-update-user.hook';
+import { useUpdateUser } from './use-update-user.model';
 import { UpdateUserForm } from './update-user-form.ui';
 
 interface UpdateUserModalProps {

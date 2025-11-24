@@ -1,6 +1,6 @@
 import { createContext, useContext } from 'react';
 import type { Post } from './post-type.model';
-import { useQuery } from '@/shared/hooks';
+import { useQuery } from '@/shared/model/hooks';
 import { postService } from './post-service.api';
 
 interface PostsContextValue {

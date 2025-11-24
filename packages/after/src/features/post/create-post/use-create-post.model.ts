@@ -1,6 +1,6 @@
 import { postService } from '@/entities/post';
-import { usePosts } from '@/entities/post/use-posts.hook';
-import { useMutation } from '@/shared/hooks';
+import { usePosts } from '@/entities/post/use-posts.model';
+import { useMutation } from '@/shared/model/hooks';
 import { useState } from 'react';
 
 export const useCreatePost = () => {

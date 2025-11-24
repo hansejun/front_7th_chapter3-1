@@ -46,8 +46,7 @@ export const postService = {
   },
 
   async update(
-    id: number,
-    postData: Partial<Omit<Post, 'id' | 'createdAt' | 'views'>>,
+    { id, postData }: { id: number; postData: Partial<Omit<Post, 'id' | 'createdAt' | 'views'>> },
   ): Promise<Post> {
     const posts = postStorage.get();
     const post = findPostById(posts, id);

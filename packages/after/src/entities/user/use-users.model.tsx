@@ -1,6 +1,6 @@
 import { createContext, useContext } from 'react';
 import type { User } from './user-type.model';
-import { useQuery } from '@/shared/hooks';
+import { useQuery } from '@/shared/model/hooks';
 import { userService } from './user-service.api';
 
 interface UsersContextValue {

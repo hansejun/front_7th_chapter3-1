@@ -119,7 +119,7 @@ export const ManagementPage: React.FC = () => {
           userData: formData,
         });
       } else {
-        await postService.update(selectedItem.id, formData);
+        await postService.update({ id: selectedItem.id, postData: formData });
       }
 
       await loadData();

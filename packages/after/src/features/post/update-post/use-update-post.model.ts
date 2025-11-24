@@ -1,17 +1,17 @@
-import { userService, type User } from '@/entities/user';
-import { useUsers } from '@/entities/user/use-users.hook';
-import { useMutation } from '@/shared/hooks';
+import { postService, type Post } from '@/entities/post';
+import { usePosts } from '@/entities/post/use-posts.model';
+import { useMutation } from '@/shared/model/hooks';
 import { useState } from 'react';
 
-export const useUpdateUser = (initialUser: User) => {
-  const { refetch: refetchUsers } = useUsers();
+export const useUpdatePost = (initialPost: Post) => {
+  const { refetch: refetchPosts } = usePosts();
 
-  const { mutate } = useMutation(userService.update);
+  const { mutate } = useMutation(postService.update);
 
   // TODO: useHookForm + zod 사용
-  const [form] = useState(initialUser);
+  const [form] = useState(initialPost);
 
-  const onUpdateUser = ({
+  const onUpdatePost = ({
     onSuccess,
     onError,
   }: {
@@ -19,15 +19,15 @@ export const useUpdateUser = (initialUser: User) => {
     onError?: (error: Error) => void;
   }) => {
     mutate(
-      { id: initialUser.id, userData: form },
+      { id: initialPost.id, postData: form },
       {
         onSuccess: () => {
-          refetchUsers();
+          refetchPosts();
           // 1. 모달 닫기
           // 2. selectedItem(null);
           onSuccess?.();
           // 3. form 초기화
-          // 4. 성공 알럿 보여주기('사용자가 수정되었습니다.')
+          // 4. 성공 알럿 보여주기('게시글이 수정되었습니다.')
         },
         onError: error => {
           console.error(error);
@@ -38,5 +38,5 @@ export const useUpdateUser = (initialUser: User) => {
     );
   };
 
-  return { form, onUpdateUser };
+  return { form, onUpdatePost };
 };

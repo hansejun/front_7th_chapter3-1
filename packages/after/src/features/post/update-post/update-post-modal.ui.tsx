@@ -1,5 +1,5 @@
 import type { Post } from '@/entities/post';
-import { useUpdatePost } from './use-update-post.hook';
+import { useUpdatePost } from './use-update-post.model';
 import { UpdatePostForm } from './update-post-form.ui';
 
 interface UpdatePostModalProps {
