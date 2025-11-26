@@ -94,21 +94,26 @@
   /* ========================================
      Spacing
      ======================================== */
-  --spacing-xs: var(--spacing-1);
-  --spacing-sm: var(--spacing-2);
-  --spacing-md: var(--spacing-4);
-  --spacing-lg: var(--spacing-5);
-  --spacing-xl: var(--spacing-6);
+  --spacing-2xs: var(--spacing-1_5); /* 6px */
+  --spacing-xs: var(--spacing-2); /* 8px */
+  --spacing-sm: var(--spacing-2_5); /* 10px */
+  --spacing-base: var(--spacing-3); /* 12px */
+  --spacing-md: var(--spacing-4); /* 16px */
+  --spacing-lg: var(--spacing-5); /* 20px */
+  --spacing-xl: var(--spacing-6); /* 24px */
 
   /* ========================================
      Typography - Font Size
      ======================================== */
-  --text-xs: var(--font-size-12);
-  --text-sm: var(--font-size-13);
-  --text-base: var(--font-size-14);
-  --text-lg: var(--font-size-16);
-  --text-xl: var(--font-size-18);
-  --text-2xl: var(--font-size-20);
+  --text-2xs: var(--font-size-10); /* 10px */
+  --text-xs: var(--font-size-12); /* 12px */
+  --text-sm: var(--font-size-13); /* 13px */
+  --text-base: var(--font-size-14); /* 14px */
+  --text-md: var(--font-size-15); /* 15px */
+  --text-lg: var(--font-size-16); /* 16px */
+  --text-xl: var(--font-size-18); /* 18px */
+  --text-2xl: var(--font-size-20); /* 20px */
+  --text-3xl: var(--font-size-28); /* 28px */
 
   /* ========================================
      Typography - Font Weight
@@ -373,15 +378,15 @@
   }
 
   .btn-sm {
-    @apply px-[12px] py-[6px] text-sm;
+    @apply px-base py-2xs text-sm;
   }
 
   .btn-md {
-    @apply px-[20px] py-[10px] text-base;
+    @apply px-lg py-sm text-base;
   }
 
   .btn-lg {
-    @apply px-[24px] py-[12px] text-[15px];
+    @apply px-xl py-base text-md;
   }
 
   .btn-fullwidth {
@@ -396,12 +401,12 @@
   }
 
   .form-label {
-    @apply text-foreground mb-[6px] block font-sans text-sm font-bold;
+    @apply text-foreground mb-2xs block font-sans text-sm font-bold;
   }
 
   .form-input,
   .form-select {
-    @apply py-sm w-full px-[10px] font-sans text-base text-black;
+    @apply py-xs w-full px-sm font-sans text-base text-black;
     @apply border-border box-border rounded-sm border bg-white;
   }
 
@@ -421,7 +426,7 @@
   }
 
   .form-helper-text {
-    @apply text-muted mt-[4px] font-sans text-xs;
+    @apply text-muted mt-1 font-sans text-xs;
   }
 
   .form-helper-text.error {
@@ -473,13 +478,13 @@
   }
 
   .card-title {
-    @apply m-0 text-[1.125rem] leading-relaxed font-medium;
+    @apply m-0 text-xl leading-relaxed font-medium;
     @apply text-[rgba(0,0,0,0.87)];
   }
 
   .card-subtitle {
-    @apply mx-0 mt-[4px] mb-0 text-base font-normal;
-    @apply leading-[1.43] text-[rgba(0,0,0,0.6)];
+    @apply mx-0 mt-1 mb-0 text-base font-normal;
+    @apply leading-normal text-[rgba(0,0,0,0.6)];
   }
 
   .card-body {
@@ -523,22 +528,22 @@
   }
 
   .badge-small {
-    @apply h-[16px] px-[4px] py-0 text-[0.625rem];
+    @apply h-4 px-1 py-0 text-2xs;
   }
 
   .badge-medium {
-    @apply px-sm h-[20px] py-0 text-xs;
+    @apply px-xs h-5 py-0 text-xs;
   }
 
   .badge-large {
-    @apply h-[24px] px-[10px] py-0 text-sm;
+    @apply h-6 px-sm py-0 text-sm;
   }
 
   /* ========================================
      Alert Components
      ======================================== */
   .alert {
-    @apply mb-md rounded-sm border border-solid px-[12px] py-[10px];
+    @apply mb-md rounded-sm border border-solid px-base py-sm;
     @apply gap-sm flex items-start font-sans;
   }
 
@@ -563,7 +568,7 @@
   }
 
   .alert-icon {
-    @apply flex-shrink-0 text-[20px];
+    @apply flex-shrink-0 text-2xl;
   }
 
   .alert-content {
@@ -571,7 +576,7 @@
   }
 
   .alert-title {
-    @apply mb-[4px] text-[15px] font-bold;
+    @apply mb-1 text-md font-bold;
   }
 
   .alert-body {
@@ -579,15 +584,15 @@
   }
 
   .alert-close {
-    @apply cursor-pointer border-none bg-transparent text-[20px];
-    @apply ml-auto flex-shrink-0 p-0 px-[4px];
+    @apply cursor-pointer border-none bg-transparent text-2xl;
+    @apply ml-auto flex-shrink-0 p-0 px-1;
   }
 
   /* ========================================
      Checkbox Components
      ======================================== */
   .checkbox-wrapper {
-    @apply mb-[12px] flex cursor-pointer items-start;
+    @apply mb-base flex cursor-pointer items-start;
   }
 
   .checkbox-wrapper.disabled {
@@ -595,7 +600,7 @@
   }
 
   .checkbox-container {
-    @apply mr-sm relative mt-[2px];
+    @apply mr-sm relative mt-0_5;
   }
 
   .checkbox-input {
@@ -603,7 +608,7 @@
   }
 
   .checkbox-custom {
-    @apply h-[16px] w-[16px] rounded-[2px] border-2 border-[#d1d5db];
+    @apply h-4 w-4 rounded-0_5 border-2 border-[#d1d5db];
     @apply flex cursor-pointer items-center justify-center bg-white;
     transition: all 0.15s ease-in-out;
   }
@@ -617,7 +622,7 @@
   }
 
   .checkbox-checkmark {
-    @apply hidden text-[10px] font-bold text-white;
+    @apply hidden text-2xs font-bold text-white;
   }
 
   .checkbox-checkmark.visible {
@@ -638,11 +643,11 @@
   }
 
   .checkbox-hint {
-    @apply font-roboto mt-[2px] ml-[24px] block text-xs text-[#6b7280];
+    @apply font-roboto mt-0_5 ml-xl block text-xs text-[#6b7280];
   }
 
   .checkbox-error {
-    @apply font-roboto mt-[2px] ml-[24px] block text-xs text-[#ef4444];
+    @apply font-roboto mt-0_5 ml-xl block text-xs text-[#ef4444];
   }
 
   /* ========================================
@@ -756,16 +761,16 @@
   }
 
   .modal-header {
-    @apply py-md border-b border-[rgba(0,0,0,0.12)] px-[24px];
+    @apply py-md border-b border-[rgba(0,0,0,0.12)] px-xl;
     @apply flex items-center justify-between;
   }
 
   .modal-title {
-    @apply m-0 text-[1.25rem] font-medium text-[rgba(0,0,0,0.87)];
+    @apply m-0 text-2xl font-medium text-[rgba(0,0,0,0.87)];
   }
 
   .modal-close {
-    @apply border-none bg-transparent text-[28px] leading-none;
+    @apply border-none bg-transparent text-3xl leading-none;
     @apply cursor-pointer p-0 text-[rgba(0,0,0,0.54)];
     @apply flex h-[32px] w-[32px] items-center justify-center rounded-full;
     transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
@@ -776,11 +781,11 @@
   }
 
   .modal-body {
-    @apply flex-1 overflow-y-auto p-[24px];
+    @apply flex-1 overflow-y-auto p-xl;
   }
 
   .modal-footer {
-    @apply py-md border-t border-[rgba(0,0,0,0.12)] px-[24px];
+    @apply py-md border-t border-[rgba(0,0,0,0.12)] px-xl;
     @apply gap-sm flex justify-end;
   }
 }
