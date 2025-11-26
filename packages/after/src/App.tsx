@@ -1,7 +1,6 @@
 import React from 'react';
 import { Header } from './shared/components/organisms';
-import { ManagementPage } from './pages/ManagementPage';
-import '@/app/styles/components.css';
+import { ManagementPage } from './pages/management/page.ui';
 import { ModalRoot } from './app/providers/modal';
 
 export const App: React.FC = () => {

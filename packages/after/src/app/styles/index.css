@@ -84,6 +84,7 @@
   --color-border-light: var(--color-border-light);
   --color-border-strong: var(--color-gray-400);
   --color-border-focus: var(--color-blue-500);
+  --color-border-error: var(--color-red-error);
 
   /* ========================================
      Colors - Other
@@ -150,7 +151,7 @@
   /* ========================================
      Z-Index
      ======================================== */
-  --z-modal: var(--z-index-modal);
+  --z-1000: 1000;
 
   /* ========================================
      Transitions
@@ -326,11 +327,460 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
+@layer components {
+  /* ========================================
+     Button Components
+     ======================================== */
+  .btn {
+    @apply inline-block font-sans leading-normal font-normal;
+    @apply cursor-pointer rounded-sm border border-solid whitespace-nowrap;
   }
-  body {
-    @apply bg-background text-foreground;
+
+  .btn:disabled {
+    @apply cursor-not-allowed opacity-60;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-primary-foreground border-primary-border;
+  }
+
+  .btn-primary:hover:not(:disabled) {
+    @apply bg-primary-hover;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground border-border-light;
+  }
+
+  .btn-secondary:hover:not(:disabled) {
+    @apply bg-secondary-hover;
+  }
+
+  .btn-danger {
+    @apply bg-danger text-danger-foreground border-danger-hover;
+  }
+
+  .btn-danger:hover:not(:disabled) {
+    @apply bg-danger-hover;
+  }
+
+  .btn-success {
+    @apply bg-success text-success-foreground border-success-hover;
+  }
+
+  .btn-success:hover:not(:disabled) {
+    @apply bg-success-hover;
+  }
+
+  .btn-sm {
+    @apply px-[12px] py-[6px] text-sm;
+  }
+
+  .btn-md {
+    @apply px-[20px] py-[10px] text-base;
+  }
+
+  .btn-lg {
+    @apply px-[24px] py-[12px] text-[15px];
+  }
+
+  .btn-fullwidth {
+    @apply w-full;
+  }
+
+  /* ========================================
+     Form Components
+     ======================================== */
+  .form-group {
+    @apply mb-md;
+  }
+
+  .form-label {
+    @apply text-foreground mb-[6px] block font-sans text-sm font-bold;
+  }
+
+  .form-input,
+  .form-select {
+    @apply py-sm w-full px-[10px] font-sans text-base text-black;
+    @apply border-border box-border rounded-sm border bg-white;
+  }
+
+  .form-input:focus,
+  .form-select:focus {
+    @apply border-border-focus outline-none;
+  }
+
+  .form-input.error,
+  .form-select.error {
+    @apply border-border-error;
+  }
+
+  .form-input:disabled,
+  .form-select:disabled {
+    @apply bg-disabled cursor-not-allowed;
+  }
+
+  .form-helper-text {
+    @apply text-muted mt-[4px] font-sans text-xs;
+  }
+
+  .form-helper-text.error {
+    @apply text-danger;
+  }
+
+  .input-width-small {
+    @apply w-[200px];
+  }
+
+  .input-width-medium {
+    @apply w-[300px];
+  }
+
+  .input-width-large {
+    @apply w-[400px];
+  }
+
+  .input-width-full {
+    @apply w-full;
+  }
+
+  /* ========================================
+     Card Components
+     ======================================== */
+  .card {
+    @apply mb-md font-roboto overflow-hidden rounded-md bg-white;
+  }
+
+  .card-default {
+    @apply border border-[rgba(0,0,0,0.12)] shadow-sm;
+  }
+
+  .card-bordered {
+    @apply border border-[rgba(0,0,0,0.12)] shadow-none;
+  }
+
+  .card-elevated {
+    @apply border border-[rgba(0,0,0,0.08)] shadow-md;
+  }
+
+  .card-flat {
+    @apply bg-elevated border border-[rgba(0,0,0,0.08)] shadow-none;
+  }
+
+  .card-header {
+    @apply p-lg border-b border-[rgba(0,0,0,0.08)];
+    @apply bg-elevated flex items-center justify-between;
+  }
+
+  .card-title {
+    @apply m-0 text-[1.125rem] leading-relaxed font-medium;
+    @apply text-[rgba(0,0,0,0.87)];
+  }
+
+  .card-subtitle {
+    @apply mx-0 mt-[4px] mb-0 text-base font-normal;
+    @apply leading-[1.43] text-[rgba(0,0,0,0.6)];
+  }
+
+  .card-body {
+    @apply p-lg;
+  }
+
+  /* ========================================
+     Badge Components
+     ======================================== */
+  .badge {
+    @apply inline-flex items-center justify-center;
+    @apply rounded-sm font-sans leading-none font-bold whitespace-nowrap;
+  }
+
+  .badge-pill {
+    @apply rounded-lg;
+  }
+
+  .badge-primary {
+    @apply bg-primary text-primary-foreground;
+  }
+
+  .badge-secondary {
+    @apply bg-[#757575] text-white;
+  }
+
+  .badge-success {
+    @apply bg-success text-success-foreground;
+  }
+
+  .badge-danger {
+    @apply bg-danger text-danger-foreground;
+  }
+
+  .badge-warning {
+    @apply bg-warning text-warning-foreground;
+  }
+
+  .badge-info {
+    @apply bg-info text-info-foreground;
+  }
+
+  .badge-small {
+    @apply h-[16px] px-[4px] py-0 text-[0.625rem];
+  }
+
+  .badge-medium {
+    @apply px-sm h-[20px] py-0 text-xs;
+  }
+
+  .badge-large {
+    @apply h-[24px] px-[10px] py-0 text-sm;
+  }
+
+  /* ========================================
+     Alert Components
+     ======================================== */
+  .alert {
+    @apply mb-md rounded-sm border border-solid px-[12px] py-[10px];
+    @apply gap-sm flex items-start font-sans;
+  }
+
+  .alert-info {
+    @apply bg-info-weak border-info-border text-info-weak-foreground;
+  }
+
+  .alert-success {
+    @apply bg-success-weak border-success-border text-success-weak-foreground;
+  }
+
+  .alert-warning {
+    @apply bg-warning-weak border-warning-border text-warning-weak-foreground;
+  }
+
+  .alert-error {
+    @apply bg-danger-weak border-danger-border text-danger-weak-foreground;
+  }
+
+  .alert-default {
+    @apply bg-default border-default-border text-default-foreground;
+  }
+
+  .alert-icon {
+    @apply flex-shrink-0 text-[20px];
+  }
+
+  .alert-content {
+    @apply flex-1;
+  }
+
+  .alert-title {
+    @apply mb-[4px] text-[15px] font-bold;
+  }
+
+  .alert-body {
+    @apply text-base leading-normal;
+  }
+
+  .alert-close {
+    @apply cursor-pointer border-none bg-transparent text-[20px];
+    @apply ml-auto flex-shrink-0 p-0 px-[4px];
+  }
+
+  /* ========================================
+     Checkbox Components
+     ======================================== */
+  .checkbox-wrapper {
+    @apply mb-[12px] flex cursor-pointer items-start;
+  }
+
+  .checkbox-wrapper.disabled {
+    @apply cursor-not-allowed opacity-60;
+  }
+
+  .checkbox-container {
+    @apply mr-sm relative mt-[2px];
+  }
+
+  .checkbox-input {
+    @apply absolute h-0 w-0 cursor-pointer opacity-0;
+  }
+
+  .checkbox-custom {
+    @apply h-[16px] w-[16px] rounded-[2px] border-2 border-[#d1d5db];
+    @apply flex cursor-pointer items-center justify-center bg-white;
+    transition: all 0.15s ease-in-out;
+  }
+
+  .checkbox-custom.checked {
+    @apply bg-primary border-primary;
+  }
+
+  .checkbox-custom.disabled {
+    @apply cursor-not-allowed;
+  }
+
+  .checkbox-checkmark {
+    @apply hidden text-[10px] font-bold text-white;
+  }
+
+  .checkbox-checkmark.visible {
+    @apply block;
+  }
+
+  .checkbox-label {
+    @apply cursor-pointer text-base leading-snug text-[#374151];
+    @apply font-roboto select-none;
+  }
+
+  .checkbox-label.error {
+    @apply text-[#ef4444];
+  }
+
+  .checkbox-label.disabled {
+    @apply cursor-not-allowed;
+  }
+
+  .checkbox-hint {
+    @apply font-roboto mt-[2px] ml-[24px] block text-xs text-[#6b7280];
+  }
+
+  .checkbox-error {
+    @apply font-roboto mt-[2px] ml-[24px] block text-xs text-[#ef4444];
+  }
+
+  /* ========================================
+     Textarea Components
+     ======================================== */
+  .form-textarea {
+    @apply min-h-[6em] w-full px-[14px] py-[16.5px] text-lg;
+    @apply font-roboto leading-tight font-normal;
+    @apply rounded-md border border-[rgba(0,0,0,0.23)] text-[rgba(0,0,0,0.87)];
+    @apply box-border resize-y bg-white outline-none;
+    transition: border-color 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+  }
+
+  .form-textarea:focus {
+    @apply border-border-focus border-2 px-[13px] py-[15.5px];
+  }
+
+  .form-textarea.error {
+    @apply border-border-error;
+  }
+
+  .form-textarea:disabled {
+    @apply bg-[rgba(0,0,0,0.12)];
+  }
+
+  /* ========================================
+     Loading Spinner
+     ======================================== */
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .spinner {
+    animation: spin 1.4s linear infinite;
+  }
+
+  /* ========================================
+     Table Components
+     ======================================== */
+  .table-container {
+    @apply overflow-x-auto;
+  }
+
+  .table {
+    @apply font-roboto w-full border-collapse bg-white text-base;
+  }
+
+  .table thead {
+    @apply bg-elevated;
+  }
+
+  .table th {
+    @apply p-md text-left text-xs font-medium;
+    @apply tracking-[0.03em] text-[rgba(0,0,0,0.6)] uppercase;
+    @apply border-b-2 border-[rgba(0,0,0,0.12)];
+  }
+
+  .table td {
+    @apply p-md border-b border-[rgba(0,0,0,0.08)] text-[rgba(0,0,0,0.87)];
+  }
+
+  .table tbody tr:last-child td {
+    @apply border-b-0;
+  }
+
+  .table-striped tbody tr:nth-child(even) {
+    @apply bg-elevated;
+  }
+
+  .table-bordered {
+    @apply border border-[rgba(0,0,0,0.12)];
+  }
+
+  .table-bordered th,
+  .table-bordered td {
+    @apply border border-[rgba(0,0,0,0.12)];
+  }
+
+  .table-hover tbody tr:hover {
+    @apply bg-[rgba(0,0,0,0.04)];
+  }
+
+  /* ========================================
+     Modal Components
+     ======================================== */
+  .modal-overlay {
+    @apply bg-overlay fixed inset-0 flex items-center justify-center;
+    @apply z-1000 p-md;
+  }
+
+  .modal-content {
+    @apply max-h-[90vh] rounded-md bg-white shadow-lg;
+    @apply font-roboto flex flex-col;
+  }
+
+  .modal-small {
+    @apply w-full max-w-[400px];
+  }
+
+  .modal-medium {
+    @apply w-full max-w-[600px];
+  }
+
+  .modal-large {
+    @apply w-full max-w-[900px];
+  }
+
+  .modal-header {
+    @apply py-md border-b border-[rgba(0,0,0,0.12)] px-[24px];
+    @apply flex items-center justify-between;
+  }
+
+  .modal-title {
+    @apply m-0 text-[1.25rem] font-medium text-[rgba(0,0,0,0.87)];
+  }
+
+  .modal-close {
+    @apply border-none bg-transparent text-[28px] leading-none;
+    @apply cursor-pointer p-0 text-[rgba(0,0,0,0.54)];
+    @apply flex h-[32px] w-[32px] items-center justify-center rounded-full;
+    transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  }
+
+  .modal-close:hover {
+    @apply bg-[rgba(0,0,0,0.04)];
+  }
+
+  .modal-body {
+    @apply flex-1 overflow-y-auto p-[24px];
+  }
+
+  .modal-footer {
+    @apply py-md border-t border-[rgba(0,0,0,0.12)] px-[24px];
+    @apply gap-sm flex justify-end;
   }
 }
