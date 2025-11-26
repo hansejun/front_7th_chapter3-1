@@ -3,18 +3,21 @@ import { createPortal } from 'react-dom';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/shared/lib/utils';
 
-const modalContentVariants = cva('modal-content', {
-  variants: {
-    size: {
-      small: 'modal-small',
-      medium: 'modal-medium',
-      large: 'modal-large',
+const modalContentVariants = cva(
+  'max-h-[90vh] rounded-md bg-white shadow-lg font-roboto flex flex-col',
+  {
+    variants: {
+      size: {
+        sm: 'w-full max-w-[400px]',
+        md: 'w-full max-w-[600px]',
+        lg: 'w-full max-w-[900px]',
+      },
     },
-  },
-  defaultVariants: {
-    size: 'medium',
-  },
-});
+    defaultVariants: {
+      size: 'md',
+    },
+  }
+);
 
 interface ModalContextType {
   onClose: () => void;
@@ -60,7 +63,10 @@ const Overlay = ({ children }: { children: React.ReactNode }) => {
   };
 
   return (
-    <div className="modal-overlay" onClick={handleOverlayClick}>
+    <div
+      className="bg-overlay p-md fixed inset-0 z-1000 flex items-center justify-center"
+      onClick={handleOverlayClick}
+    >
       {children}
     </div>
   );
@@ -107,9 +113,19 @@ const Modal = ({ open = true, onClose, size, children, className, ...props }: Mo
 const Header = ({ children, className, ...props }: ModalHeaderProps) => {
   const { onClose } = useModalContext();
   return (
-    <div className={cn('modal-header', className)} {...props}>
-      <h3 className="modal-title">{children}</h3>
-      <button className="modal-close" onClick={onClose} aria-label="Close modal">
+    <div
+      className={cn(
+        'py-md px-xl flex items-center justify-between border-b border-[rgba(0,0,0,0.12)]',
+        className
+      )}
+      {...props}
+    >
+      <h3 className="m-0 text-2xl font-medium text-[rgba(0,0,0,0.87)]">{children}</h3>
+      <button
+        className="transition-background-color flex h-[32px] w-[32px] cursor-pointer items-center justify-center rounded-full border-none bg-transparent p-0 text-3xl leading-none text-[rgba(0,0,0,0.54)] duration-150 ease-in-out hover:bg-[rgba(0,0,0,0.04)]"
+        onClick={onClose}
+        aria-label="Close modal"
+      >
         ×
       </button>
     </div>
@@ -118,7 +134,7 @@ const Header = ({ children, className, ...props }: ModalHeaderProps) => {
 
 const Content = ({ children, className, ...props }: ModalContentProps) => {
   return (
-    <div className={cn('modal-body', className)} {...props}>
+    <div className={cn('p-xl flex-1 overflow-y-auto', className)} {...props}>
       {children}
     </div>
   );
@@ -126,7 +142,13 @@ const Content = ({ children, className, ...props }: ModalContentProps) => {
 
 const Footer = ({ children, className, ...props }: ModalFooterProps) => {
   return (
-    <div className={cn('modal-footer', className)} {...props}>
+    <div
+      className={cn(
+        'py-md px-xl gap-sm flex justify-end border-t border-[rgba(0,0,0,0.12)]',
+        className
+      )}
+      {...props}
+    >
       {children}
     </div>
   );

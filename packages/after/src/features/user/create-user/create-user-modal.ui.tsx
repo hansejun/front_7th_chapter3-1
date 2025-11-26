@@ -7,7 +7,7 @@ import { Button } from '@/shared/ui/button';
 interface CreateUserModalProps extends BaseModalProps {}
 
 export const CreateUserModal = ({ onCloseModal }: CreateUserModalProps) => {
-  const { form, onCreateUser } = useCreateUser();
+  const { form, onCreateUser, onChangeForm } = useCreateUser();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -15,10 +15,10 @@ export const CreateUserModal = ({ onCloseModal }: CreateUserModalProps) => {
   };
 
   return (
-    <Modal onClose={onCloseModal} size="large">
+    <Modal onClose={onCloseModal} size="lg">
       <Modal.Header>사용자 만들기</Modal.Header>
       <Modal.Content>
-        <CreateUserForm form={form} onSubmit={handleSubmit} />
+        <CreateUserForm form={form} onChangeForm={onChangeForm} />
       </Modal.Content>
       <Modal.Footer>
         <Button onClick={onCloseModal}>취소</Button>

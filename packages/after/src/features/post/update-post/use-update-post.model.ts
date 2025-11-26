@@ -11,7 +11,11 @@ export const useUpdatePost = (initialPost: Post) => {
   const { onOpenAlert } = useAlert();
 
   // TODO: useHookForm + zod 사용
-  const [form] = useState(initialPost);
+  const [form, setForm] = useState(initialPost);
+
+  const onChangeForm = (name: string, value: string) => {
+    setForm({ ...form, [name]: value });
+  };
 
   const onUpdatePost = ({
     onSuccess,
@@ -43,5 +47,5 @@ export const useUpdatePost = (initialPost: Post) => {
     );
   };
 
-  return { form, onUpdatePost };
+  return { form, onUpdatePost, onChangeForm };
 };

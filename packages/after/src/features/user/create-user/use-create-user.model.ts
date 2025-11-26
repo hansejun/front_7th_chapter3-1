@@ -11,12 +11,10 @@ export const useCreateUser = () => {
   const { mutate } = useMutation(userService.create);
 
   // TODO: useHookForm + zod 사용
-  const [form] = useState({
-    username: '',
-    email: '',
-    role: 'user',
-    status: 'active',
-  });
+  const [form, setFormData] = useState<any>({});
+  const onChangeForm = (name: string, value: string) => {
+    setFormData({ ...form, [name]: value });
+  };
 
   const onCreateUser = (onSuccess?: () => void, onError?: (error: Error) => void) => {
     mutate(
@@ -45,5 +43,5 @@ export const useCreateUser = () => {
     );
   };
 
-  return { form, onCreateUser };
+  return { form, onCreateUser, onChangeForm };
 };

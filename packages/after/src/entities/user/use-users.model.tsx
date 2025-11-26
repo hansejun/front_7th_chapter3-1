@@ -1,7 +1,6 @@
-import { createContext, useContext } from 'react';
+import { useSyncExternalStore } from 'react';
 import type { User } from './user-type.model';
-import { useQuery } from '@/shared/model/hooks';
-import { userService } from './user-service.api';
+import { userStore } from './user-store.model';
 
 interface UsersContextValue {
   users: User[];
@@ -10,38 +9,17 @@ interface UsersContextValue {
   refetch: () => Promise<void>;
 }
 
-const UsersContext = createContext<UsersContextValue | null>(null);
-
-export const UsersProvider = ({ children }: { children: React.ReactNode }) => {
-  const {
-    data: users,
-    isLoading,
-    error,
-    refetch,
-  } = useQuery(userService.getAll);
-
-  const returnValue: UsersContextValue = {
-    users: users ?? [],
-    isLoading,
-    error,
-    refetch,
-  };
-
-  return (
-    <UsersContext.Provider value={returnValue}>
-      {children}
-    </UsersContext.Provider>
+export const useUsers = (): UsersContextValue => {
+  const state = useSyncExternalStore(
+    userStore.subscribe,
+    userStore.getSnapshot,
+    userStore.getServerSnapshot
   );
-};
 
-export const useUsers = () => {
-  const context = useContext(UsersContext);
-
-  if (!context) {
-    throw new Error('유저 프로바이더 내부에서 사용해야함');
-  }
-
-  const { users, isLoading, error, refetch } = context;
-
-  return { users, isLoading, error, refetch };
+  return {
+    users: state.users,
+    isLoading: state.isLoading,
+    error: state.error,
+    refetch: userStore.refetch,
+  };
 };

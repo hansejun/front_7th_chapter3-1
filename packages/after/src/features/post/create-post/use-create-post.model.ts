@@ -11,13 +11,17 @@ export const useCreatePost = () => {
   const { onOpenAlert } = useAlert();
 
   // TODO: useHookForm + zod 사용
-  const [form] = useState({
+  const [form, setForm] = useState({
     title: '',
     content: '',
     author: '',
     category: '',
     status: 'draft',
   });
+
+  const onChangeForm = (name: string, value: string) => {
+    setForm({ ...form, [name]: value });
+  };
 
   const onCreatePost = (onSuccess?: () => void, onError?: (error: Error) => void) => {
     mutate(
@@ -47,5 +51,5 @@ export const useCreatePost = () => {
     );
   };
 
-  return { form, onCreatePost };
+  return { form, onCreatePost, onChangeForm };
 };

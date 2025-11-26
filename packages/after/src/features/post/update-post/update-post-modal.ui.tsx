@@ -4,13 +4,14 @@ import { UpdatePostForm } from './update-post-form.ui';
 import type { BaseModalProps } from '@/shared/model/hooks';
 import Modal from '@/shared/ui/modal';
 import { Button } from '@/shared/ui/button';
+import { Alert } from '@/shared/ui/alert';
 
 interface UpdatePostModalProps extends BaseModalProps {
   post: Post;
 }
 
 export const UpdatePostModal = ({ post, onCloseModal }: UpdatePostModalProps) => {
-  const { form, onUpdatePost } = useUpdatePost(post);
+  const { form, onUpdatePost, onChangeForm } = useUpdatePost(post);
 
   const handleSubmit = () => {
     onUpdatePost({
@@ -20,10 +21,14 @@ export const UpdatePostModal = ({ post, onCloseModal }: UpdatePostModalProps) =>
     });
   };
   return (
-    <Modal onClose={onCloseModal} size="large">
+    <Modal onClose={onCloseModal} size="lg">
       <Modal.Header>게시글 수정</Modal.Header>
       <Modal.Content>
-        <UpdatePostForm form={form} onSubmit={handleSubmit} />
+        <Alert variant="info">
+          ID: {post.id} | 생성일: {post.createdAt}
+          {post.views && ` | 조회수: ${post.views}`}
+        </Alert>
+        <UpdatePostForm form={form} onSubmit={handleSubmit} onChangeForm={onChangeForm} />
       </Modal.Content>
       <Modal.Footer>
         <Button onClick={onCloseModal}>취소</Button>

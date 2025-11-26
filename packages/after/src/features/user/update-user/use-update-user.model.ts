@@ -11,7 +11,11 @@ export const useUpdateUser = (initialUser: User) => {
   const { onOpenAlert } = useAlert();
 
   // TODO: useHookForm + zod 사용
-  const [form] = useState(initialUser);
+  const [form, setForm] = useState(initialUser);
+
+  const onChangeForm = (name: string, value: string) => {
+    setForm({ ...form, [name]: value });
+  };
 
   const onUpdateUser = ({
     onSuccess,
@@ -44,5 +48,5 @@ export const useUpdateUser = (initialUser: User) => {
     );
   };
 
-  return { form, onUpdateUser };
+  return { form, onUpdateUser, onChangeForm };
 };

@@ -1,40 +1,28 @@
-export const Tabs = () => {
+import { cn } from '@/shared/lib/utils';
+
+interface TabsProps {
+  entityType: 'post' | 'user';
+  setEntityType: (entityType: 'post' | 'user') => void;
+}
+
+export const ManagementTabs = ({ entityType, setEntityType }: TabsProps) => {
   return (
-    <div
-      style={{
-        marginBottom: '15px',
-        borderBottom: '2px solid #ccc',
-        paddingBottom: '5px',
-      }}
-    >
+    <div className="border-border-light mb-[15px] border-b pb-[5px]">
       <button
         onClick={() => setEntityType('post')}
-        style={{
-          padding: '8px 16px',
-          marginRight: '5px',
-          fontSize: '14px',
-          fontWeight: entityType === 'post' ? 'bold' : 'normal',
-          border: '1px solid #999',
-          background: entityType === 'post' ? '#1976d2' : '#f5f5f5',
-          color: entityType === 'post' ? 'white' : '#333',
-          cursor: 'pointer',
-          borderRadius: '3px',
-        }}
+        className={cn(
+          'px-md py-sm bg-secondary text-foreground mr-[5px] cursor-pointer rounded-sm border border-[#999] text-base font-normal',
+          entityType === 'post' && 'bg-primary font-bold text-white'
+        )}
       >
         게시글
       </button>
       <button
         onClick={() => setEntityType('user')}
-        style={{
-          padding: '8px 16px',
-          fontSize: '14px',
-          fontWeight: entityType === 'user' ? 'bold' : 'normal',
-          border: '1px solid #999',
-          background: entityType === 'user' ? '#1976d2' : '#f5f5f5',
-          color: entityType === 'user' ? 'white' : '#333',
-          cursor: 'pointer',
-          borderRadius: '3px',
-        }}
+        className={cn(
+          'px-md py-sm bg-secondary text-foreground mr-[5px] cursor-pointer rounded-sm border border-[#999] text-base font-normal',
+          entityType === 'user' && 'bg-primary font-bold text-white'
+        )}
       >
         사용자
       </button>
