@@ -4,41 +4,159 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
+  /* ========================================
+     Semantic Design Tokens
+     Based on Primitive Tokens in :root
+     ======================================== */
+
+  /* ========================================
+     Colors - Brand/Action (shadcn extended pattern)
+     ======================================== */
+
+  /* Primary (Blue) - Button, Focus */
+  --color-primary: var(--color-blue-500);
+  --color-primary-foreground: var(--color-white);
+  --color-primary-hover: var(--color-blue-600);
+  --color-primary-weak: var(--color-blue-50);
+  --color-primary-weak-foreground: var(--color-blue-700);
+  --color-primary-border: var(--color-blue-300);
+
+  /* Secondary (Gray) - Button */
+  --color-secondary: var(--color-gray-100);
+  --color-secondary-foreground: var(--color-gray-900);
+  --color-secondary-hover: var(--color-gray-200);
+
+  /* Danger (Red) - Button, Alert, Error */
+  --color-danger: var(--color-red-500);
+  --color-danger-foreground: var(--color-white);
+  --color-danger-hover: var(--color-red-600);
+  --color-danger-weak: var(--color-red-50);
+  --color-danger-weak-foreground: var(--color-red-700);
+  --color-danger-border: var(--color-red-300);
+
+  /* Success (Green) - Button, Alert */
+  --color-success: var(--color-green-500);
+  --color-success-foreground: var(--color-white);
+  --color-success-hover: var(--color-green-600);
+  --color-success-weak: var(--color-green-50);
+  --color-success-weak-foreground: var(--color-green-700);
+  --color-success-border: var(--color-green-300);
+
+  /* Warning (Orange) - Alert, Badge */
+  --color-warning: var(--color-orange-500);
+  --color-warning-foreground: var(--color-white);
+  --color-warning-weak: var(--color-orange-50);
+  --color-warning-weak-foreground: var(--color-orange-700);
+  --color-warning-border: var(--color-orange-300);
+
+  /* Info (Blue) - Alert, Badge */
+  --color-info: var(--color-blue-info);
+  --color-info-foreground: var(--color-white);
+  --color-info-weak: var(--color-blue-50);
+  --color-info-weak-foreground: var(--color-blue-700);
+  --color-info-border: var(--color-blue-300);
+
+  /* Default (Gray) - Alert */
+  --color-default: var(--color-gray-100);
+  --color-default-foreground: var(--color-gray-700);
+  --color-default-border: var(--color-gray-400);
+
+  /* ========================================
+     Colors - Surface/Background
+     ======================================== */
+  --color-elevated: var(--color-gray-50);
+  --color-subtle: var(--color-gray-100);
+  --color-hover: var(--color-gray-200);
+  --color-disabled: var(--color-gray-100);
+
+  /* ========================================
+     Colors - Text
+     ======================================== */
+  --color-foreground: var(--color-gray-900);
+  --color-muted: var(--color-gray-600);
+  --color-muted-foreground: var(--color-gray-500);
+  --color-disabled-foreground: var(--color-gray-400);
+
+  /* ========================================
+     Colors - Border
+     ======================================== */
+  --color-border: var(--color-border);
+  --color-border-light: var(--color-border-light);
+  --color-border-strong: var(--color-gray-400);
+  --color-border-focus: var(--color-blue-500);
+
+  /* ========================================
+     Colors - Other
+     ======================================== */
+  --color-overlay: var(--color-alpha-50);
+
+  /* ========================================
+     Spacing
+     ======================================== */
+  --spacing-xs: var(--spacing-1);
+  --spacing-sm: var(--spacing-2);
+  --spacing-md: var(--spacing-4);
+  --spacing-lg: var(--spacing-5);
+  --spacing-xl: var(--spacing-6);
+
+  /* ========================================
+     Typography - Font Size
+     ======================================== */
+  --text-xs: var(--font-size-12);
+  --text-sm: var(--font-size-13);
+  --text-base: var(--font-size-14);
+  --text-lg: var(--font-size-16);
+  --text-xl: var(--font-size-18);
+  --text-2xl: var(--font-size-20);
+
+  /* ========================================
+     Typography - Font Weight
+     ======================================== */
+  --font-weight-normal: var(--font-weight-400);
+  --font-weight-medium: var(--font-weight-500);
+  --font-weight-bold: var(--font-weight-700);
+
+  /* ========================================
+     Typography - Line Height
+     ======================================== */
+  --leading-none: var(--line-height-none);
+  --leading-tight: var(--line-height-tight);
+  --leading-snug: var(--line-height-snug);
+  --leading-normal: var(--line-height-relaxed);
+  --leading-relaxed: var(--line-height-loose);
+
+  /* ========================================
+     Typography - Font Family
+     ======================================== */
+  --font-sans: var(--font-family-sans);
+  --font-roboto: var(--font-family-roboto);
+
+  /* ========================================
+     Border Radius
+     ======================================== */
+  --radius-xs: var(--border-radius-xs);
+  --radius-sm: var(--border-radius-sm);
+  --radius-md: var(--border-radius-md);
+  --radius-lg: var(--border-radius-lg);
+  --radius-full: var(--border-radius-full);
+
+  /* ========================================
+     Shadows
+     ======================================== */
+  --shadow-sm: var(--shadow-elevation-sm);
+  --shadow-md: var(--shadow-elevation-md);
+  --shadow-lg: var(--shadow-elevation-lg);
+
+  /* ========================================
+     Z-Index
+     ======================================== */
+  --z-modal: var(--z-index-modal);
+
+  /* ========================================
+     Transitions
+     ======================================== */
+  --ease-smooth: var(--transition-base);
+  --ease-fast: var(--transition-fast);
 }
 
 :root {
@@ -129,9 +247,9 @@
   --font-size-28: 1.75rem; /* 28px */
 
   /* Font Weights */
-  --font-weight-normal: 400;
-  --font-weight-medium: 500;
-  --font-weight-bold: 700;
+  --font-weight-400: 400;
+  --font-weight-500: 500;
+  --font-weight-700: 700;
 
   /* Line Heights */
   --line-height-none: 1;
@@ -153,15 +271,15 @@
   --font-family-roboto: 'Roboto', 'Helvetica', 'Arial', sans-serif;
 
   /* Box Shadows - Material Design Elevation */
-  --shadow-sm:
+  --shadow-elevation-sm:
     0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
     0px 1px 3px 0px rgba(0, 0, 0, 0.12);
 
-  --shadow-md:
+  --shadow-elevation-md:
     0px 2px 4px -1px rgba(0, 0, 0, 0.12), 0px 1px 2px 0px rgba(0, 0, 0, 0.08),
     0px 1px 4px 0px rgba(0, 0, 0, 0.08);
 
-  --shadow-lg:
+  --shadow-elevation-lg:
     0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14),
     0px 9px 46px 8px rgba(0, 0, 0, 0.12);
 
