@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header } from './shared/components/organisms';
+import { Header } from './widgets/header.ui';
 import { ManagementPage } from './pages/management/page.ui';
 import { ModalRoot } from './app/providers/modal';
 
