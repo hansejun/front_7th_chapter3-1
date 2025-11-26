@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Button } from '../../shared/components/atoms';
+
 import { Alert, Table, Modal } from '../../shared/components/organisms';
 import { FormInput, FormSelect, FormTextarea } from '../../shared/components/molecules';
 import { postService } from '../../entities/post/post-service.api';
 import { type User, userService } from '@/entities/user';
 import type { Post } from '@/entities/post';
+import { Button } from '@/shared/ui/button';
 
 type EntityType = 'user' | 'post';
 type Entity = User | Post;

@@ -5,19 +5,23 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/shared/lib/utils';
 
 const buttonVariants = cva(
-  'inline-block font-["Arial", sans-serif] leading-normal font-normal rounded-sm cursor-pointer border whitespace-nowrap disabled:opacity-60 disabled:cursor-not-allowed',
+  'inline-block font-sans leading-normal font-normal rounded-sm cursor-pointer border whitespace-nowrap disabled:opacity-60 disabled:cursor-not-allowed',
   {
     variants: {
       variant: {
-        primary: 'bg-[#1976d2] text-white border-color-[#1565c0] hover:not(:disabled):bg-[#1565c0]',
-        secondary: 'bg-[#f5f5f5] text-[#333] border-color-[#ddd] hover:not(:disabled):bg-[#e0e0e0]',
-        danger: 'bg-[#d32f2f] text-white border-color-[#c62828] hover:not(:disabled):bg-[#c62828]',
-        success: 'bg-[#388e3c] text-white border-color-[#2e7d32] hover:not(:disabled):bg-[#2e7d32]',
+        primary:
+          'bg-primary text-primary-foreground border-primary-border hover:not(:disabled):bg-primary-hover',
+        secondary:
+          'bg-secondary text-secondary-foreground border-border-light hover:not(:disabled):bg-secondary-hover',
+        danger:
+          'bg-danger text-danger-foreground border-danger-hover hover:not(:disabled):bg-danger-hover',
+        success:
+          'bg-success text-success-foreground border-success-hover hover:not(:disabled):bg-success-hover',
       },
       size: {
-        sm: 'px-[6px] py-[12px] text-[13px]',
-        md: 'px-[10px] py-[20px] text-[14px]',
-        lg: 'px-[12px] py-[24px] text-[15px]',
+        sm: 'px-base py-sm text-sm',
+        md: 'px-lg py-base text-base',
+        lg: 'px-xl py-base text-md',
       },
       fullWidth: {
         true: 'w-full',
