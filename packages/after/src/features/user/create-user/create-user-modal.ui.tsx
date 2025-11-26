@@ -1,4 +1,4 @@
-import Modal from '@/shared/ui/modal';
+import Modal from '@/shared/ui/modal/modal';
 import { CreateUserForm } from './create-user-form.ui';
 import { useCreateUser } from './use-create-user.model';
 import type { BaseModalProps } from '@/shared/model/hooks';

@@ -2,9 +2,9 @@ import type { Post } from '@/entities/post';
 import { useUpdatePost } from './use-update-post.model';
 import { UpdatePostForm } from './update-post-form.ui';
 import type { BaseModalProps } from '@/shared/model/hooks';
-import Modal from '@/shared/ui/modal';
+import { Modal } from '@/shared/ui/modal';
 import { Button } from '@/shared/ui/button';
-import Alert from '@/shared/ui/alert';
+import { Alert } from '@/shared/ui/alert';
 
 interface UpdatePostModalProps extends BaseModalProps {
   post: Post;

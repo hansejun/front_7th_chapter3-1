@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useAlert } from '@/shared/model/hooks/use-alert';
 import Alert from './alert';
-import { cn } from '../lib/utils';
+import { cn } from '../../lib/utils';
 
 interface AlertManagerProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;

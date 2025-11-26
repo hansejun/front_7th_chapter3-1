@@ -1,20 +1,19 @@
 import * as React from 'react';
 import type { Control, FieldPath, FieldValues } from 'react-hook-form';
 import { FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from './form';
-import { Textarea } from './textarea';
+import { Checkbox } from '../checkbox';
 
-interface FormTextareaFieldProps<
+interface FormCheckboxFieldProps<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
-> extends Omit<React.ComponentProps<typeof Textarea>, 'name' | 'value' | 'onChange'> {
+> extends Omit<React.ComponentProps<typeof Checkbox>, 'name' | 'checked' | 'onCheckedChange'> {
   control: Control<TFieldValues>;
   name: TName;
-  label?: string;
+  label: string;
   description?: string;
-  required?: boolean;
 }
 
-export function FormTextareaField<
+export function FormCheckboxField<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
 >({
@@ -22,26 +21,22 @@ export function FormTextareaField<
   name,
   label,
   description,
-  required,
-  ...textareaProps
-}: FormTextareaFieldProps<TFieldValues, TName>) {
+  ...checkboxProps
+}: FormCheckboxFieldProps<TFieldValues, TName>) {
   return (
     <FormField
       control={control}
       name={name}
       render={({ field }) => (
-        <FormItem>
-          {label && (
-            <FormLabel>
-              {label}
-              {required && <span className="text-border-error ml-1">*</span>}
-            </FormLabel>
-          )}
+        <FormItem className="flex flex-row items-start space-y-0 space-x-3">
           <FormControl>
-            <Textarea {...field} {...textareaProps} />
+            <Checkbox checked={field.value} onCheckedChange={field.onChange} {...checkboxProps} />
           </FormControl>
-          {description && <FormDescription>{description}</FormDescription>}
-          <FormMessage />
+          <div className="space-y-1 leading-none">
+            <FormLabel>{label}</FormLabel>
+            {description && <FormDescription>{description}</FormDescription>}
+            <FormMessage />
+          </div>
         </FormItem>
       )}
     />

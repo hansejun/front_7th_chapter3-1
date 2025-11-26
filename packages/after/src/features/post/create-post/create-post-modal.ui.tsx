@@ -1,4 +1,4 @@
-import Modal from '@/shared/ui/modal';
+import { Modal } from '@/shared/ui/modal';
 import { CreatePostForm } from './create-post-form.ui';
 import { useCreatePost } from './use-create-post.model';
 import type { BaseModalProps } from '@/shared/model/hooks';

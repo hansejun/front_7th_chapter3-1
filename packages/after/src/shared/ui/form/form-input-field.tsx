@@ -1,19 +1,21 @@
 import * as React from 'react';
 import type { Control, FieldPath, FieldValues } from 'react-hook-form';
 import { FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from './form';
-import { Checkbox } from './checkbox';
+import { Input, type InputVariant } from '../input';
 
-interface FormCheckboxFieldProps<
+interface FormInputFieldProps<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
-> extends Omit<React.ComponentProps<typeof Checkbox>, 'name' | 'checked' | 'onCheckedChange'> {
+> extends Omit<React.ComponentProps<typeof Input>, 'name' | 'value' | 'onChange'> {
   control: Control<TFieldValues>;
   name: TName;
-  label: string;
+  label?: string;
   description?: string;
+  required?: boolean;
+  variant?: InputVariant['variant'];
 }
 
-export function FormCheckboxField<
+export function FormInputField<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
 >({
@@ -21,22 +23,26 @@ export function FormCheckboxField<
   name,
   label,
   description,
-  ...checkboxProps
-}: FormCheckboxFieldProps<TFieldValues, TName>) {
+  required,
+  ...inputProps
+}: FormInputFieldProps<TFieldValues, TName>) {
   return (
     <FormField
       control={control}
       name={name}
       render={({ field }) => (
-        <FormItem className="flex flex-row items-start space-y-0 space-x-3">
+        <FormItem>
+          {label && (
+            <FormLabel>
+              {label}
+              {required && <span className="text-border-error ml-1">*</span>}
+            </FormLabel>
+          )}
           <FormControl>
-            <Checkbox checked={field.value} onCheckedChange={field.onChange} {...checkboxProps} />
+            <Input {...field} {...inputProps} />
           </FormControl>
-          <div className="space-y-1 leading-none">
-            <FormLabel>{label}</FormLabel>
-            {description && <FormDescription>{description}</FormDescription>}
-            <FormMessage />
-          </div>
+          {description && <FormDescription>{description}</FormDescription>}
+          <FormMessage />
         </FormItem>
       )}
     />

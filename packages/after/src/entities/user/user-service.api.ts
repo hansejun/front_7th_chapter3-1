@@ -14,11 +14,7 @@ import {
   isUserAlreadyExistsByUsername,
 } from './user-utils.lib';
 
-
-const userStorage = createStorageAdapter<User[]>(
-  USERS_STORAGE_KEY,
-  DEFAULT_USERS
-);
+const userStorage = createStorageAdapter<User[]>(USERS_STORAGE_KEY, DEFAULT_USERS);
 
 export const userService = {
   async getAll(): Promise<User[]> {
@@ -62,11 +58,13 @@ export const userService = {
       throw new Error('User not found');
     }
 
-    if (isUserAlreadyExistsByUsername(users, userData)) {
+    const filteredUsers = filterUserById(users, id);
+
+    if (isUserAlreadyExistsByUsername(filteredUsers, userData)) {
       throw new Error('Username already exists');
     }
 
-    if (isUserAlreadyExistsByEmail(users, userData)) {
+    if (isUserAlreadyExistsByEmail(filteredUsers, userData)) {
       throw new Error('Email already exists');
     }
 

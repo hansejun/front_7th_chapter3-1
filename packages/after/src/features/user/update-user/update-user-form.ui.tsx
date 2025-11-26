@@ -1,6 +1,4 @@
-import { Form } from '@/shared/ui/form';
-import { FormInputField } from '@/shared/ui/form-input-field';
-import { FormSelectField } from '@/shared/ui/form-select-field';
+import { Form, FormInputField, FormSelectField } from '@/shared/ui/form';
 import type { UseFormReturn } from 'react-hook-form';
 import type { UpdateUserFormData } from '@/entities/user';
 

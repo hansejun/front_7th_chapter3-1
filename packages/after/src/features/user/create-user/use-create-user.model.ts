@@ -21,26 +21,27 @@ export const useCreateUser = () => {
     },
   });
 
-  const onCreateUser = (data: CreateUserFormData, onSuccess?: () => void, onError?: (error: Error) => void) => {
-    mutate(
-      data,
-      {
-        onSuccess: () => {
-          refetchUsers();
-          onSuccess?.();
-          form.reset(); // 폼 초기화
-          onOpenAlert({ title: '성공', type: 'success', message: '사용자가 생성되었습니다.' });
-        },
-        onError: (error) => {
-          onOpenAlert({
-            title: '오류',
-            type: 'error',
-            message: error.message || '사용자 생성에 실패했습니다.',
-          });
-          onError?.(error);
-        },
-      }
-    );
+  const onCreateUser = (
+    data: CreateUserFormData,
+    onSuccess?: () => void,
+    onError?: (error: Error) => void
+  ) => {
+    mutate(data, {
+      onSuccess: () => {
+        refetchUsers();
+        onSuccess?.();
+        form.reset(); // 폼 초기화
+        onOpenAlert({ title: '성공', type: 'success', message: '사용자가 생성되었습니다.' });
+      },
+      onError: (error) => {
+        onOpenAlert({
+          title: '오류',
+          type: 'error',
+          message: error.message || '사용자 생성에 실패했습니다.',
+        });
+        onError?.(error);
+      },
+    });
   };
 
   return { form, onCreateUser };

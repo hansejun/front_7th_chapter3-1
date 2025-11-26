@@ -2,10 +2,7 @@ import { z } from 'zod';
 
 // Base schema for post creation
 export const createPostSchema = z.object({
-  title: z
-    .string()
-    .min(5, '제목은 5자 이상이어야 합니다')
-    .max(100, '제목은 100자 이하여야 합니다'),
+  title: z.string().min(5, '제목은 5자 이상이어야 합니다').max(100, '제목은 100자 이하여야 합니다'),
   content: z
     .string()
     .min(10, '내용은 10자 이상이어야 합니다')
@@ -14,10 +11,8 @@ export const createPostSchema = z.object({
     .string()
     .min(2, '작성자명은 2자 이상이어야 합니다')
     .max(50, '작성자명은 50자 이하여야 합니다'),
-  category: z
-    .string()
-    .min(1, '카테고리는 필수입니다'),
-  status: z.enum(['draft', 'published', 'archived'] as const).default('draft'),
+  category: z.string().min(1, '카테고리는 필수입니다'),
+  status: z.enum(['draft', 'published', 'archived'] as const),
 });
 
 // Schema for post update

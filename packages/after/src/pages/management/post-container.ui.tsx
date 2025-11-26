@@ -3,7 +3,7 @@ import { useDeletePost } from '@/features/post/delete-post';
 import { useUpdatePostStatus } from '@/features/post/update-post-status';
 import { useModal } from '@/shared/model/hooks';
 import { MODAL_TYPES } from '@/shared/model/hooks/use-modal';
-import { AlertManager } from '@/shared/ui/alert-manager';
+import { AlertManager } from '@/shared/ui/alert';
 import { Button } from '@/shared/ui/button';
 import { PostManagementTable } from './post-table.ui';
 

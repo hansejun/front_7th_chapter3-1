@@ -4,7 +4,7 @@ import { useDeleteUser } from '@/features/user/delete-user/use-delete-user.model
 
 import { useModal } from '@/shared/model/hooks';
 import { MODAL_TYPES } from '@/shared/model/hooks/use-modal';
-import { AlertManager } from '@/shared/ui/alert-manager';
+import { AlertManager } from '@/shared/ui/alert';
 import { Button } from '@/shared/ui/button';
 import { UserManagementTable } from './user-table.ui';
 

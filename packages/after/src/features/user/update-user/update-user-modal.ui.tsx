@@ -2,9 +2,9 @@ import type { User } from '@/entities/user';
 import { useUpdateUser } from './use-update-user.model';
 import { UpdateUserForm } from './update-user-form.ui';
 import type { BaseModalProps } from '@/shared/model/hooks';
-import Modal from '@/shared/ui/modal';
+import { Modal } from '@/shared/ui/modal';
 import { Button } from '@/shared/ui/button';
-import Alert from '@/shared/ui/alert';
+import { Alert } from '@/shared/ui/alert';
 
 interface UpdateUserModalProps extends BaseModalProps {
   user: User;

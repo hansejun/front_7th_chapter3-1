@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { Control, FieldPath, FieldValues } from 'react-hook-form';
 import { FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from './form';
-import { NativeSelect, NativeSelectOption } from './native-select';
+import { NativeSelect, NativeSelectOption } from '../select';
 
 interface Option {
   value: string;
