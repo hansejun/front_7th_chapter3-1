@@ -6,6 +6,7 @@ import { MODAL_TYPES } from '@/shared/model/hooks/use-modal';
 import { AlertManager } from '@/shared/ui/alert';
 import { Button } from '@/shared/ui/button';
 import { PostManagementTable } from './post-table.ui';
+import { POST_STATUSES_MAP } from '@/entities/post/post-constants.config';
 
 export const PostManagementContainer = () => {
   const { posts } = usePosts();
@@ -85,17 +86,17 @@ const getPostStats = (posts: Post[]) => {
     total: posts.length,
     stat1: {
       label: '게시됨',
-      value: posts.filter((p) => p.status === 'published').length,
+      value: posts.filter((p) => p.status === POST_STATUSES_MAP.published).length,
       color: '#2e7d32',
     },
     stat2: {
       label: '임시저장',
-      value: posts.filter((p) => p.status === 'draft').length,
+      value: posts.filter((p) => p.status === POST_STATUSES_MAP.draft).length,
       color: '#ed6c02',
     },
     stat3: {
       label: '보관됨',
-      value: posts.filter((p) => p.status === 'archived').length,
+      value: posts.filter((p) => p.status === POST_STATUSES_MAP.archived).length,
       color: 'rgba(0, 0, 0, 0.6)',
     },
     stat4: {

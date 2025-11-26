@@ -12,6 +12,7 @@ import {
 } from '@/shared/ui/table/table';
 import type { User } from '@/entities/user';
 import { cn } from '@/shared/lib/utils';
+import { USER_ROLE_BADGE_MAP, USER_STATUS_BADGE_MAP } from './constants.config';
 
 interface TableProps {
   users: User[];
@@ -36,78 +37,30 @@ const USER_TABLE_COLUMNS = [
 
 export const UserManagementTable: React.FC<TableProps> = ({
   users = [],
-  variant = 'default',
   pageSize = 10,
-  searchable = false,
-  sortable = false,
   onEdit,
   onDelete,
 }) => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [sortColumn, setSortColumn] = useState('');
-  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
   const [currentPage, setCurrentPage] = useState(1);
 
-  const handleSort = (columnKey: string) => {
-    if (!sortable) return;
+  const paginatedData = users.slice((currentPage - 1) * pageSize, currentPage * pageSize);
 
-    const newDirection = sortColumn === columnKey && sortDirection === 'asc' ? 'desc' : 'asc';
-    setSortColumn(columnKey);
-    setSortDirection(newDirection);
-  };
-
-  const sortedUsers = [...users].sort((a, b) => {
-    const aVal = a[sortColumn as keyof User];
-    const bVal = b[sortColumn as keyof User];
-
-    if (typeof aVal === 'number' && typeof bVal === 'number') {
-      return sortDirection === 'asc' ? aVal - bVal : bVal - aVal;
-    }
-
-    return sortDirection === 'asc'
-      ? String(aVal).localeCompare(String(bVal))
-      : String(bVal).localeCompare(String(aVal));
-  });
-
-  const filteredData =
-    searchable && searchTerm
-      ? sortedUsers.filter((row) =>
-          Object.values(row).some((val) =>
-            String(val).toLowerCase().includes(searchTerm.toLowerCase())
-          )
-        )
-      : sortedUsers;
-
-  const paginatedData = filteredData.slice((currentPage - 1) * pageSize, currentPage * pageSize);
-
-  const totalPages = Math.ceil(filteredData.length / pageSize);
+  const totalPages = Math.ceil(users.length / pageSize);
 
   return (
-    <Table variant={variant}>
-      {searchable && (
-        <div className="mb-[16px]">
-          <input
-            type="text"
-            placeholder="검색..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-[300px] rounded-sm border border-[#ddd] px-[12px] py-[8px]"
-          />
-        </div>
-      )}
+    <Table>
       <TableHeader>
         <TableRow>
           {USER_TABLE_COLUMNS.map((column) => (
-            <TableHead key={column.key} onClick={() => sortable && handleSort(column.key)}>
-              {column.header}
-            </TableHead>
+            <TableHead key={column.key}>{column.header}</TableHead>
           ))}
         </TableRow>
       </TableHeader>
       <TableBody>
         {paginatedData.map((row, rowIndex) => {
-          const userStatus = USER_STATUS[row.status as keyof typeof USER_STATUS];
-          const userRole = USER_ROLES[row.role as keyof typeof USER_ROLES];
+          const userStatus =
+            USER_STATUS_BADGE_MAP[row.status as keyof typeof USER_STATUS_BADGE_MAP];
+          const userRole = USER_ROLE_BADGE_MAP[row.role as keyof typeof USER_ROLE_BADGE_MAP];
           return (
             <TableRow key={rowIndex}>
               <TableCell>{row.id}</TableCell>
@@ -165,37 +118,3 @@ export const UserManagementTable: React.FC<TableProps> = ({
     </Table>
   );
 };
-
-const USER_ROLES = {
-  admin: {
-    variant: 'danger',
-    content: '관리자',
-  },
-  moderator: {
-    variant: 'warning',
-    content: '운영자',
-  },
-  user: {
-    variant: 'primary',
-    content: '사용자',
-  },
-  guest: {
-    variant: 'secondary',
-    content: '게스트',
-  },
-} as const;
-
-const USER_STATUS = {
-  active: {
-    variant: 'success',
-    content: '게시됨',
-  },
-  inactive: {
-    variant: 'warning',
-    content: '임시저장',
-  },
-  suspended: {
-    variant: 'danger',
-    content: '거부됨',
-  },
-} as const;

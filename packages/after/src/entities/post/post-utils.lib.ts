@@ -1,21 +1,22 @@
 import { getCurrentDate, getMaxValueInArrayByKey } from '@/shared/lib/utils';
-import type { Post } from './post-type.model';
+import type { Post, PostStatus } from './post-type.model';
+import { POST_STATUSES_MAP } from './post-constants.config';
 
 // TODO: 특정 기능에 대한 유틸리티 함수는 features/post로 이동
 
 /** ID로 포스트 찾기 */
 export const findPostById = (posts: Post[], id: number): Post | null => {
-  return posts.find(p => p.id === id) ?? null;
+  return posts.find((p) => p.id === id) ?? null;
 };
 
 /** ID로 포스트 인덱스 찾기 */
 export const findPostIndexById = (posts: Post[], id: number): number => {
-  return posts.findIndex(p => p.id === id);
+  return posts.findIndex((p) => p.id === id);
 };
 
 /** ID로 포스트 필터링 (제거) */
 export const filterPostById = (posts: Post[], id: number): Post[] => {
-  return posts.filter(p => p.id !== id);
+  return posts.filter((p) => p.id !== id);
 };
 
 /** 포스트 제목 유효성 검증 */
@@ -34,14 +35,14 @@ export const validatePostExists = (post: Post | null): void => {
 
 /** 포스트가 발행되지 않았는지 검증 */
 export const validateNotPublished = (post: Post): void => {
-  if (post.status === 'published') {
+  if (post.status === POST_STATUSES_MAP.published) {
     throw new Error('Post is already published');
   }
 };
 
 /** 포스트가 아카이브 상태인지 검증 */
 export const validateIsArchived = (post: Post): void => {
-  if (post.status !== 'archived') {
+  if (post.status !== POST_STATUSES_MAP.archived) {
     throw new Error('Only archived posts can be restored');
   }
 };
@@ -54,7 +55,7 @@ const getIncrementedPostId = (posts: Post[]): number => {
 /** 새로운 포스트 생성 */
 export const createNewPost = (
   posts: Post[],
-  postData: Omit<Post, 'id' | 'createdAt' | 'views'>,
+  postData: Omit<Post, 'id' | 'createdAt' | 'views'>
 ): Post => {
   return {
     id: getIncrementedPostId(posts),
@@ -67,7 +68,7 @@ export const createNewPost = (
 /** 포스트 업데이트 */
 export const createUpdatedPost = (
   post: Post,
-  postData: Partial<Omit<Post, 'id' | 'createdAt' | 'views'>>,
+  postData: Partial<Omit<Post, 'id' | 'createdAt' | 'views'>>
 ): Post => {
   return {
     ...post,
@@ -77,7 +78,7 @@ export const createUpdatedPost = (
 };
 
 /** 포스트 상태 변경 */
-export const changePostStatus = (post: Post, status: Post['status']): Post => {
+export const changePostStatus = (post: Post, status: PostStatus): Post => {
   return {
     ...post,
     status,
@@ -91,5 +92,5 @@ export const addNewPost = (posts: Post[], newPost: Post): Post[] => {
 
 /** 포스트 배열에서 특정 포스트 업데이트 */
 export const updatePostInArray = (posts: Post[], updatedPost: Post): Post[] => {
-  return posts.map(post => (post.id === updatedPost.id ? updatedPost : post));
+  return posts.map((post) => (post.id === updatedPost.id ? updatedPost : post));
 };

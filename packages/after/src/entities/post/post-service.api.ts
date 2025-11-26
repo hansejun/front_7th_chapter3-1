@@ -1,5 +1,5 @@
 import { createStorageAdapter } from '@/shared/lib/storage';
-import { DEFAULT_POSTS, POSTS_STORAGE_KEY } from './post-constants.config';
+import { DEFAULT_POSTS, POST_STATUSES_MAP, POSTS_STORAGE_KEY } from './post-constants.config';
 import type { Post } from './post-type.model';
 import {
   addNewPost,
@@ -16,10 +16,7 @@ import {
 } from './post-utils.lib';
 
 // Create storage adapter for posts
-const postStorage = createStorageAdapter<Post[]>(
-  POSTS_STORAGE_KEY,
-  DEFAULT_POSTS
-);
+const postStorage = createStorageAdapter<Post[]>(POSTS_STORAGE_KEY, DEFAULT_POSTS);
 
 export const postService = {
   async getAll(): Promise<Post[]> {
@@ -31,9 +28,7 @@ export const postService = {
     return findPostById(posts, id);
   },
 
-  async create(
-    postData: Omit<Post, 'id' | 'createdAt' | 'views'>,
-  ): Promise<Post> {
+  async create(postData: Omit<Post, 'id' | 'createdAt' | 'views'>): Promise<Post> {
     const posts = postStorage.get();
 
     validatePostTitle(postData.title);
@@ -45,9 +40,13 @@ export const postService = {
     return newPost;
   },
 
-  async update(
-    { id, postData }: { id: number; postData: Partial<Omit<Post, 'id' | 'createdAt' | 'views'>> },
-  ): Promise<Post> {
+  async update({
+    id,
+    postData,
+  }: {
+    id: number;
+    postData: Partial<Omit<Post, 'id' | 'createdAt' | 'views'>>;
+  }): Promise<Post> {
     const posts = postStorage.get();
     const post = findPostById(posts, id);
 
@@ -77,7 +76,7 @@ export const postService = {
     validatePostExists(post);
     validateNotPublished(post!);
 
-    const publishedPost = changePostStatus(post!, 'published');
+    const publishedPost = changePostStatus(post!, POST_STATUSES_MAP.published);
     const updatedPosts = updatePostInArray(posts, publishedPost);
 
     postStorage.set(updatedPosts);
@@ -90,7 +89,7 @@ export const postService = {
 
     validatePostExists(post);
 
-    const archivedPost = changePostStatus(post!, 'archived');
+    const archivedPost = changePostStatus(post!, POST_STATUSES_MAP.archived);
     const updatedPosts = updatePostInArray(posts, archivedPost);
 
     postStorage.set(updatedPosts);
@@ -104,7 +103,7 @@ export const postService = {
     validatePostExists(post);
     validateIsArchived(post!);
 
-    const restoredPost = changePostStatus(post!, 'published');
+    const restoredPost = changePostStatus(post!, POST_STATUSES_MAP.published);
     const updatedPosts = updatePostInArray(posts, restoredPost);
 
     postStorage.set(updatedPosts);

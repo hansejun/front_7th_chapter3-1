@@ -5,13 +5,12 @@ import { Button } from '@/shared/ui/button';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/shared/ui/table';
 import type { Post } from '@/entities/post';
 import { cn } from '@/shared/lib/utils';
+import { POST_CATEGORY_BADGE_MAP, POST_STATUS_BADGE_MAP } from './constants.config';
+import { POST_STATUSES_MAP } from '@/entities/post/post-constants.config';
 
 interface TableProps {
   posts: Post[];
-  variant?: 'default' | 'bordered' | 'striped' | 'hover';
   pageSize?: number;
-  searchable?: boolean;
-  sortable?: boolean;
   onEdit: (item: any) => void;
   onDelete: (id: number) => void;
   onPublish?: (id: number) => void;
@@ -32,58 +31,22 @@ const POST_TABLE_COLUMNS = [
 
 export const PostManagementTable: React.FC<TableProps> = ({
   posts = [],
-  variant = 'default',
   pageSize = 10,
-  searchable = false,
-  sortable = false,
   onEdit,
   onDelete,
   onPublish,
   onArchive,
   onRestore,
 }) => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [sortColumn, setSortColumn] = useState('');
-  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
   const [currentPage, setCurrentPage] = useState(1);
 
-  const handleSort = (columnKey: string) => {
-    if (!sortable) return;
+  const paginatedData = posts.slice((currentPage - 1) * pageSize, currentPage * pageSize);
 
-    const newDirection = sortColumn === columnKey && sortDirection === 'asc' ? 'desc' : 'asc';
-    setSortColumn(columnKey);
-    setSortDirection(newDirection);
-  };
-
-  const sortedPosts = [...posts].sort((a, b) => {
-    const aVal = a[sortColumn as keyof Post];
-    const bVal = b[sortColumn as keyof Post];
-
-    if (typeof aVal === 'number' && typeof bVal === 'number') {
-      return sortDirection === 'asc' ? aVal - bVal : bVal - aVal;
-    }
-
-    return sortDirection === 'asc'
-      ? String(aVal).localeCompare(String(bVal))
-      : String(bVal).localeCompare(String(aVal));
-  });
-
-  const filteredData =
-    searchable && searchTerm
-      ? sortedPosts.filter((row) =>
-          Object.values(row).some((val) =>
-            String(val).toLowerCase().includes(searchTerm.toLowerCase())
-          )
-        )
-      : sortedPosts;
-
-  const paginatedData = filteredData.slice((currentPage - 1) * pageSize, currentPage * pageSize);
-
-  const totalPages = Math.ceil(filteredData.length / pageSize);
+  const totalPages = Math.ceil(posts.length / pageSize);
 
   const renderActionButtons = (row: Post) => {
     switch (row.status) {
-      case 'draft':
+      case POST_STATUSES_MAP.draft:
         return (
           <>
             <Button size="sm" variant="primary" onClick={() => onPublish?.(row.id)}>
@@ -97,7 +60,7 @@ export const PostManagementTable: React.FC<TableProps> = ({
             </Button>
           </>
         );
-      case 'published':
+      case POST_STATUSES_MAP.published:
         return (
           <>
             <Button size="sm" variant="secondary" onClick={() => onArchive?.(row.id)}>
@@ -111,7 +74,7 @@ export const PostManagementTable: React.FC<TableProps> = ({
             </Button>
           </>
         );
-      case 'archived':
+      case POST_STATUSES_MAP.archived:
         return (
           <>
             <Button size="sm" variant="success" onClick={() => onRestore?.(row.id)}>
@@ -128,31 +91,20 @@ export const PostManagementTable: React.FC<TableProps> = ({
   };
 
   return (
-    <Table variant={variant}>
-      {searchable && (
-        <div className="mb-[16px]">
-          <input
-            type="text"
-            placeholder="검색..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-[300px] rounded-sm border border-[#ddd] px-[12px] py-[8px]"
-          />
-        </div>
-      )}
+    <Table>
       <TableHeader>
         <TableRow>
           {POST_TABLE_COLUMNS.map((column) => (
-            <TableHead key={column.key} onClick={() => sortable && handleSort(column.key)}>
-              {column.header}
-            </TableHead>
+            <TableHead key={column.key}>{column.header}</TableHead>
           ))}
         </TableRow>
       </TableHeader>
       <TableBody>
         {paginatedData.map((row, rowIndex) => {
-          const postStatus = POST_STATUS[row.status as keyof typeof POST_STATUS];
-          const postCategory = POST_CATEGORIES[row.category as keyof typeof POST_CATEGORIES];
+          const postStatus =
+            POST_STATUS_BADGE_MAP[row.status as keyof typeof POST_STATUS_BADGE_MAP];
+          const postCategory =
+            POST_CATEGORY_BADGE_MAP[row.category as keyof typeof POST_CATEGORY_BADGE_MAP];
           return (
             <TableRow key={rowIndex}>
               <TableCell>{row.id}</TableCell>
@@ -203,33 +155,3 @@ export const PostManagementTable: React.FC<TableProps> = ({
     </Table>
   );
 };
-
-const POST_CATEGORIES = {
-  development: {
-    variant: 'primary',
-    content: '개발',
-  },
-  design: {
-    variant: 'warning',
-    content: '디자인',
-  },
-  accessibility: {
-    variant: 'success',
-    content: '접근성',
-  },
-} as const;
-
-const POST_STATUS = {
-  draft: {
-    variant: 'warning',
-    content: '임시저장',
-  },
-  published: {
-    variant: 'success',
-    content: '게시됨',
-  },
-  archived: {
-    variant: 'secondary',
-    content: '보관됨',
-  },
-} as const;

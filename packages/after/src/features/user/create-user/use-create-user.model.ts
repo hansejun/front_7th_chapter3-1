@@ -4,6 +4,7 @@ import { useMutation } from '@/shared/model/hooks';
 import { useAlert } from '@/shared/model/hooks/use-alert';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { USER_ROLES_MAP, USER_STATES_MAP } from '@/entities/user/user-constants.config';
 
 export const useCreateUser = () => {
   const { refetch: refetchUsers } = useUsers();
@@ -16,8 +17,8 @@ export const useCreateUser = () => {
     defaultValues: {
       username: '',
       email: '',
-      role: 'user',
-      status: 'active',
+      role: USER_ROLES_MAP.USER,
+      status: USER_STATES_MAP.ACTIVE,
     },
   });
 

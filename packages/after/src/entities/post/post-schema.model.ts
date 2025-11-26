@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { POST_CATEGORIES_MAP, POST_STATUSES_MAP } from './post-constants.config';
 
 // Base schema for post creation
 export const createPostSchema = z.object({
@@ -11,8 +12,8 @@ export const createPostSchema = z.object({
     .string()
     .min(2, '작성자명은 2자 이상이어야 합니다')
     .max(50, '작성자명은 50자 이하여야 합니다'),
-  category: z.string().min(1, '카테고리는 필수입니다'),
-  status: z.enum(['draft', 'published', 'archived'] as const),
+  category: z.enum(Object.values(POST_CATEGORIES_MAP)),
+  status: z.enum(Object.values(POST_STATUSES_MAP)),
 });
 
 // Schema for post update
