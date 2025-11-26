@@ -334,66 +334,6 @@
 
 @layer components {
   /* ========================================
-     Button Components
-     ======================================== */
-  .btn {
-    @apply inline-block font-sans leading-normal font-normal;
-    @apply cursor-pointer rounded-sm border border-solid whitespace-nowrap;
-  }
-
-  .btn:disabled {
-    @apply cursor-not-allowed opacity-60;
-  }
-
-  .btn-primary {
-    @apply bg-primary text-primary-foreground border-primary-border;
-  }
-
-  .btn-primary:hover:not(:disabled) {
-    @apply bg-primary-hover;
-  }
-
-  .btn-secondary {
-    @apply bg-secondary text-secondary-foreground border-border-light;
-  }
-
-  .btn-secondary:hover:not(:disabled) {
-    @apply bg-secondary-hover;
-  }
-
-  .btn-danger {
-    @apply bg-danger text-danger-foreground border-danger-hover;
-  }
-
-  .btn-danger:hover:not(:disabled) {
-    @apply bg-danger-hover;
-  }
-
-  .btn-success {
-    @apply bg-success text-success-foreground border-success-hover;
-  }
-
-  .btn-success:hover:not(:disabled) {
-    @apply bg-success-hover;
-  }
-
-  .btn-sm {
-    @apply px-base py-2xs text-sm;
-  }
-
-  .btn-md {
-    @apply px-lg py-sm text-base;
-  }
-
-  .btn-lg {
-    @apply px-xl py-base text-md;
-  }
-
-  .btn-fullwidth {
-    @apply w-full;
-  }
-
-  /* ========================================
      Form Components
      ======================================== */
   .form-group {
@@ -406,7 +346,7 @@
 
   .form-input,
   .form-select {
-    @apply py-xs w-full px-sm font-sans text-base text-black;
+    @apply py-xs px-sm w-full font-sans text-base text-black;
     @apply border-border box-border rounded-sm border bg-white;
   }
 
@@ -508,7 +448,7 @@
   }
 
   .badge-secondary {
-    @apply bg-[#757575] text-white;
+    @apply bg-secondary text-white;
   }
 
   .badge-success {
@@ -528,7 +468,7 @@
   }
 
   .badge-small {
-    @apply h-4 px-1 py-0 text-2xs;
+    @apply text-2xs h-4 px-[4px] py-0;
   }
 
   .badge-medium {
@@ -536,14 +476,14 @@
   }
 
   .badge-large {
-    @apply h-6 px-sm py-0 text-sm;
+    @apply px-sm h-6 py-0 text-sm;
   }
 
   /* ========================================
      Alert Components
      ======================================== */
   .alert {
-    @apply mb-md rounded-sm border border-solid px-base py-sm;
+    @apply mb-md px-base py-sm rounded-sm border border-solid;
     @apply gap-sm flex items-start font-sans;
   }
 
@@ -576,7 +516,7 @@
   }
 
   .alert-title {
-    @apply mb-1 text-md font-bold;
+    @apply text-md mb-1 font-bold;
   }
 
   .alert-body {
@@ -585,7 +525,7 @@
 
   .alert-close {
     @apply cursor-pointer border-none bg-transparent text-2xl;
-    @apply ml-auto flex-shrink-0 p-0 px-1;
+    @apply ml-auto flex-shrink-0 p-0 px-[4px];
   }
 
   /* ========================================
@@ -600,7 +540,7 @@
   }
 
   .checkbox-container {
-    @apply mr-sm relative mt-0_5;
+    @apply mr-sm mt-[2px] relative;
   }
 
   .checkbox-input {
@@ -608,7 +548,7 @@
   }
 
   .checkbox-custom {
-    @apply h-4 w-4 rounded-0_5 border-2 border-[#d1d5db];
+    @apply rounded-xs h-4 w-4 border-2 border-[#d1d5db];
     @apply flex cursor-pointer items-center justify-center bg-white;
     transition: all 0.15s ease-in-out;
   }
@@ -622,7 +562,7 @@
   }
 
   .checkbox-checkmark {
-    @apply hidden text-2xs font-bold text-white;
+    @apply text-2xs hidden font-bold text-white;
   }
 
   .checkbox-checkmark.visible {
@@ -643,11 +583,11 @@
   }
 
   .checkbox-hint {
-    @apply font-roboto mt-0_5 ml-xl block text-xs text-[#6b7280];
+    @apply font-roboto mt-[2px] ml-xl block text-xs text-[#6b7280];
   }
 
   .checkbox-error {
-    @apply font-roboto mt-0_5 ml-xl block text-xs text-[#ef4444];
+    @apply font-roboto mt-[2px] ml-xl block text-xs text-[#ef4444];
   }
 
   /* ========================================
@@ -740,7 +680,7 @@
      ======================================== */
   .modal-overlay {
     @apply bg-overlay fixed inset-0 flex items-center justify-center;
-    @apply z-1000 p-md;
+    @apply p-md z-1000;
   }
 
   .modal-content {
@@ -761,7 +701,7 @@
   }
 
   .modal-header {
-    @apply py-md border-b border-[rgba(0,0,0,0.12)] px-xl;
+    @apply py-md px-xl border-b border-[rgba(0,0,0,0.12)];
     @apply flex items-center justify-between;
   }
 
@@ -781,11 +721,11 @@
   }
 
   .modal-body {
-    @apply flex-1 overflow-y-auto p-xl;
+    @apply p-xl flex-1 overflow-y-auto;
   }
 
   .modal-footer {
-    @apply py-md border-t border-[rgba(0,0,0,0.12)] px-xl;
+    @apply py-md px-xl border-t border-[rgba(0,0,0,0.12)];
     @apply gap-sm flex justify-end;
   }
 }

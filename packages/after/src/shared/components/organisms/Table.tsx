@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Badge } from '../atoms/Badge';
+
+import { Badge } from '@/shared/ui/badge';
 import { Button } from '@/shared/ui/button';
 
 interface Column {
@@ -115,20 +116,27 @@ export const Table: React.FC<TableProps> = ({
     // 도메인별 특수 렌더링
     if (entityType === 'user') {
       if (columnKey === 'role') {
-        return <Badge userRole={value} showIcon />;
+        const userRole = USER_ROLES[value as keyof typeof USER_ROLES];
+
+        if (!userRole) return null;
+
+        return <Badge variant={userRole.variant}>{userRole.content}</Badge>;
       }
       if (columnKey === 'status') {
         // User status를 Badge status로 변환
-        const badgeStatus =
-          value === 'active' ? 'published' : value === 'inactive' ? 'draft' : 'rejected';
-        return <Badge status={badgeStatus} showIcon />;
+        const userStatus = USER_STATUS[value as keyof typeof USER_STATUS];
+
+        if (!userStatus) return null;
+
+        return <Badge variant={userStatus.variant}>{userStatus.content}</Badge>;
       }
       if (columnKey === 'lastLogin') {
         return value || '-';
       }
+
       if (columnKey === 'actions') {
         return (
-          <div style={{ display: 'flex', gap: '8px' }}>
+          <div className="gap-xs flex">
             <Button size="sm" variant="primary" onClick={() => onEdit?.(row)}>
               수정
             </Button>
@@ -142,29 +150,26 @@ export const Table: React.FC<TableProps> = ({
 
     if (entityType === 'post') {
       if (columnKey === 'category') {
-        const type =
-          value === 'development'
-            ? 'primary'
-            : value === 'design'
-              ? 'info'
-              : value === 'accessibility'
-                ? 'danger'
-                : 'secondary';
+        const postCategory = POST_CATEGORIES[value as keyof typeof POST_CATEGORIES];
+        if (!postCategory) return null;
         return (
-          <Badge type={type} pill>
-            {value}
+          <Badge variant={postCategory.variant} pill>
+            {postCategory.content}
           </Badge>
         );
       }
       if (columnKey === 'status') {
-        return <Badge status={value} showIcon />;
+        const postStatus = POST_STATUS[value as keyof typeof POST_STATUS];
+        if (!postStatus) return null;
+
+        return <Badge variant={postStatus.variant}>{postStatus.content}</Badge>;
       }
       if (columnKey === 'views') {
         return value?.toLocaleString() || '0';
       }
       if (columnKey === 'actions') {
         return (
-          <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+          <div className="gap-xs flex flex-wrap">
             <Button size="sm" variant="primary" onClick={() => onEdit?.(row)}>
               수정
             </Button>
@@ -304,3 +309,67 @@ export const Table: React.FC<TableProps> = ({
     </div>
   );
 };
+
+const USER_ROLES = {
+  admin: {
+    variant: 'danger',
+    content: '관리자',
+  },
+  moderator: {
+    variant: 'warning',
+    content: '운영자',
+  },
+  user: {
+    variant: 'primary',
+    content: '사용자',
+  },
+  guest: {
+    variant: 'secondary',
+    content: '게스트',
+  },
+} as const;
+
+const USER_STATUS = {
+  active: {
+    variant: 'success',
+    content: '게시됨',
+  },
+  inactive: {
+    variant: 'warning',
+    content: '임시저장',
+  },
+  suspended: {
+    variant: 'danger',
+    content: '거부됨',
+  },
+} as const;
+
+const POST_CATEGORIES = {
+  development: {
+    variant: 'primary',
+    content: 'development',
+  },
+  design: {
+    variant: 'info',
+    content: 'design',
+  },
+  accessibility: {
+    variant: 'danger',
+    content: 'accessibility',
+  },
+} as const;
+
+const POST_STATUS = {
+  draft: {
+    variant: 'warning',
+    content: '임시저장',
+  },
+  published: {
+    variant: 'success',
+    content: '게시됨',
+  },
+  archived: {
+    variant: 'secondary',
+    content: '보관됨',
+  },
+} as const;
