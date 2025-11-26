@@ -1,11 +1,11 @@
 import { usePosts, type Post } from '@/entities/post';
 import { useDeletePost } from '@/features/post/delete-post';
 import { useUpdatePostStatus } from '@/features/post/update-post-status';
-import { Table } from '@/shared/components/organisms';
 import { useModal } from '@/shared/model/hooks';
 import { MODAL_TYPES } from '@/shared/model/hooks/use-modal';
 import { AlertManager } from '@/shared/ui/alert-manager';
 import { Button } from '@/shared/ui/button';
+import { PostManagementTable } from './post-table.ui';
 
 export const PostManagementContainer = () => {
   const { posts } = usePosts();
@@ -67,21 +67,8 @@ export const PostManagementContainer = () => {
       </div>
 
       <div className="border-border-light overflow-auto border bg-white">
-        <Table
-          columns={[
-            { key: 'id', header: 'ID', width: '60px' },
-            { key: 'title', header: '제목' },
-            { key: 'author', header: '작성자', width: '120px' },
-            { key: 'category', header: '카테고리', width: '140px' },
-            { key: 'status', header: '상태', width: '120px' },
-            { key: 'views', header: '조회수', width: '100px' },
-            { key: 'createdAt', header: '작성일', width: '120px' },
-            { key: 'actions', header: '관리', width: '250px' },
-          ]}
-          data={posts}
-          striped
-          hover
-          entityType="post"
+        <PostManagementTable
+          posts={posts}
           onEdit={handleOpenEditPostModal}
           onDelete={handleDeletePost}
           onPublish={(id) => onUpdatePostStatus(id, 'publish', {})}

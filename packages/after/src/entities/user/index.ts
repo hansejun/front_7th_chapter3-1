@@ -1,3 +1,5 @@
-export { type User } from './user-type.model';
+export type { User, UserRole, UserStatus } from './user-type.model';
 export { userService } from './user-service.api';
 export { useUsers } from './use-users.model';
+export { createUserSchema, updateUserSchema } from './user-validation.model';
+export type { CreateUserFormData, UpdateUserFormData } from './user-validation.model';

@@ -1,8 +1,9 @@
-import { userService } from '@/entities/user';
+import { userService, createUserSchema, type CreateUserFormData } from '@/entities/user';
 import { useUsers } from '@/entities/user/use-users.model';
 import { useMutation } from '@/shared/model/hooks';
 import { useAlert } from '@/shared/model/hooks/use-alert';
-import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 export const useCreateUser = () => {
   const { refetch: refetchUsers } = useUsers();
@@ -10,25 +11,24 @@ export const useCreateUser = () => {
 
   const { mutate } = useMutation(userService.create);
 
-  // TODO: useHookForm + zod 사용
-  const [form, setFormData] = useState<any>({});
-  const onChangeForm = (name: string, value: string) => {
-    setFormData({ ...form, [name]: value });
-  };
+  const form = useForm<CreateUserFormData>({
+    resolver: zodResolver(createUserSchema),
+    defaultValues: {
+      username: '',
+      email: '',
+      role: 'user',
+      status: 'active',
+    },
+  });
 
-  const onCreateUser = (onSuccess?: () => void, onError?: (error: Error) => void) => {
+  const onCreateUser = (data: CreateUserFormData, onSuccess?: () => void, onError?: (error: Error) => void) => {
     mutate(
-      {
-        username: form.username,
-        email: form.email,
-        role: 'user',
-        status: 'active',
-      },
+      data,
       {
         onSuccess: () => {
           refetchUsers();
           onSuccess?.();
-          // 2. 폼 초기화
+          form.reset(); // 폼 초기화
           onOpenAlert({ title: '성공', type: 'success', message: '사용자가 생성되었습니다.' });
         },
         onError: (error) => {
@@ -43,5 +43,5 @@ export const useCreateUser = () => {
     );
   };
 
-  return { form, onCreateUser, onChangeForm };
+  return { form, onCreateUser };
 };

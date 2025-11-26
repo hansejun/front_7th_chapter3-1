@@ -1,8 +1,10 @@
-import { userService, type User } from '@/entities/user';
+import { userService, type User, updateUserSchema, type UpdateUserFormData } from '@/entities/user';
 import { useUsers } from '@/entities/user/use-users.model';
 import { useMutation } from '@/shared/model/hooks';
 import { useAlert } from '@/shared/model/hooks/use-alert';
-import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useEffect } from 'react';
 
 export const useUpdateUser = (initialUser: User) => {
   const { refetch: refetchUsers } = useUsers();
@@ -10,29 +12,43 @@ export const useUpdateUser = (initialUser: User) => {
   const { mutate } = useMutation(userService.update);
   const { onOpenAlert } = useAlert();
 
-  // TODO: useHookForm + zod 사용
-  const [form, setForm] = useState(initialUser);
+  const form = useForm<UpdateUserFormData>({
+    resolver: zodResolver(updateUserSchema),
+    defaultValues: {
+      username: initialUser.username,
+      email: initialUser.email,
+      role: initialUser.role,
+      status: initialUser.status,
+    },
+  });
 
-  const onChangeForm = (name: string, value: string) => {
-    setForm({ ...form, [name]: value });
-  };
+  // Reset form when initialUser changes
+  useEffect(() => {
+    form.reset({
+      username: initialUser.username,
+      email: initialUser.email,
+      role: initialUser.role,
+      status: initialUser.status,
+    });
+  }, [initialUser, form]);
 
-  const onUpdateUser = ({
-    onSuccess,
-    onError,
-  }: {
-    onSuccess?: () => void;
-    onError?: (error: Error) => void;
-  }) => {
+  const onUpdateUser = (
+    data: UpdateUserFormData,
+    {
+      onSuccess,
+      onError,
+    }: {
+      onSuccess?: () => void;
+      onError?: (error: Error) => void;
+    }
+  ) => {
     mutate(
-      { id: initialUser.id, userData: form },
+      { id: initialUser.id, userData: data },
       {
         onSuccess: () => {
           refetchUsers();
-          // 1. 모달 닫기
-          // 2. selectedItem(null);
           onSuccess?.();
-          // 3. form 초기화
+          form.reset();
           onOpenAlert({ title: '성공', type: 'success', message: '사용자가 수정되었습니다.' });
         },
         onError: (error) => {
@@ -48,5 +64,5 @@ export const useUpdateUser = (initialUser: User) => {
     );
   };
 
-  return { form, onUpdateUser, onChangeForm };
+  return { form, onUpdateUser };
 };

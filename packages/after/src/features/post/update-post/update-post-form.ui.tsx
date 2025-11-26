@@ -1,57 +1,53 @@
-import { FormInput, FormSelect, FormTextarea } from '@/shared/components/molecules';
+import { Form } from '@/shared/ui/form';
+import { FormInputField } from '@/shared/ui/form-input-field';
+import { FormSelectField } from '@/shared/ui/form-select-field';
+import { FormTextareaField } from '@/shared/ui/form-textarea-field';
+import type { UseFormReturn } from 'react-hook-form';
+import type { UpdatePostFormData } from '@/entities/post';
 
 interface UpdatePostFormProps {
-  form: any;
-  onSubmit: any;
-  onChangeForm: (name: string, value: string) => void;
+  form: UseFormReturn<UpdatePostFormData>;
 }
 
-export const UpdatePostForm = ({ form, onChangeForm, onSubmit }: UpdatePostFormProps) => {
-  console.log(form, onSubmit);
+export const UpdatePostForm = ({ form }: UpdatePostFormProps) => {
   return (
-    <>
-      <FormInput
-        name="title"
-        value={form.title || ''}
-        onChange={(value) => onChangeForm('title', value)}
-        label="제목"
-        placeholder="게시글 제목을 입력하세요"
-        required
-        width="full"
-        fieldType="postTitle"
-      />
-      <div className="gap-md grid grid-cols-2">
-        <FormInput
-          name="author"
-          value={form.author || ''}
-          onChange={(value) => onChangeForm('author', value)}
-          label="작성자"
-          placeholder="작성자명"
+    <Form {...form}>
+      <div className="space-y-4">
+        <FormInputField
+          control={form.control}
+          name="title"
+          label="제목"
+          placeholder="게시글 제목을 입력하세요"
           required
-          width="full"
         />
-        <FormSelect
-          name="category"
-          value={form.category || ''}
-          onChange={(value) => onChangeForm('category', value)}
-          options={[
-            { value: 'development', label: 'Development' },
-            { value: 'design', label: 'Design' },
-            { value: 'accessibility', label: 'Accessibility' },
-          ]}
-          label="카테고리"
-          placeholder="카테고리 선택"
-          size="md"
+        <div className="grid grid-cols-2 gap-4">
+          <FormInputField
+            control={form.control}
+            name="author"
+            label="작성자"
+            placeholder="작성자명"
+            required
+          />
+          <FormSelectField
+            control={form.control}
+            name="category"
+            label="카테고리"
+            placeholder="카테고리 선택"
+            options={[
+              { value: 'development', label: 'Development' },
+              { value: 'design', label: 'Design' },
+              { value: 'accessibility', label: 'Accessibility' },
+            ]}
+          />
+        </div>
+        <FormTextareaField
+          control={form.control}
+          name="content"
+          label="내용"
+          placeholder="게시글 내용을 입력하세요"
+          rows={6}
         />
       </div>
-      <FormTextarea
-        name="content"
-        value={form.content || ''}
-        onChange={(value) => onChangeForm('content', value)}
-        label="내용"
-        placeholder="게시글 내용을 입력하세요"
-        rows={6}
-      />
-    </>
+    </Form>
   );
 };

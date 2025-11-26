@@ -1,8 +1,9 @@
-import { postService } from '@/entities/post';
+import { postService, createPostSchema, type CreatePostFormData } from '@/entities/post';
 import { usePosts } from '@/entities/post/use-posts.model';
 import { useMutation } from '@/shared/model/hooks';
 import { useAlert } from '@/shared/model/hooks/use-alert';
-import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 export const useCreatePost = () => {
   const { refetch: refetchPosts } = usePosts();
@@ -10,33 +11,25 @@ export const useCreatePost = () => {
   const { mutate } = useMutation(postService.create);
   const { onOpenAlert } = useAlert();
 
-  // TODO: useHookForm + zod 사용
-  const [form, setForm] = useState({
-    title: '',
-    content: '',
-    author: '',
-    category: '',
-    status: 'draft',
+  const form = useForm<CreatePostFormData>({
+    resolver: zodResolver(createPostSchema),
+    defaultValues: {
+      title: '',
+      content: '',
+      author: '',
+      category: '',
+      status: 'draft',
+    },
   });
 
-  const onChangeForm = (name: string, value: string) => {
-    setForm({ ...form, [name]: value });
-  };
-
-  const onCreatePost = (onSuccess?: () => void, onError?: (error: Error) => void) => {
+  const onCreatePost = (data: CreatePostFormData, onSuccess?: () => void, onError?: (error: Error) => void) => {
     mutate(
-      {
-        title: form.title,
-        content: form.content,
-        author: form.author,
-        category: form.category,
-        status: 'draft',
-      },
+      data,
       {
         onSuccess: () => {
           refetchPosts();
           onSuccess?.();
-          // 2. 폼 초기화
+          form.reset(); // 폼 초기화
           onOpenAlert({ title: '성공', type: 'success', message: '게시글이 생성되었습니다.' });
         },
         onError: (error) => {
@@ -51,5 +44,5 @@ export const useCreatePost = () => {
     );
   };
 
-  return { form, onCreatePost, onChangeForm };
+  return { form, onCreatePost };
 };

@@ -11,15 +11,16 @@ interface UpdateUserModalProps extends BaseModalProps {
 }
 
 export const UpdateUserModal = ({ user, onCloseModal }: UpdateUserModalProps) => {
-  const { form, onUpdateUser, onChangeForm } = useUpdateUser(user);
+  const { form, onUpdateUser } = useUpdateUser(user);
 
-  const handleSubmit = () => {
-    onUpdateUser({
+  const handleSubmit = form.handleSubmit((data) => {
+    onUpdateUser(data, {
       onSuccess: () => {
         onCloseModal();
       },
     });
-  };
+  });
+
   return (
     <Modal onClose={onCloseModal} size="lg">
       <Modal.Header>사용자 수정</Modal.Header>
@@ -32,11 +33,11 @@ export const UpdateUserModal = ({ user, onCloseModal }: UpdateUserModalProps) =>
             </Alert.Body>
           </Alert.Content>
         </Alert>
-        <UpdateUserForm form={form} onSubmit={handleSubmit} onChangeForm={onChangeForm} />
+        <UpdateUserForm form={form} />
       </Modal.Content>
       <Modal.Footer>
         <Button onClick={onCloseModal}>취소</Button>
-        <Button onClick={() => handleSubmit()}>수정 완료</Button>
+        <Button onClick={handleSubmit}>수정 완료</Button>
       </Modal.Footer>
     </Modal>
   );

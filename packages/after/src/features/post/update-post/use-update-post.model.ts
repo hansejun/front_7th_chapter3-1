@@ -1,8 +1,10 @@
-import { postService, type Post } from '@/entities/post';
+import { postService, type Post, updatePostSchema, type UpdatePostFormData } from '@/entities/post';
 import { usePosts } from '@/entities/post/use-posts.model';
 import { useMutation } from '@/shared/model/hooks';
 import { useAlert } from '@/shared/model/hooks/use-alert';
-import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useEffect } from 'react';
 
 export const useUpdatePost = (initialPost: Post) => {
   const { refetch: refetchPosts } = usePosts();
@@ -10,28 +12,45 @@ export const useUpdatePost = (initialPost: Post) => {
   const { mutate } = useMutation(postService.update);
   const { onOpenAlert } = useAlert();
 
-  // TODO: useHookForm + zod 사용
-  const [form, setForm] = useState(initialPost);
+  const form = useForm<UpdatePostFormData>({
+    resolver: zodResolver(updatePostSchema),
+    defaultValues: {
+      title: initialPost.title,
+      content: initialPost.content,
+      author: initialPost.author,
+      category: initialPost.category,
+      status: initialPost.status,
+    },
+  });
 
-  const onChangeForm = (name: string, value: string) => {
-    setForm({ ...form, [name]: value });
-  };
+  // Reset form when initialPost changes
+  useEffect(() => {
+    form.reset({
+      title: initialPost.title,
+      content: initialPost.content,
+      author: initialPost.author,
+      category: initialPost.category,
+      status: initialPost.status,
+    });
+  }, [initialPost, form]);
 
-  const onUpdatePost = ({
-    onSuccess,
-    onError,
-  }: {
-    onSuccess?: () => void;
-    onError?: (error: Error) => void;
-  }) => {
+  const onUpdatePost = (
+    data: UpdatePostFormData,
+    {
+      onSuccess,
+      onError,
+    }: {
+      onSuccess?: () => void;
+      onError?: (error: Error) => void;
+    }
+  ) => {
     mutate(
-      { id: initialPost.id, postData: form },
+      { id: initialPost.id, postData: data },
       {
         onSuccess: () => {
           refetchPosts();
-          // 2. selectedItem(null);
           onSuccess?.();
-          // 3. form 초기화
+          form.reset();
           onOpenAlert({ title: '성공', type: 'success', message: '게시글이 수정되었습니다.' });
         },
         onError: (error) => {
@@ -47,5 +66,5 @@ export const useUpdatePost = (initialPost: Post) => {
     );
   };
 
-  return { form, onUpdatePost, onChangeForm };
+  return { form, onUpdatePost };
 };

@@ -1,11 +1,12 @@
 import type { User } from '@/entities/user';
 import { useUsers } from '@/entities/user/use-users.model';
 import { useDeleteUser } from '@/features/user/delete-user/use-delete-user.model';
-import { Table } from '@/shared/components/organisms';
+
 import { useModal } from '@/shared/model/hooks';
 import { MODAL_TYPES } from '@/shared/model/hooks/use-modal';
 import { AlertManager } from '@/shared/ui/alert-manager';
 import { Button } from '@/shared/ui/button';
+import { UserManagementTable } from './user-table.ui';
 
 export const UserManagementContainer = () => {
   const { users } = useUsers();
@@ -65,21 +66,8 @@ export const UserManagementContainer = () => {
       </div>
 
       <div className="border-border-light overflow-auto border bg-white">
-        <Table
-          columns={[
-            { key: 'id', header: 'ID', width: '60px' },
-            { key: 'username', header: '사용자명', width: '150px' },
-            { key: 'email', header: '이메일' },
-            { key: 'role', header: '역할', width: '120px' },
-            { key: 'status', header: '상태', width: '120px' },
-            { key: 'createdAt', header: '생성일', width: '120px' },
-            { key: 'lastLogin', header: '마지막 로그인', width: '140px' },
-            { key: 'actions', header: '관리', width: '200px' },
-          ]}
-          data={users}
-          striped
-          hover
-          entityType="user"
+        <UserManagementTable
+          users={users}
           onEdit={handleOpenEditUserModal}
           onDelete={handleDeleteUser}
         />
