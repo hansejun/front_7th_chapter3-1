@@ -20,9 +20,9 @@ export const useUpdateUser = (initialUser: User) => {
       role: initialUser.role,
       status: initialUser.status,
     },
+    mode: 'onChange',
   });
 
-  // Reset form when initialUser changes
   useEffect(() => {
     form.reset({
       username: initialUser.username,

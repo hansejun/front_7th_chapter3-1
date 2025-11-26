@@ -21,6 +21,7 @@ export const useCreatePost = () => {
       category: POST_CATEGORIES_MAP.development,
       status: POST_STATUSES_MAP.draft,
     },
+    mode: 'onChange',
   });
 
   const onCreatePost = (

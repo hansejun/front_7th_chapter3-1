@@ -21,9 +21,9 @@ export const useUpdatePost = (initialPost: Post) => {
       category: initialPost.category,
       status: initialPost.status,
     },
+    mode: 'onChange',
   });
 
-  // Reset form when initialPost changes
   useEffect(() => {
     form.reset({
       title: initialPost.title,

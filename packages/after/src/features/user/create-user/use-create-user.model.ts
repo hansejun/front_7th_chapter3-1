@@ -20,6 +20,7 @@ export const useCreateUser = () => {
       role: USER_ROLES_MAP.USER,
       status: USER_STATES_MAP.ACTIVE,
     },
+    mode: 'onChange',
   });
 
   const onCreateUser = (
