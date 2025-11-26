@@ -390,55 +390,6 @@
   }
 
   /* ========================================
-     Alert Components
-     ======================================== */
-  .alert {
-    @apply mb-md px-base py-sm rounded-sm border border-solid;
-    @apply gap-sm flex items-start font-sans;
-  }
-
-  .alert-info {
-    @apply bg-info-weak border-info-border text-info-weak-foreground;
-  }
-
-  .alert-success {
-    @apply bg-success-weak border-success-border text-success-weak-foreground;
-  }
-
-  .alert-warning {
-    @apply bg-warning-weak border-warning-border text-warning-weak-foreground;
-  }
-
-  .alert-error {
-    @apply bg-danger-weak border-danger-border text-danger-weak-foreground;
-  }
-
-  .alert-default {
-    @apply bg-default border-default-border text-default-foreground;
-  }
-
-  .alert-icon {
-    @apply flex-shrink-0 text-2xl;
-  }
-
-  .alert-content {
-    @apply flex-1;
-  }
-
-  .alert-title {
-    @apply text-md mb-1 font-bold;
-  }
-
-  .alert-body {
-    @apply text-base leading-normal;
-  }
-
-  .alert-close {
-    @apply cursor-pointer border-none bg-transparent text-2xl;
-    @apply ml-auto flex-shrink-0 p-0 px-[4px];
-  }
-
-  /* ========================================
      Checkbox Components
      ======================================== */
   .checkbox-wrapper {
@@ -583,59 +534,5 @@
 
   .table-hover tbody tr:hover {
     @apply bg-[rgba(0,0,0,0.04)];
-  }
-
-  /* ========================================
-     Modal Components
-     ======================================== */
-  .modal-overlay {
-    @apply bg-overlay fixed inset-0 flex items-center justify-center;
-    @apply p-md z-1000;
-  }
-
-  .modal-content {
-    @apply max-h-[90vh] rounded-md bg-white shadow-lg;
-    @apply font-roboto flex flex-col;
-  }
-
-  .modal-small {
-    @apply w-full max-w-[400px];
-  }
-
-  .modal-medium {
-    @apply w-full max-w-[600px];
-  }
-
-  .modal-large {
-    @apply w-full max-w-[900px];
-  }
-
-  .modal-header {
-    @apply py-md px-xl border-b border-[rgba(0,0,0,0.12)];
-    @apply flex items-center justify-between;
-  }
-
-  .modal-title {
-    @apply m-0 text-2xl font-medium text-[rgba(0,0,0,0.87)];
-  }
-
-  .modal-close {
-    @apply border-none bg-transparent text-3xl leading-none;
-    @apply cursor-pointer p-0 text-[rgba(0,0,0,0.54)];
-    @apply flex h-[32px] w-[32px] items-center justify-center rounded-full;
-    transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  }
-
-  .modal-close:hover {
-    @apply bg-[rgba(0,0,0,0.04)];
-  }
-
-  .modal-body {
-    @apply p-xl flex-1 overflow-y-auto;
-  }
-
-  .modal-footer {
-    @apply py-md px-xl border-t border-[rgba(0,0,0,0.12)];
-    @apply gap-sm flex justify-end;
   }
 }

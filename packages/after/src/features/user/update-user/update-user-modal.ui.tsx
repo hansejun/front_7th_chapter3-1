@@ -4,7 +4,7 @@ import { UpdateUserForm } from './update-user-form.ui';
 import type { BaseModalProps } from '@/shared/model/hooks';
 import Modal from '@/shared/ui/modal';
 import { Button } from '@/shared/ui/button';
-import { Alert } from '@/shared/ui/alert';
+import Alert from '@/shared/ui/alert';
 
 interface UpdateUserModalProps extends BaseModalProps {
   user: User;
@@ -25,7 +25,12 @@ export const UpdateUserModal = ({ user, onCloseModal }: UpdateUserModalProps) =>
       <Modal.Header>사용자 수정</Modal.Header>
       <Modal.Content>
         <Alert variant="info">
-          ID: {user.id} | 생성일: {user.createdAt}
+          <Alert.Icon />
+          <Alert.Content>
+            <Alert.Body>
+              ID: {user.id} | 생성일: {user.createdAt}
+            </Alert.Body>
+          </Alert.Content>
         </Alert>
         <UpdateUserForm form={form} onSubmit={handleSubmit} onChangeForm={onChangeForm} />
       </Modal.Content>
