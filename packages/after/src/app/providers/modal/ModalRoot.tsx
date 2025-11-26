@@ -18,7 +18,7 @@ export const ModalRoot = () => {
           onCloseModal(modal.type);
         };
 
-        return <Component {...(modal.props as any)} onCloseModal={handleClose} />;
+        return <Component key={modal.type} {...(modal.props as any)} onCloseModal={handleClose} />;
       })}
     </>
   );
