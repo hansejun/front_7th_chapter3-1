@@ -6,6 +6,7 @@ import { useModal } from '@/shared/model/hooks';
 import { MODAL_TYPES } from '@/shared/model/hooks/use-modal';
 import { AlertManager } from '@/shared/ui/alert';
 import { Button } from '@/shared/ui/button';
+import { StatCard } from '@/shared/ui/stat-card/stat-card';
 import { UserManagementTable } from './user-table.ui';
 
 export const UserManagementContainer = () => {
@@ -39,30 +40,30 @@ export const UserManagementContainer = () => {
       <AlertManager />
 
       <div className="mb-[15px] grid grid-cols-[repeat(auto-fit,minmax(130px,1fr))] gap-[10px]">
-        <div className="bg-primary-weak border-primary-border rounded-sm border px-[15px] py-[12px]">
-          <div className="text-muted mb-[4px] text-xs">전체</div>
-          <div className="text-primary text-[24px] font-bold">{stats.total}</div>
-        </div>
+        <StatCard variant="primary">
+          <StatCard.Label>전체</StatCard.Label>
+          <StatCard.Value>{stats.total}</StatCard.Value>
+        </StatCard>
 
-        <div className="bg-success-weak border-success-border rounded-sm border px-[15px] py-[12px]">
-          <div className="text-muted mb-[4px] text-xs">{stats.stat1.label}</div>
-          <div className="text-success text-[24px] font-bold">{stats.stat1.value}</div>
-        </div>
+        <StatCard variant="success">
+          <StatCard.Label>{stats.stat1.label}</StatCard.Label>
+          <StatCard.Value>{stats.stat1.value}</StatCard.Value>
+        </StatCard>
 
-        <div className="bg-warning-weak border-warning-border rounded-sm border px-[15px] py-[12px]">
-          <div className="text-muted mb-[4px] text-xs">{stats.stat2.label}</div>
-          <div className="text-warning text-[24px] font-bold">{stats.stat2.value}</div>
-        </div>
+        <StatCard variant="warning">
+          <StatCard.Label>{stats.stat2.label}</StatCard.Label>
+          <StatCard.Value>{stats.stat2.value}</StatCard.Value>
+        </StatCard>
 
-        <div className="bg-danger-weak border-danger-border rounded-sm border px-[15px] py-[12px]">
-          <div className="text-muted mb-[4px] text-xs">{stats.stat3.label}</div>
-          <div className="text-danger text-[24px] font-bold">{stats.stat3.value}</div>
-        </div>
+        <StatCard variant="danger">
+          <StatCard.Label>{stats.stat3.label}</StatCard.Label>
+          <StatCard.Value>{stats.stat3.value}</StatCard.Value>
+        </StatCard>
 
-        <div className="bg-default border-default-border rounded-sm border px-[15px] py-[12px]">
-          <div className="text-muted mb-[4px] text-xs">{stats.stat4.label}</div>
-          <div className="text-default-foreground text-[24px] font-bold">{stats.stat4.value}</div>
-        </div>
+        <StatCard variant="default">
+          <StatCard.Label>{stats.stat4.label}</StatCard.Label>
+          <StatCard.Value>{stats.stat4.value}</StatCard.Value>
+        </StatCard>
       </div>
 
       <div className="border-border-light overflow-auto border bg-white">
@@ -82,22 +83,18 @@ const getUserStats = (users: User[]) => {
     stat1: {
       label: '활성',
       value: users.filter((u) => u.status === 'active').length,
-      color: '#2e7d32',
     },
     stat2: {
       label: '비활성',
       value: users.filter((u) => u.status === 'inactive').length,
-      color: '#ed6c02',
     },
     stat3: {
       label: '정지',
       value: users.filter((u) => u.status === 'suspended').length,
-      color: '#d32f2f',
     },
     stat4: {
       label: '관리자',
       value: users.filter((u) => u.role === 'admin').length,
-      color: '#1976d2',
     },
   };
 };
