@@ -23,7 +23,7 @@ export function AlertManager({ className, ...props }: AlertManagerProps) {
   return (
     <div className={cn('flex flex-col gap-[10px]', className)} {...props}>
       {alerts.map((alert) => (
-        <Alert variant={alert.type}>
+        <Alert key={alert.type} variant={alert.type}>
           <Alert.Icon />
           <Alert.Content>
             <Alert.Title>{alert.title}</Alert.Title>
