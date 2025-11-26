@@ -390,96 +390,6 @@
   }
 
   /* ========================================
-     Card Components
-     ======================================== */
-  .card {
-    @apply mb-md font-roboto overflow-hidden rounded-md bg-white;
-  }
-
-  .card-default {
-    @apply border border-[rgba(0,0,0,0.12)] shadow-sm;
-  }
-
-  .card-bordered {
-    @apply border border-[rgba(0,0,0,0.12)] shadow-none;
-  }
-
-  .card-elevated {
-    @apply border border-[rgba(0,0,0,0.08)] shadow-md;
-  }
-
-  .card-flat {
-    @apply bg-elevated border border-[rgba(0,0,0,0.08)] shadow-none;
-  }
-
-  .card-header {
-    @apply p-lg border-b border-[rgba(0,0,0,0.08)];
-    @apply bg-elevated flex items-center justify-between;
-  }
-
-  .card-title {
-    @apply m-0 text-xl leading-relaxed font-medium;
-    @apply text-[rgba(0,0,0,0.87)];
-  }
-
-  .card-subtitle {
-    @apply mx-0 mt-1 mb-0 text-base font-normal;
-    @apply leading-normal text-[rgba(0,0,0,0.6)];
-  }
-
-  .card-body {
-    @apply p-lg;
-  }
-
-  /* ========================================
-     Badge Components
-     ======================================== */
-  .badge {
-    @apply inline-flex items-center justify-center;
-    @apply rounded-sm font-sans leading-none font-bold whitespace-nowrap;
-  }
-
-  .badge-pill {
-    @apply rounded-lg;
-  }
-
-  .badge-primary {
-    @apply bg-primary text-primary-foreground;
-  }
-
-  .badge-secondary {
-    @apply bg-secondary text-white;
-  }
-
-  .badge-success {
-    @apply bg-success text-success-foreground;
-  }
-
-  .badge-danger {
-    @apply bg-danger text-danger-foreground;
-  }
-
-  .badge-warning {
-    @apply bg-warning text-warning-foreground;
-  }
-
-  .badge-info {
-    @apply bg-info text-info-foreground;
-  }
-
-  .badge-small {
-    @apply text-2xs h-4 px-[4px] py-0;
-  }
-
-  .badge-medium {
-    @apply px-xs h-5 py-0 text-xs;
-  }
-
-  .badge-large {
-    @apply px-sm h-6 py-0 text-sm;
-  }
-
-  /* ========================================
      Alert Components
      ======================================== */
   .alert {
@@ -540,7 +450,7 @@
   }
 
   .checkbox-container {
-    @apply mr-sm mt-[2px] relative;
+    @apply mr-sm relative mt-[2px];
   }
 
   .checkbox-input {
@@ -548,7 +458,7 @@
   }
 
   .checkbox-custom {
-    @apply rounded-xs h-4 w-4 border-2 border-[#d1d5db];
+    @apply h-4 w-4 rounded-xs border-2 border-[#d1d5db];
     @apply flex cursor-pointer items-center justify-center bg-white;
     transition: all 0.15s ease-in-out;
   }
@@ -583,11 +493,11 @@
   }
 
   .checkbox-hint {
-    @apply font-roboto mt-[2px] ml-xl block text-xs text-[#6b7280];
+    @apply font-roboto ml-xl mt-[2px] block text-xs text-[#6b7280];
   }
 
   .checkbox-error {
-    @apply font-roboto mt-[2px] ml-xl block text-xs text-[#ef4444];
+    @apply font-roboto ml-xl mt-[2px] block text-xs text-[#ef4444];
   }
 
   /* ========================================
