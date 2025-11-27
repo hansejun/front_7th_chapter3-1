@@ -80,6 +80,9 @@ export const PostManagementTable: React.FC<TableProps> = ({
             <Button size="sm" variant="success" onClick={() => onRestore?.(row.id)}>
               복원
             </Button>
+            <Button size="sm" variant="primary" onClick={() => onEdit?.(row)}>
+              수정
+            </Button>
             <Button size="sm" variant="danger" onClick={() => onDelete?.(row.id)}>
               삭제
             </Button>

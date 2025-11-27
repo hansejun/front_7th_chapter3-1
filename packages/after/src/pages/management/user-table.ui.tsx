@@ -13,6 +13,7 @@ import {
 import type { User } from '@/entities/user';
 import { cn } from '@/shared/lib/utils';
 import { USER_ROLE_BADGE_MAP, USER_STATUS_BADGE_MAP } from './constants.config';
+import { USER_ROLES_MAP } from '@/entities/user/user-constants.config';
 
 interface TableProps {
   users: User[];
@@ -62,6 +63,7 @@ export const UserManagementTable: React.FC<TableProps> = ({
             const userStatus =
               USER_STATUS_BADGE_MAP[row.status as keyof typeof USER_STATUS_BADGE_MAP];
             const userRole = USER_ROLE_BADGE_MAP[row.role as keyof typeof USER_ROLE_BADGE_MAP];
+            const isAdmin = row.role === USER_ROLES_MAP.ADMIN;
             return (
               <TableRow key={rowIndex}>
                 <TableCell>{row.id}</TableCell>
@@ -80,7 +82,12 @@ export const UserManagementTable: React.FC<TableProps> = ({
                     <Button size="sm" variant="primary" onClick={() => onEdit?.(row)}>
                       수정
                     </Button>
-                    <Button size="sm" variant="danger" onClick={() => onDelete?.(row.id)}>
+                    <Button
+                      size="sm"
+                      variant="danger"
+                      disabled={isAdmin}
+                      onClick={() => onDelete?.(row.id)}
+                    >
                       삭제
                     </Button>
                   </div>
