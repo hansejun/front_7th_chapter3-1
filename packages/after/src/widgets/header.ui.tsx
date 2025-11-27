@@ -11,7 +11,7 @@ export const Header: React.FC = () => {
           </div>
           <div>
             <h1 className="m-0 text-xl leading-none font-bold text-gray-900">Hanghae Company</h1>
-            <p className="text-muted m-0 mt-[2px] text-[11px] leading-none">
+            <p className="text-muted m-0 mt-[2px] text-3xs leading-none">
               Design System Migration Project
             </p>
           </div>

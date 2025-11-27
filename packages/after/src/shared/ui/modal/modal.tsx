@@ -115,14 +115,14 @@ const Header = ({ children, className, ...props }: ModalHeaderProps) => {
   return (
     <div
       className={cn(
-        'py-md px-xl flex items-center justify-between border-b border-[rgba(0,0,0,0.12)]',
+        'py-md px-xl flex items-center justify-between border-b border-border',
         className
       )}
       {...props}
     >
-      <h3 className="m-0 text-2xl font-medium text-[rgba(0,0,0,0.87)]">{children}</h3>
+      <h3 className="m-0 text-2xl font-medium text-foreground-emphasis">{children}</h3>
       <button
-        className="transition-background-color flex h-[32px] w-[32px] cursor-pointer items-center justify-center rounded-full border-none bg-transparent p-0 text-3xl leading-none text-[rgba(0,0,0,0.54)] duration-150 ease-in-out hover:bg-[rgba(0,0,0,0.04)]"
+        className="transition-background-color flex h-[32px] w-[32px] cursor-pointer items-center justify-center rounded-full border-none bg-transparent p-0 text-3xl leading-none text-foreground-subtle duration-150 ease-in-out hover:bg-hover-overlay"
         onClick={onClose}
         aria-label="Close modal"
       >
@@ -144,7 +144,7 @@ const Footer = ({ children, className, ...props }: ModalFooterProps) => {
   return (
     <div
       className={cn(
-        'py-md px-xl gap-sm flex justify-end border-t border-[rgba(0,0,0,0.12)]',
+        'py-md px-xl gap-sm flex justify-end border-t border-border',
         className
       )}
       {...props}

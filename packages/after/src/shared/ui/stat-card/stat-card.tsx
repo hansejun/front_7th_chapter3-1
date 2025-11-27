@@ -18,7 +18,7 @@ const statCardVariants = cva('rounded-sm border px-[15px] py-[12px]', {
   },
 });
 
-const statCardValueVariants = cva('text-[24px] font-bold', {
+const statCardValueVariants = cva('text-3xl font-bold', {
   variants: {
     variant: {
       default: 'text-default-foreground',

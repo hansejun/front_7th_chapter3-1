@@ -7,7 +7,7 @@ const tableVariants = cva('font-roboto w-full border-collapse caption-bottom bg-
   variants: {
     variant: {
       default: '',
-      bordered: 'table-bordered border border-[rgba(0,0,0,0.12)]',
+      bordered: 'table-bordered border border-border',
       striped: 'table-striped',
       hover: 'table-hover',
     },
@@ -69,7 +69,7 @@ function TableRow({ className, ...props }: React.ComponentProps<'tr'>) {
       data-slot="table-row"
       className={cn(
         'data-[state=selected]:bg-muted border-b transition-colors',
-        '[.table-hover_tbody_&]:hover:bg-[rgba(0,0,0,0.04)]',
+        '[.table-hover_tbody_&]:hover:bg-hover-overlay',
         '[.table-striped_tbody_&:nth-child(even)]:bg-elevated',
         className
       )}
@@ -90,8 +90,8 @@ function TableHead({
       data-slot="table-head"
       className={cn(
         'text-foreground h-10 text-left align-middle font-medium whitespace-nowrap [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]',
-        'p-md border-b-2 border-[rgba(0,0,0,0.12)] text-xs tracking-[0.03em] text-[rgba(0,0,0,0.6)] uppercase',
-        'in-[.table-bordered]:border in-[.table-bordered]:border-[rgba(0,0,0,0.12)]',
+        'p-md border-b-2 border-border text-xs tracking-[0.03em] text-foreground-medium uppercase',
+        'in-[.table-bordered]:border in-[.table-bordered]:border-border',
         isSortable && 'cursor-pointer',
         className
       )}
@@ -109,8 +109,8 @@ function TableCell({ className, ...props }: React.ComponentProps<'td'>) {
       data-slot="table-cell"
       className={cn(
         'p-2 align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]',
-        'p-md border-b border-[rgba(0,0,0,0.08)] text-[rgba(0,0,0,0.87)]',
-        'in-[.table-bordered]:border in-[.table-bordered]:border-[rgba(0,0,0,0.12)]',
+        'p-md border-b border-border-subtle text-foreground-emphasis',
+        'in-[.table-bordered]:border in-[.table-bordered]:border-border',
         className
       )}
       {...props}

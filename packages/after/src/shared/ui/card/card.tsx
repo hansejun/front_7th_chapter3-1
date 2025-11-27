@@ -6,10 +6,10 @@ import { cva, type VariantProps } from 'class-variance-authority';
 const cardVariants = cva('mb-md font-roboto overflow-hidden rounded-md bg-white', {
   variants: {
     variant: {
-      default: 'border border-[rgba(0,0,0,0.12)] shadow-sm',
-      bordered: 'border border-[rgba(0,0,0,0.12)] shadow-none',
-      elevated: 'border border-[rgba(0,0,0,0.08)] shadow-md',
-      flat: 'bg-elevated border border-[rgba(0,0,0,0.08)] shadow-none',
+      default: 'border border-border shadow-sm',
+      bordered: 'border border-border shadow-none',
+      elevated: 'border border-border-subtle shadow-md',
+      flat: 'bg-elevated border border-border-subtle shadow-none',
     },
   },
   defaultVariants: {
@@ -28,7 +28,7 @@ function CardHeader({ className, ...props }: React.ComponentProps<'div'>) {
     <div
       data-slot="card-header"
       className={cn(
-        'p-lg bg-elevated flex items-center justify-between border-b border-[rgba(0,0,0,0.08)]',
+        'p-lg bg-elevated flex items-center justify-between border-b border-border-subtle',
         className
       )}
       {...props}
@@ -40,7 +40,7 @@ function CardTitle({ className, ...props }: React.ComponentProps<'div'>) {
   return (
     <div
       data-slot="card-title"
-      className={cn('m-0 text-xl leading-relaxed font-medium text-[rgba(0,0,0,0.87)]', className)}
+      className={cn('m-0 text-xl leading-relaxed font-medium text-foreground-emphasis', className)}
       {...props}
     />
   );
@@ -51,7 +51,7 @@ function CardDescription({ className, ...props }: React.ComponentProps<'div'>) {
     <div
       data-slot="card-description"
       className={cn(
-        'text-[rgba(0,0,0,0.6)]; mx-0 mt-1 mb-0 text-base leading-normal font-normal',
+        'text-foreground-medium mx-0 mt-1 mb-0 text-base leading-normal font-normal',
         className
       )}
       {...props}
