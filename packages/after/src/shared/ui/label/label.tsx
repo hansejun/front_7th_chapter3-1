@@ -7,7 +7,7 @@ function Label({ className, ...props }: React.ComponentProps<typeof LabelPrimiti
   return (
     <LabelPrimitive.Root
       data-slot="label"
-      className={cn('text-foreground mb-2xs block font-sans text-sm font-bold', className)}
+      className={cn('label-md mb-2xs block', className)}
       {...props}
     />
   );

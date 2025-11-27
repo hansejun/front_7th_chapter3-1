@@ -84,7 +84,7 @@ const Content = ({ className, children, ...props }: React.HTMLAttributes<HTMLDiv
 
 const Title = ({ className, children, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
   return (
-    <div className={cn('text-md mb-1 font-bold', className)} {...props}>
+    <div className={cn('label-md mb-1', className)} {...props}>
       {children}
     </div>
   );
@@ -92,7 +92,7 @@ const Title = ({ className, children, ...props }: React.HTMLAttributes<HTMLDivEl
 
 const Body = ({ className, children, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
   return (
-    <div className={cn('text-base leading-normal', className)} {...props}>
+    <div className={cn('body-base', className)} {...props}>
       {children}
     </div>
   );

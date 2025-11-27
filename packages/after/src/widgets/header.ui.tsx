@@ -10,8 +10,8 @@ export const Header: React.FC = () => {
             L
           </div>
           <div>
-            <h1 className="m-0 text-xl leading-none font-bold text-gray-900">Hanghae Company</h1>
-            <p className="text-muted m-0 mt-[2px] text-3xs leading-none">
+            <h1 className="h6 m-0 leading-none text-gray-900">Hanghae Company</h1>
+            <p className="caption-sm m-0 mt-[2px] leading-none">
               Design System Migration Project
             </p>
           </div>
@@ -20,8 +20,8 @@ export const Header: React.FC = () => {
         {/* User Info */}
         <div className="gap-base flex items-center">
           <div className="text-right">
-            <div className="text-base font-semibold text-gray-900">Demo User</div>
-            <div className="text-muted text-xs">demo@example.com</div>
+            <div className="body-base font-semibold text-gray-900">Demo User</div>
+            <div className="caption">demo@example.com</div>
           </div>
           <div className="bg-primary-weak text-primary flex h-10 w-10 items-center justify-center rounded-full text-lg font-medium">
             DU

@@ -67,7 +67,7 @@ function StatCardLabel({ className, ...props }: StatCardLabelProps) {
   return (
     <div
       data-slot="stat-card-label"
-      className={cn('text-muted mb-[4px] text-xs', className)}
+      className={cn('caption mb-[4px]', className)}
       {...props}
     />
   );
@@ -124,7 +124,7 @@ function StatCardTrend({
   return (
     <div
       data-slot="stat-card-trend"
-      className={cn('mt-[4px] text-xs', trendColors[direction], className)}
+      className={cn('caption mt-[4px]', trendColors[direction], className)}
       {...props}
     >
       {children}
@@ -139,7 +139,7 @@ function StatCardDescription({ className, ...props }: StatCardDescriptionProps) 
   return (
     <div
       data-slot="stat-card-description"
-      className={cn('text-muted mt-[4px] text-xs', className)}
+      className={cn('caption mt-[4px]', className)}
       {...props}
     />
   );

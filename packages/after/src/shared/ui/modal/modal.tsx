@@ -120,7 +120,7 @@ const Header = ({ children, className, ...props }: ModalHeaderProps) => {
       )}
       {...props}
     >
-      <h3 className="m-0 text-2xl font-medium text-foreground-emphasis">{children}</h3>
+      <h3 className="h6 m-0">{children}</h3>
       <button
         className="transition-background-color flex h-[32px] w-[32px] cursor-pointer items-center justify-center rounded-full border-none bg-transparent p-0 text-3xl leading-none text-foreground-subtle duration-150 ease-in-out hover:bg-hover-overlay"
         onClick={onClose}

@@ -11,7 +11,7 @@ export const ManagementTabs = ({ entityType, setEntityType }: TabsProps) => {
       <button
         onClick={() => setEntityType('post')}
         className={cn(
-          'px-md py-sm bg-secondary text-foreground mr-[5px] cursor-pointer rounded-sm border border-border-interactive text-base font-normal',
+          'body-base px-md py-sm bg-secondary text-foreground mr-[5px] cursor-pointer rounded-sm border border-border-interactive',
           entityType === 'post' && 'bg-primary font-bold text-white'
         )}
       >
@@ -20,7 +20,7 @@ export const ManagementTabs = ({ entityType, setEntityType }: TabsProps) => {
       <button
         onClick={() => setEntityType('user')}
         className={cn(
-          'px-md py-sm bg-secondary text-foreground mr-[5px] cursor-pointer rounded-sm border border-border-interactive text-base font-normal',
+          'body-base px-md py-sm bg-secondary text-foreground mr-[5px] cursor-pointer rounded-sm border border-border-interactive',
           entityType === 'user' && 'bg-primary font-bold text-white'
         )}
       >
