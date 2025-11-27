@@ -4,9 +4,7 @@ import { useCreatePost } from './use-create-post.model';
 import type { BaseModalProps } from '@/shared/model/hooks';
 import { Button } from '@/shared/ui/button';
 
-interface CreatePostModalProps extends BaseModalProps {}
-
-export const CreatePostModal = ({ onCloseModal }: CreatePostModalProps) => {
+export const CreatePostModal = ({ onCloseModal }: BaseModalProps) => {
   const { form, onCreatePost } = useCreatePost();
 
   const handleSubmit = form.handleSubmit((data) => {

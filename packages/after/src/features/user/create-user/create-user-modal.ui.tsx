@@ -4,9 +4,7 @@ import { useCreateUser } from './use-create-user.model';
 import type { BaseModalProps } from '@/shared/model/hooks';
 import { Button } from '@/shared/ui/button';
 
-interface CreateUserModalProps extends BaseModalProps {}
-
-export const CreateUserModal = ({ onCloseModal }: CreateUserModalProps) => {
+export const CreateUserModal = ({ onCloseModal }: BaseModalProps) => {
   const { form, onCreateUser } = useCreateUser();
 
   const handleSubmit = form.handleSubmit((data) => {

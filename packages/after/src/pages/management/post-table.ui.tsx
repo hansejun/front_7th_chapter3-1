@@ -11,7 +11,7 @@ import { POST_STATUSES_MAP } from '@/entities/post/post-constants.config';
 interface TableProps {
   posts: Post[];
   pageSize?: number;
-  onEdit: (item: any) => void;
+  onEdit: (item: Post) => void;
   onDelete: (id: number) => void;
   onPublish?: (id: number) => void;
   onArchive?: (id: number) => void;

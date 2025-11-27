@@ -1,4 +1,5 @@
 import { useModal } from '@/shared/model/hooks';
+import type { BaseModalProps } from '@/shared/model/hooks';
 import { modalComponentMap } from './modal-registry';
 
 export const ModalRoot = () => {
@@ -18,7 +19,7 @@ export const ModalRoot = () => {
           onCloseModal(modal.type);
         };
 
-        return <Component key={modal.type} {...(modal.props as any)} onCloseModal={handleClose} />;
+        return <Component key={modal.type} {...(modal.props as BaseModalProps)} onCloseModal={handleClose} />;
       })}
     </>
   );

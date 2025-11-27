@@ -19,7 +19,7 @@ export const modalStore = {
     return openModals;
   },
 
-  openModal(type: string, props?: Record<string, any>) {
+  openModal(type: string, props?: Record<string, unknown>) {
     // 같은 타입의 모달이 이미 열려있으면 무시
     const isAlreadyOpen = openModals.some((modal) => modal.type === type);
     if (isAlreadyOpen) {

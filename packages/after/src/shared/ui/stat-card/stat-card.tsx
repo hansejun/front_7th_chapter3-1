@@ -61,7 +61,7 @@ function StatCard({ variant, className, children, ...props }: StatCardProps) {
 }
 
 // Label component
-interface StatCardLabelProps extends React.ComponentProps<'div'> {}
+type StatCardLabelProps = React.ComponentProps<'div'>;
 
 function StatCardLabel({ className, ...props }: StatCardLabelProps) {
   return (
@@ -92,7 +92,7 @@ function StatCardValue({ className, variant: variantProp, ...props }: StatCardVa
 }
 
 // Icon component (optional)
-interface StatCardIconProps extends React.ComponentProps<'div'> {}
+type StatCardIconProps = React.ComponentProps<'div'>;
 
 function StatCardIcon({ className, ...props }: StatCardIconProps) {
   return (
@@ -133,7 +133,7 @@ function StatCardTrend({
 }
 
 // Description component (optional)
-interface StatCardDescriptionProps extends React.ComponentProps<'div'> {}
+type StatCardDescriptionProps = React.ComponentProps<'div'>;
 
 function StatCardDescription({ className, ...props }: StatCardDescriptionProps) {
   return (

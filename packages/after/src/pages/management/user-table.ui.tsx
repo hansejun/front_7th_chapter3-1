@@ -20,7 +20,7 @@ interface TableProps {
   pageSize?: number;
   searchable?: boolean;
   sortable?: boolean;
-  onEdit: (item: any) => void;
+  onEdit: (item: User) => void;
   onDelete: (id: number) => void;
 }
 

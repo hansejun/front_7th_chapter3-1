@@ -4,7 +4,7 @@ export interface BaseModalProps {
 
 export interface ModalState {
   type: string;
-  props: Record<string, any>;
+  props: BaseModalProps & Record<string, unknown>;
 }
 
 export type ModalSubscriber = () => void;
