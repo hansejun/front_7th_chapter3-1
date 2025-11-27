@@ -179,7 +179,7 @@ export const WithCheckbox: Story = {
             <Checkbox
               id="terms"
               checked={checked}
-              onCheckedChange={setChecked}
+              onCheckedChange={(checked) => setChecked(!!checked)}
             />
             <Label htmlFor="terms" style={{ cursor: 'pointer', marginBottom: 0 }}>
               I agree to the terms and conditions
@@ -301,9 +301,7 @@ export const WithDisabledInput: Story = {
         <Input id="disabled-input" disabled value="This field is disabled" />
       </div>
       <div>
-        <Label htmlFor="readonly-input">
-          Read-only Field
-        </Label>
+        <Label htmlFor="readonly-input">Read-only Field</Label>
         <Input id="readonly-input" readOnly value="This field is read-only" />
       </div>
     </div>
@@ -317,7 +315,7 @@ export const CustomStyling: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '400px' }}>
       <div>
-        <Label htmlFor="bold" className="font-bold text-lg">
+        <Label htmlFor="bold" className="text-lg font-bold">
           Bold Label
         </Label>
         <Input id="bold" type="text" placeholder="With bold label" />
@@ -406,7 +404,9 @@ export const RegistrationForm: Story = {
                 required
               />
               {errors.username && (
-                <p style={{ fontSize: '14px', color: '#dc3545', marginTop: '4px', marginBottom: 0 }}>
+                <p
+                  style={{ fontSize: '14px', color: '#dc3545', marginTop: '4px', marginBottom: 0 }}
+                >
                   {errors.username}
                 </p>
               )}
@@ -425,7 +425,9 @@ export const RegistrationForm: Story = {
                 required
               />
               {errors.email && (
-                <p style={{ fontSize: '14px', color: '#dc3545', marginTop: '4px', marginBottom: 0 }}>
+                <p
+                  style={{ fontSize: '14px', color: '#dc3545', marginTop: '4px', marginBottom: 0 }}
+                >
                   {errors.email}
                 </p>
               )}
@@ -447,7 +449,9 @@ export const RegistrationForm: Story = {
                 Must be at least 8 characters
               </p>
               {errors.password && (
-                <p style={{ fontSize: '14px', color: '#dc3545', marginTop: '4px', marginBottom: 0 }}>
+                <p
+                  style={{ fontSize: '14px', color: '#dc3545', marginTop: '4px', marginBottom: 0 }}
+                >
                   {errors.password}
                 </p>
               )}
@@ -466,7 +470,9 @@ export const RegistrationForm: Story = {
                 required
               />
               {errors.confirmPassword && (
-                <p style={{ fontSize: '14px', color: '#dc3545', marginTop: '4px', marginBottom: 0 }}>
+                <p
+                  style={{ fontSize: '14px', color: '#dc3545', marginTop: '4px', marginBottom: 0 }}
+                >
                   {errors.confirmPassword}
                 </p>
               )}
@@ -645,7 +651,10 @@ export const AccessibilityBestPractices: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
         <div>
           <Label htmlFor="a11y-name">
-            Full Name <span style={{ color: 'red' }} aria-label="required">*</span>
+            Full Name{' '}
+            <span style={{ color: 'red' }} aria-label="required">
+              *
+            </span>
           </Label>
           <Input
             id="a11y-name"
@@ -654,14 +663,20 @@ export const AccessibilityBestPractices: Story = {
             aria-required="true"
             aria-describedby="name-help"
           />
-          <p id="name-help" style={{ fontSize: '14px', color: '#666', marginTop: '4px', marginBottom: 0 }}>
+          <p
+            id="name-help"
+            style={{ fontSize: '14px', color: '#666', marginTop: '4px', marginBottom: 0 }}
+          >
             Enter your first and last name
           </p>
         </div>
 
         <div>
           <Label htmlFor="a11y-email">
-            Email Address <span style={{ color: 'red' }} aria-label="required">*</span>
+            Email Address{' '}
+            <span style={{ color: 'red' }} aria-label="required">
+              *
+            </span>
           </Label>
           <Input
             id="a11y-email"
@@ -670,7 +685,10 @@ export const AccessibilityBestPractices: Story = {
             aria-required="true"
             aria-describedby="email-help"
           />
-          <p id="email-help" style={{ fontSize: '14px', color: '#666', marginTop: '4px', marginBottom: 0 }}>
+          <p
+            id="email-help"
+            style={{ fontSize: '14px', color: '#666', marginTop: '4px', marginBottom: 0 }}
+          >
             We'll never share your email
           </p>
         </div>

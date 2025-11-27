@@ -18,7 +18,9 @@ export const CreateUserModal = ({ onCloseModal }: BaseModalProps) => {
         <CreateUserForm form={form} />
       </Modal.Content>
       <Modal.Footer>
-        <Button onClick={onCloseModal}>취소</Button>
+        <Button variant="secondary" onClick={onCloseModal}>
+          취소
+        </Button>
         <Button onClick={handleSubmit}>생성</Button>
       </Modal.Footer>
     </Modal>

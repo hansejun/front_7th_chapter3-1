@@ -36,7 +36,9 @@ export const UpdateUserModal = ({ user, onCloseModal }: UpdateUserModalProps) =>
         <UpdateUserForm form={form} />
       </Modal.Content>
       <Modal.Footer>
-        <Button onClick={onCloseModal}>취소</Button>
+        <Button variant="secondary" onClick={onCloseModal}>
+          취소
+        </Button>
         <Button onClick={handleSubmit}>수정 완료</Button>
       </Modal.Footer>
     </Modal>

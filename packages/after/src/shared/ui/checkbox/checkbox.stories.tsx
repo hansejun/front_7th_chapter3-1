@@ -175,7 +175,7 @@ export const WithLabel: Story = {
           <Checkbox
             id="terms"
             checked={checked}
-            onCheckedChange={setChecked}
+            onCheckedChange={(checked) => setChecked(!!checked)}
           />
           <Label htmlFor="terms" style={{ cursor: 'pointer' }}>
             Accept terms and conditions
@@ -199,17 +199,14 @@ export const Controlled: Story = {
       return (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <Checkbox
-              id="controlled"
-              checked={checked}
-              onCheckedChange={setChecked}
-            />
+            <Checkbox id="controlled" checked={checked} onCheckedChange={setChecked} />
             <Label htmlFor="controlled" style={{ cursor: 'pointer' }}>
               Controlled checkbox
             </Label>
           </div>
           <div style={{ fontSize: '14px', color: '#666' }}>
-            Current state: {checked === 'indeterminate' ? 'indeterminate' : checked ? 'checked' : 'unchecked'}
+            Current state:{' '}
+            {checked === 'indeterminate' ? 'indeterminate' : checked ? 'checked' : 'unchecked'}
           </div>
           <div style={{ display: 'flex', gap: '8px' }}>
             <button onClick={() => setChecked(false)}>Uncheck</button>
@@ -238,7 +235,7 @@ export const MultipleSelection: Story = {
       });
 
       const handleChange = (option: keyof typeof selections) => {
-        setSelections(prev => ({
+        setSelections((prev) => ({
           ...prev,
           [option]: !prev[option],
         }));
@@ -276,7 +273,9 @@ export const MultipleSelection: Story = {
 export const HierarchicalSelection: Story = {
   render: () => {
     const HierarchicalExample = () => {
-      const [parentChecked, setParentChecked] = useState<boolean | 'indeterminate'>('indeterminate');
+      const [parentChecked, setParentChecked] = useState<boolean | 'indeterminate'>(
+        'indeterminate'
+      );
       const [childChecked, setChildChecked] = useState({
         child1: true,
         child2: false,
@@ -285,9 +284,9 @@ export const HierarchicalSelection: Story = {
 
       const updateParentState = (children: typeof childChecked) => {
         const values = Object.values(children);
-        if (values.every(v => v === true)) {
+        if (values.every((v) => v === true)) {
           setParentChecked(true);
-        } else if (values.every(v => v === false)) {
+        } else if (values.every((v) => v === false)) {
           setParentChecked(false);
         } else {
           setParentChecked('indeterminate');
@@ -318,11 +317,7 @@ export const HierarchicalSelection: Story = {
       return (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <Checkbox
-              id="parent"
-              checked={parentChecked}
-              onCheckedChange={handleParentChange}
-            />
+            <Checkbox id="parent" checked={parentChecked} onCheckedChange={handleParentChange} />
             <Label htmlFor="parent" style={{ cursor: 'pointer', fontWeight: 'bold' }}>
               Select All
             </Label>
@@ -382,19 +377,23 @@ export const TermsAgreement: Story = {
       const canProceed = agreements.terms && agreements.privacy;
 
       return (
-        <div style={{
-          padding: '24px',
-          border: '1px solid #e5e5e5',
-          borderRadius: '8px',
-          maxWidth: '400px'
-        }}>
+        <div
+          style={{
+            padding: '24px',
+            border: '1px solid #e5e5e5',
+            borderRadius: '8px',
+            maxWidth: '400px',
+          }}
+        >
           <h4 style={{ margin: 0, marginBottom: '16px' }}>Terms and Agreements</h4>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
               <Checkbox
                 id="terms"
                 checked={agreements.terms}
-                onCheckedChange={(checked) => setAgreements(prev => ({ ...prev, terms: !!checked }))}
+                onCheckedChange={(checked) =>
+                  setAgreements((prev) => ({ ...prev, terms: !!checked }))
+                }
                 required
               />
               <Label htmlFor="terms" style={{ cursor: 'pointer' }}>
@@ -406,7 +405,9 @@ export const TermsAgreement: Story = {
               <Checkbox
                 id="privacy"
                 checked={agreements.privacy}
-                onCheckedChange={(checked) => setAgreements(prev => ({ ...prev, privacy: !!checked }))}
+                onCheckedChange={(checked) =>
+                  setAgreements((prev) => ({ ...prev, privacy: !!checked }))
+                }
                 required
               />
               <Label htmlFor="privacy" style={{ cursor: 'pointer' }}>
@@ -418,7 +419,9 @@ export const TermsAgreement: Story = {
               <Checkbox
                 id="marketing"
                 checked={agreements.marketing}
-                onCheckedChange={(checked) => setAgreements(prev => ({ ...prev, marketing: !!checked }))}
+                onCheckedChange={(checked) =>
+                  setAgreements((prev) => ({ ...prev, marketing: !!checked }))
+                }
               />
               <Label htmlFor="marketing" style={{ cursor: 'pointer' }}>
                 I want to receive marketing emails (optional)

@@ -26,7 +26,12 @@ export const modalStore = {
       return;
     }
 
-    openModals = [...openModals, { type, props: props || {} }];
+    const modalProps = {
+      onCloseModal: () => this.closeModal(type),
+      ...(props || {}),
+    };
+
+    openModals = [...openModals, { type, props: modalProps }];
     emitChange();
   },
 

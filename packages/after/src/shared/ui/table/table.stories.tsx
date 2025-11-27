@@ -435,18 +435,20 @@ export const UserListTable: Story = {
         <TableRow>
           <TableCell>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-              <div style={{
-                width: '32px',
-                height: '32px',
-                borderRadius: '50%',
-                background: '#007bff',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: 'white',
-                fontSize: '14px',
-                fontWeight: 'bold'
-              }}>
+              <div
+                style={{
+                  width: '32px',
+                  height: '32px',
+                  borderRadius: '50%',
+                  background: '#007bff',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'white',
+                  fontSize: '14px',
+                  fontWeight: 'bold',
+                }}
+              >
                 JD
               </div>
               <div>
@@ -456,33 +458,39 @@ export const UserListTable: Story = {
           </TableCell>
           <TableCell>john.doe@example.com</TableCell>
           <TableCell>
-            <Badge variant="default">Admin</Badge>
+            <Badge variant="info">Admin</Badge>
           </TableCell>
           <TableCell>
             <Badge variant="success">Active</Badge>
           </TableCell>
           <TableCell>
             <div style={{ display: 'flex', gap: '8px' }}>
-              <Button size="sm" variant="secondary">Edit</Button>
-              <Button size="sm" variant="danger">Delete</Button>
+              <Button size="sm" variant="secondary">
+                Edit
+              </Button>
+              <Button size="sm" variant="danger">
+                Delete
+              </Button>
             </div>
           </TableCell>
         </TableRow>
         <TableRow>
           <TableCell>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-              <div style={{
-                width: '32px',
-                height: '32px',
-                borderRadius: '50%',
-                background: '#28a745',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: 'white',
-                fontSize: '14px',
-                fontWeight: 'bold'
-              }}>
+              <div
+                style={{
+                  width: '32px',
+                  height: '32px',
+                  borderRadius: '50%',
+                  background: '#28a745',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'white',
+                  fontSize: '14px',
+                  fontWeight: 'bold',
+                }}
+              >
                 JS
               </div>
               <div>
@@ -499,26 +507,32 @@ export const UserListTable: Story = {
           </TableCell>
           <TableCell>
             <div style={{ display: 'flex', gap: '8px' }}>
-              <Button size="sm" variant="secondary">Edit</Button>
-              <Button size="sm" variant="danger">Delete</Button>
+              <Button size="sm" variant="secondary">
+                Edit
+              </Button>
+              <Button size="sm" variant="danger">
+                Delete
+              </Button>
             </div>
           </TableCell>
         </TableRow>
         <TableRow>
           <TableCell>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-              <div style={{
-                width: '32px',
-                height: '32px',
-                borderRadius: '50%',
-                background: '#6c757d',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: 'white',
-                fontSize: '14px',
-                fontWeight: 'bold'
-              }}>
+              <div
+                style={{
+                  width: '32px',
+                  height: '32px',
+                  borderRadius: '50%',
+                  background: '#6c757d',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'white',
+                  fontSize: '14px',
+                  fontWeight: 'bold',
+                }}
+              >
                 BJ
               </div>
               <div>
@@ -528,15 +542,19 @@ export const UserListTable: Story = {
           </TableCell>
           <TableCell>bob.johnson@example.com</TableCell>
           <TableCell>
-            <Badge variant="default">User</Badge>
+            <Badge variant="info">User</Badge>
           </TableCell>
           <TableCell>
             <Badge variant="warning">Suspended</Badge>
           </TableCell>
           <TableCell>
             <div style={{ display: 'flex', gap: '8px' }}>
-              <Button size="sm" variant="secondary">Edit</Button>
-              <Button size="sm" variant="danger">Delete</Button>
+              <Button size="sm" variant="secondary">
+                Edit
+              </Button>
+              <Button size="sm" variant="danger">
+                Delete
+              </Button>
             </div>
           </TableCell>
         </TableRow>
@@ -590,7 +608,7 @@ export const OrderHistoryTable: Story = {
           <TableCell>5</TableCell>
           <TableCell>$680.00</TableCell>
           <TableCell>
-            <Badge variant="default">Shipped</Badge>
+            <Badge variant="info">Shipped</Badge>
           </TableCell>
         </TableRow>
         <TableRow>
@@ -650,19 +668,23 @@ export const ProjectDashboardTable: Story = {
           <TableCell>Design Team</TableCell>
           <TableCell>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <div style={{
-                flex: 1,
-                height: '8px',
-                background: '#e5e5e5',
-                borderRadius: '4px',
-                overflow: 'hidden'
-              }}>
-                <div style={{
-                  width: '75%',
-                  height: '100%',
-                  background: '#28a745',
-                  borderRadius: '4px'
-                }}></div>
+              <div
+                style={{
+                  flex: 1,
+                  height: '8px',
+                  background: '#e5e5e5',
+                  borderRadius: '4px',
+                  overflow: 'hidden',
+                }}
+              >
+                <div
+                  style={{
+                    width: '75%',
+                    height: '100%',
+                    background: '#28a745',
+                    borderRadius: '4px',
+                  }}
+                ></div>
               </div>
               <span style={{ fontSize: '12px', color: '#666' }}>75%</span>
             </div>
@@ -683,19 +705,23 @@ export const ProjectDashboardTable: Story = {
           <TableCell>Dev Team A</TableCell>
           <TableCell>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <div style={{
-                flex: 1,
-                height: '8px',
-                background: '#e5e5e5',
-                borderRadius: '4px',
-                overflow: 'hidden'
-              }}>
-                <div style={{
-                  width: '45%',
-                  height: '100%',
-                  background: '#007bff',
-                  borderRadius: '4px'
-                }}></div>
+              <div
+                style={{
+                  flex: 1,
+                  height: '8px',
+                  background: '#e5e5e5',
+                  borderRadius: '4px',
+                  overflow: 'hidden',
+                }}
+              >
+                <div
+                  style={{
+                    width: '45%',
+                    height: '100%',
+                    background: '#007bff',
+                    borderRadius: '4px',
+                  }}
+                ></div>
               </div>
               <span style={{ fontSize: '12px', color: '#666' }}>45%</span>
             </div>
@@ -716,19 +742,23 @@ export const ProjectDashboardTable: Story = {
           <TableCell>Dev Team B</TableCell>
           <TableCell>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <div style={{
-                flex: 1,
-                height: '8px',
-                background: '#e5e5e5',
-                borderRadius: '4px',
-                overflow: 'hidden'
-              }}>
-                <div style={{
-                  width: '100%',
-                  height: '100%',
-                  background: '#28a745',
-                  borderRadius: '4px'
-                }}></div>
+              <div
+                style={{
+                  flex: 1,
+                  height: '8px',
+                  background: '#e5e5e5',
+                  borderRadius: '4px',
+                  overflow: 'hidden',
+                }}
+              >
+                <div
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    background: '#28a745',
+                    borderRadius: '4px',
+                  }}
+                ></div>
               </div>
               <span style={{ fontSize: '12px', color: '#666' }}>100%</span>
             </div>
@@ -774,7 +804,9 @@ export const InventoryTable: Story = {
             <Badge variant="success">In Stock</Badge>
           </TableCell>
           <TableCell>
-            <Button size="sm" variant="secondary">Reorder</Button>
+            <Button size="sm" variant="secondary">
+              Reorder
+            </Button>
           </TableCell>
         </TableRow>
         <TableRow>
@@ -787,7 +819,9 @@ export const InventoryTable: Story = {
             <Badge variant="warning">Low Stock</Badge>
           </TableCell>
           <TableCell>
-            <Button size="sm" variant="primary">Reorder</Button>
+            <Button size="sm" variant="primary">
+              Reorder
+            </Button>
           </TableCell>
         </TableRow>
         <TableRow>
@@ -800,7 +834,9 @@ export const InventoryTable: Story = {
             <Badge variant="danger">Out of Stock</Badge>
           </TableCell>
           <TableCell>
-            <Button size="sm" variant="danger">Reorder</Button>
+            <Button size="sm" variant="danger">
+              Reorder
+            </Button>
           </TableCell>
         </TableRow>
         <TableRow>
@@ -813,7 +849,9 @@ export const InventoryTable: Story = {
             <Badge variant="success">In Stock</Badge>
           </TableCell>
           <TableCell>
-            <Button size="sm" variant="secondary">Reorder</Button>
+            <Button size="sm" variant="secondary">
+              Reorder
+            </Button>
           </TableCell>
         </TableRow>
       </TableBody>
@@ -845,12 +883,14 @@ export const LongScrollableTable: Story = {
             <TableCell>This is a description for item {i + 1}</TableCell>
             <TableCell>2024-10-{String(i + 1).padStart(2, '0')}</TableCell>
             <TableCell>
-              <Badge variant={i % 3 === 0 ? 'success' : i % 3 === 1 ? 'warning' : 'default'}>
+              <Badge variant={i % 3 === 0 ? 'success' : i % 3 === 1 ? 'warning' : 'info'}>
                 {i % 3 === 0 ? 'Active' : i % 3 === 1 ? 'Pending' : 'Inactive'}
               </Badge>
             </TableCell>
             <TableCell>
-              <Button size="sm" variant="secondary">View</Button>
+              <Button size="sm" variant="secondary">
+                View
+              </Button>
             </TableCell>
           </TableRow>
         ))}
