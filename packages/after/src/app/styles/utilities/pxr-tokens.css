@@ -1,0 +1,259 @@
+/* AUTO-GENERATED — DO NOT EDIT */
+@theme {
+  --0pxr: 0rem;
+  --1pxr: 0.0625rem;
+  --2pxr: 0.125rem;
+  --3pxr: 0.1875rem;
+  --4pxr: 0.25rem;
+  --5pxr: 0.3125rem;
+  --6pxr: 0.375rem;
+  --7pxr: 0.4375rem;
+  --8pxr: 0.5rem;
+  --9pxr: 0.5625rem;
+  --10pxr: 0.625rem;
+  --11pxr: 0.6875rem;
+  --12pxr: 0.75rem;
+  --13pxr: 0.8125rem;
+  --14pxr: 0.875rem;
+  --15pxr: 0.9375rem;
+  --16pxr: 1rem;
+  --17pxr: 1.0625rem;
+  --18pxr: 1.125rem;
+  --19pxr: 1.1875rem;
+  --20pxr: 1.25rem;
+  --21pxr: 1.3125rem;
+  --22pxr: 1.375rem;
+  --23pxr: 1.4375rem;
+  --24pxr: 1.5rem;
+  --25pxr: 1.5625rem;
+  --26pxr: 1.625rem;
+  --27pxr: 1.6875rem;
+  --28pxr: 1.75rem;
+  --29pxr: 1.8125rem;
+  --30pxr: 1.875rem;
+  --31pxr: 1.9375rem;
+  --32pxr: 2rem;
+  --33pxr: 2.0625rem;
+  --34pxr: 2.125rem;
+  --35pxr: 2.1875rem;
+  --36pxr: 2.25rem;
+  --37pxr: 2.3125rem;
+  --38pxr: 2.375rem;
+  --39pxr: 2.4375rem;
+  --40pxr: 2.5rem;
+  --41pxr: 2.5625rem;
+  --42pxr: 2.625rem;
+  --43pxr: 2.6875rem;
+  --44pxr: 2.75rem;
+  --45pxr: 2.8125rem;
+  --46pxr: 2.875rem;
+  --47pxr: 2.9375rem;
+  --48pxr: 3rem;
+  --49pxr: 3.0625rem;
+  --50pxr: 3.125rem;
+  --51pxr: 3.1875rem;
+  --52pxr: 3.25rem;
+  --53pxr: 3.3125rem;
+  --54pxr: 3.375rem;
+  --55pxr: 3.4375rem;
+  --56pxr: 3.5rem;
+  --57pxr: 3.5625rem;
+  --58pxr: 3.625rem;
+  --59pxr: 3.6875rem;
+  --60pxr: 3.75rem;
+  --61pxr: 3.8125rem;
+  --62pxr: 3.875rem;
+  --63pxr: 3.9375rem;
+  --64pxr: 4rem;
+  --65pxr: 4.0625rem;
+  --66pxr: 4.125rem;
+  --67pxr: 4.1875rem;
+  --68pxr: 4.25rem;
+  --69pxr: 4.3125rem;
+  --70pxr: 4.375rem;
+  --71pxr: 4.4375rem;
+  --72pxr: 4.5rem;
+  --73pxr: 4.5625rem;
+  --74pxr: 4.625rem;
+  --75pxr: 4.6875rem;
+  --76pxr: 4.75rem;
+  --77pxr: 4.8125rem;
+  --78pxr: 4.875rem;
+  --79pxr: 4.9375rem;
+  --80pxr: 5rem;
+  --81pxr: 5.0625rem;
+  --82pxr: 5.125rem;
+  --83pxr: 5.1875rem;
+  --84pxr: 5.25rem;
+  --85pxr: 5.3125rem;
+  --86pxr: 5.375rem;
+  --87pxr: 5.4375rem;
+  --88pxr: 5.5rem;
+  --89pxr: 5.5625rem;
+  --90pxr: 5.625rem;
+  --91pxr: 5.6875rem;
+  --92pxr: 5.75rem;
+  --93pxr: 5.8125rem;
+  --94pxr: 5.875rem;
+  --95pxr: 5.9375rem;
+  --96pxr: 6rem;
+  --97pxr: 6.0625rem;
+  --98pxr: 6.125rem;
+  --99pxr: 6.1875rem;
+  --100pxr: 6.25rem;
+  --101pxr: 6.3125rem;
+  --102pxr: 6.375rem;
+  --103pxr: 6.4375rem;
+  --104pxr: 6.5rem;
+  --105pxr: 6.5625rem;
+  --106pxr: 6.625rem;
+  --107pxr: 6.6875rem;
+  --108pxr: 6.75rem;
+  --109pxr: 6.8125rem;
+  --110pxr: 6.875rem;
+  --111pxr: 6.9375rem;
+  --112pxr: 7rem;
+  --113pxr: 7.0625rem;
+  --114pxr: 7.125rem;
+  --115pxr: 7.1875rem;
+  --116pxr: 7.25rem;
+  --117pxr: 7.3125rem;
+  --118pxr: 7.375rem;
+  --119pxr: 7.4375rem;
+  --120pxr: 7.5rem;
+  --121pxr: 7.5625rem;
+  --122pxr: 7.625rem;
+  --123pxr: 7.6875rem;
+  --124pxr: 7.75rem;
+  --125pxr: 7.8125rem;
+  --126pxr: 7.875rem;
+  --127pxr: 7.9375rem;
+  --128pxr: 8rem;
+  --129pxr: 8.0625rem;
+  --130pxr: 8.125rem;
+  --131pxr: 8.1875rem;
+  --132pxr: 8.25rem;
+  --133pxr: 8.3125rem;
+  --134pxr: 8.375rem;
+  --135pxr: 8.4375rem;
+  --136pxr: 8.5rem;
+  --137pxr: 8.5625rem;
+  --138pxr: 8.625rem;
+  --139pxr: 8.6875rem;
+  --140pxr: 8.75rem;
+  --141pxr: 8.8125rem;
+  --142pxr: 8.875rem;
+  --143pxr: 8.9375rem;
+  --144pxr: 9rem;
+  --145pxr: 9.0625rem;
+  --146pxr: 9.125rem;
+  --147pxr: 9.1875rem;
+  --148pxr: 9.25rem;
+  --149pxr: 9.3125rem;
+  --150pxr: 9.375rem;
+  --151pxr: 9.4375rem;
+  --152pxr: 9.5rem;
+  --153pxr: 9.5625rem;
+  --154pxr: 9.625rem;
+  --155pxr: 9.6875rem;
+  --156pxr: 9.75rem;
+  --157pxr: 9.8125rem;
+  --158pxr: 9.875rem;
+  --159pxr: 9.9375rem;
+  --160pxr: 10rem;
+  --161pxr: 10.0625rem;
+  --162pxr: 10.125rem;
+  --163pxr: 10.1875rem;
+  --164pxr: 10.25rem;
+  --165pxr: 10.3125rem;
+  --166pxr: 10.375rem;
+  --167pxr: 10.4375rem;
+  --168pxr: 10.5rem;
+  --169pxr: 10.5625rem;
+  --170pxr: 10.625rem;
+  --171pxr: 10.6875rem;
+  --172pxr: 10.75rem;
+  --173pxr: 10.8125rem;
+  --174pxr: 10.875rem;
+  --175pxr: 10.9375rem;
+  --176pxr: 11rem;
+  --177pxr: 11.0625rem;
+  --178pxr: 11.125rem;
+  --179pxr: 11.1875rem;
+  --180pxr: 11.25rem;
+  --181pxr: 11.3125rem;
+  --182pxr: 11.375rem;
+  --183pxr: 11.4375rem;
+  --184pxr: 11.5rem;
+  --185pxr: 11.5625rem;
+  --186pxr: 11.625rem;
+  --187pxr: 11.6875rem;
+  --188pxr: 11.75rem;
+  --189pxr: 11.8125rem;
+  --190pxr: 11.875rem;
+  --191pxr: 11.9375rem;
+  --192pxr: 12rem;
+  --193pxr: 12.0625rem;
+  --194pxr: 12.125rem;
+  --195pxr: 12.1875rem;
+  --196pxr: 12.25rem;
+  --197pxr: 12.3125rem;
+  --198pxr: 12.375rem;
+  --199pxr: 12.4375rem;
+  --200pxr: 12.5rem;
+}
+
+/* positive */
+@utility m-* {
+  margin: --value(--* pxr);
+}
+@utility p-* {
+  padding: --value(--* pxr);
+}
+@utility gap-* {
+  gap: --value(--* pxr);
+}
+@utility inset-* {
+  inset: --value(--* pxr);
+}
+
+/* negative */
+@utility -m-* {
+  margin: calc(--value(--* pxr) * -1);
+}
+@utility -p-* {
+  padding: calc(--value(--* pxr) * -1);
+}
+@utility -inset-* {
+  inset: calc(--value(--* pxr) * -1);
+}
+
+@utility w-* {
+  width: --value(--* pxr);
+}
+@utility h-* {
+  height: --value(--* pxr);
+}
+@utility min-w-* {
+  min-width: --value(--* pxr);
+}
+@utility max-w-* {
+  max-width: --value(--* pxr);
+}
+@utility min-h-* {
+  min-height: --value(--* pxr);
+}
+@utility max-h-* {
+  max-height: --value(--* pxr);
+}
+
+@utility border-* {
+  border-width: --value(--* pxr);
+}
+@utility rounded-* {
+  border-radius: --value(--* pxr);
+}
+
+@utility text-* {
+  font-size: --value(--* pxr);
+}

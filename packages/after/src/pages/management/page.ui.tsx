@@ -17,7 +17,7 @@ export const ManagementPage: React.FC = () => {
           <p className="text-muted text-base">사용자와 게시글을 관리하세요</p>
         </div>
 
-        <div className="border-border-light border bg-white p-[10px]">
+        <div className="border-border-light border bg-white p-10">
           <ManagementTabs entityType={entityType} setEntityType={setEntityType} />
           {entityType === 'user' && <UserManagementContainer />}
           {entityType === 'post' && <PostManagementContainer />}
