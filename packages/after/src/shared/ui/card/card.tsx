@@ -3,7 +3,7 @@ import * as React from 'react';
 import { cn } from '@/shared/lib/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
 
-const cardVariants = cva('mb-md font-roboto overflow-hidden rounded-md bg-white', {
+const cardVariants = cva('mb-md font-roboto overflow-hidden rounded-md bg-background', {
   variants: {
     variant: {
       default: 'border border-border shadow-sm',

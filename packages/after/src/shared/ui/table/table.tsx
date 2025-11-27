@@ -3,7 +3,7 @@ import * as React from 'react';
 import { cn } from '@/shared/lib/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
 
-const tableVariants = cva('font-roboto w-full border-collapse caption-bottom bg-white text-base', {
+const tableVariants = cva('font-roboto w-full border-collapse caption-bottom bg-background text-base', {
   variants: {
     variant: {
       default: '',

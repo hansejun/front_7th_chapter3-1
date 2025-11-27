@@ -48,53 +48,55 @@ export const UserManagementTable: React.FC<TableProps> = ({
   const totalPages = Math.ceil(users.length / pageSize);
 
   return (
-    <Table>
-      <TableHeader>
-        <TableRow>
-          {USER_TABLE_COLUMNS.map((column) => (
-            <TableHead key={column.key}>{column.header}</TableHead>
-          ))}
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {paginatedData.map((row, rowIndex) => {
-          const userStatus =
-            USER_STATUS_BADGE_MAP[row.status as keyof typeof USER_STATUS_BADGE_MAP];
-          const userRole = USER_ROLE_BADGE_MAP[row.role as keyof typeof USER_ROLE_BADGE_MAP];
-          return (
-            <TableRow key={rowIndex}>
-              <TableCell>{row.id}</TableCell>
-              <TableCell>{row.username}</TableCell>
-              <TableCell>{row.email}</TableCell>
-              <TableCell>
-                <Badge variant={userRole.variant}>{userRole.content}</Badge>
-              </TableCell>
-              <TableCell>
-                <Badge variant={userStatus.variant}>{userStatus.content}</Badge>
-              </TableCell>
-              <TableCell>{row.createdAt}</TableCell>
-              <TableCell>{row.lastLogin || '-'}</TableCell>
-              <TableCell>
-                <div className="gap-xs flex">
-                  <Button size="sm" variant="primary" onClick={() => onEdit?.(row)}>
-                    수정
-                  </Button>
-                  <Button size="sm" variant="danger" onClick={() => onDelete?.(row.id)}>
-                    삭제
-                  </Button>
-                </div>
-              </TableCell>
-            </TableRow>
-          );
-        })}
-      </TableBody>
+    <>
+      <Table>
+        <TableHeader>
+          <TableRow>
+            {USER_TABLE_COLUMNS.map((column) => (
+              <TableHead key={column.key}>{column.header}</TableHead>
+            ))}
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {paginatedData.map((row, rowIndex) => {
+            const userStatus =
+              USER_STATUS_BADGE_MAP[row.status as keyof typeof USER_STATUS_BADGE_MAP];
+            const userRole = USER_ROLE_BADGE_MAP[row.role as keyof typeof USER_ROLE_BADGE_MAP];
+            return (
+              <TableRow key={rowIndex}>
+                <TableCell>{row.id}</TableCell>
+                <TableCell>{row.username}</TableCell>
+                <TableCell>{row.email}</TableCell>
+                <TableCell>
+                  <Badge variant={userRole.variant}>{userRole.content}</Badge>
+                </TableCell>
+                <TableCell>
+                  <Badge variant={userStatus.variant}>{userStatus.content}</Badge>
+                </TableCell>
+                <TableCell>{row.createdAt}</TableCell>
+                <TableCell>{row.lastLogin || '-'}</TableCell>
+                <TableCell>
+                  <div className="gap-xs flex">
+                    <Button size="sm" variant="primary" onClick={() => onEdit?.(row)}>
+                      수정
+                    </Button>
+                    <Button size="sm" variant="danger" onClick={() => onDelete?.(row.id)}>
+                      삭제
+                    </Button>
+                  </div>
+                </TableCell>
+              </TableRow>
+            );
+          })}
+        </TableBody>
+      </Table>
       {totalPages > 1 && (
         <div className="mt-[16px] flex justify-center gap-[8px]">
           <button
             onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
             disabled={currentPage === 1}
             className={cn(
-              'cursor-pointer rounded-sm border bg-white px-[12px] py-[6px] disabled:cursor-not-allowed disabled:opacity-60',
+              'bg-background border-border text-foreground cursor-pointer rounded-sm px-[12px] py-[6px] disabled:cursor-not-allowed disabled:opacity-60',
               currentPage === 1 && 'cursor-not-allowed opacity-60'
             )}
           >
@@ -107,7 +109,7 @@ export const UserManagementTable: React.FC<TableProps> = ({
             onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
             disabled={currentPage === totalPages}
             className={cn(
-              'cursor-pointer rounded-sm border bg-white px-[12px] py-[6px] disabled:cursor-not-allowed disabled:opacity-60',
+              'bg-background border-border text-foreground cursor-pointer rounded-sm px-[12px] py-[6px] disabled:cursor-not-allowed disabled:opacity-60',
               currentPage === totalPages && 'cursor-not-allowed opacity-60'
             )}
           >
@@ -115,6 +117,6 @@ export const UserManagementTable: React.FC<TableProps> = ({
           </button>
         </div>
       )}
-    </Table>
+    </>
   );
 };

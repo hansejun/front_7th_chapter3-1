@@ -50,7 +50,7 @@ export const PostManagementContainer = () => {
         ))}
       </div>
 
-      <div className="border-border-light overflow-auto border bg-white">
+      <div className="bg-background border-border overflow-auto border">
         <PostManagementTable
           posts={posts}
           onEdit={handleOpenEditPostModal}

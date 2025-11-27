@@ -6,7 +6,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 
 const nativeSelectVariants = cva(
   cn(
-    'py-xs px-sm w-full font-sans text-base text-black border-border box-border rounded-sm border bg-white',
+    'py-xs px-sm w-full font-sans text-base text-foreground border-border box-border rounded-sm border bg-background',
     'focus:border-border-focus focus:outline-none',
     'aria-invalid:border-border-error',
     'disabled:bg-disabled disabled:cursor-not-allowed '

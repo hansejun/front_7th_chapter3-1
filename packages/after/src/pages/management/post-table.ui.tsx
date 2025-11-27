@@ -91,47 +91,49 @@ export const PostManagementTable: React.FC<TableProps> = ({
   };
 
   return (
-    <Table>
-      <TableHeader>
-        <TableRow>
-          {POST_TABLE_COLUMNS.map((column) => (
-            <TableHead key={column.key}>{column.header}</TableHead>
-          ))}
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {paginatedData.map((row, rowIndex) => {
-          const postStatus =
-            POST_STATUS_BADGE_MAP[row.status as keyof typeof POST_STATUS_BADGE_MAP];
-          const postCategory =
-            POST_CATEGORY_BADGE_MAP[row.category as keyof typeof POST_CATEGORY_BADGE_MAP];
-          return (
-            <TableRow key={rowIndex}>
-              <TableCell>{row.id}</TableCell>
-              <TableCell>{row.title}</TableCell>
-              <TableCell>{row.author}</TableCell>
-              <TableCell>
-                <Badge variant={postCategory.variant}>{postCategory.content}</Badge>
-              </TableCell>
-              <TableCell>
-                <Badge variant={postStatus.variant}>{postStatus.content}</Badge>
-              </TableCell>
-              <TableCell>{row.views}</TableCell>
-              <TableCell>{row.createdAt}</TableCell>
-              <TableCell>
-                <div className="gap-xs flex">{renderActionButtons(row)}</div>
-              </TableCell>
-            </TableRow>
-          );
-        })}
-      </TableBody>
+    <>
+      <Table>
+        <TableHeader>
+          <TableRow>
+            {POST_TABLE_COLUMNS.map((column) => (
+              <TableHead key={column.key}>{column.header}</TableHead>
+            ))}
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {paginatedData.map((row, rowIndex) => {
+            const postStatus =
+              POST_STATUS_BADGE_MAP[row.status as keyof typeof POST_STATUS_BADGE_MAP];
+            const postCategory =
+              POST_CATEGORY_BADGE_MAP[row.category as keyof typeof POST_CATEGORY_BADGE_MAP];
+            return (
+              <TableRow key={rowIndex}>
+                <TableCell>{row.id}</TableCell>
+                <TableCell>{row.title}</TableCell>
+                <TableCell>{row.author}</TableCell>
+                <TableCell>
+                  <Badge variant={postCategory.variant}>{postCategory.content}</Badge>
+                </TableCell>
+                <TableCell>
+                  <Badge variant={postStatus.variant}>{postStatus.content}</Badge>
+                </TableCell>
+                <TableCell>{row.views}</TableCell>
+                <TableCell>{row.createdAt}</TableCell>
+                <TableCell>
+                  <div className="gap-xs flex">{renderActionButtons(row)}</div>
+                </TableCell>
+              </TableRow>
+            );
+          })}
+        </TableBody>
+      </Table>
       {totalPages > 1 && (
         <div className="mt-[16px] flex justify-center gap-[8px]">
           <button
             onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
             disabled={currentPage === 1}
             className={cn(
-              'cursor-pointer rounded-sm border bg-white px-[12px] py-[6px] disabled:cursor-not-allowed disabled:opacity-60',
+              'bg-background border-border text-foreground cursor-pointer rounded-sm px-[12px] py-[6px] disabled:cursor-not-allowed disabled:opacity-60',
               currentPage === 1 && 'cursor-not-allowed opacity-60'
             )}
           >
@@ -144,7 +146,7 @@ export const PostManagementTable: React.FC<TableProps> = ({
             onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
             disabled={currentPage === totalPages}
             className={cn(
-              'cursor-pointer rounded-sm border bg-white px-[12px] py-[6px] disabled:cursor-not-allowed disabled:opacity-60',
+              'bg-background border-border text-foreground cursor-pointer rounded-sm px-[12px] py-[6px] disabled:cursor-not-allowed disabled:opacity-60',
               currentPage === totalPages && 'cursor-not-allowed opacity-60'
             )}
           >
@@ -152,6 +154,6 @@ export const PostManagementTable: React.FC<TableProps> = ({
           </button>
         </div>
       )}
-    </Table>
+    </>
   );
 };

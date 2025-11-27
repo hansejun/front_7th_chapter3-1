@@ -4,7 +4,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/shared/lib/utils';
 
 const modalContentVariants = cva(
-  'max-h-[90vh] rounded-md bg-white shadow-lg font-roboto flex flex-col',
+  'max-h-[90vh] rounded-md bg-background shadow-lg font-roboto flex flex-col',
   {
     variants: {
       size: {

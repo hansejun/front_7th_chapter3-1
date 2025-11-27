@@ -66,7 +66,7 @@ export const UserManagementContainer = () => {
         </StatCard>
       </div>
 
-      <div className="border-border-light overflow-auto border bg-white">
+      <div className="bg-background border-border overflow-auto border">
         <UserManagementTable
           users={users}
           onEdit={handleOpenEditUserModal}
