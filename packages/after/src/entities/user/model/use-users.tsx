@@ -1,6 +1,6 @@
 import { useSyncExternalStore } from 'react';
-import type { User } from './user-type.model';
-import { userStore } from './user-store.model';
+import type { User } from './user-type';
+import { userStore } from './user-store';
 
 interface UsersContextValue {
   users: User[];

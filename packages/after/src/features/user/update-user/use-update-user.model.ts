@@ -1,5 +1,10 @@
-import { userService, type User, updateUserSchema, type UpdateUserFormData } from '@/entities/user';
-import { useUsers } from '@/entities/user/use-users.model';
+import {
+  useUsers,
+  userService,
+  type User,
+  updateUserSchema,
+  type UpdateUserFormData,
+} from '@/entities/user';
 import { useMutation } from '@/shared/model/hooks';
 import { useAlert } from '@/shared/model/hooks/use-alert';
 import { useForm } from 'react-hook-form';

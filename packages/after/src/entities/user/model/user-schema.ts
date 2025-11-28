@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { USER_ROLES_MAP, USER_STATES_MAP } from './user-constants.config';
+import { USER_ROLES_MAP, USER_STATES_MAP } from '../config/user-constants';
 
 // Base schema for user creation
 export const createUserSchema = z.object({

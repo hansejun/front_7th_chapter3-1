@@ -1,13 +1,12 @@
-import type { User } from '@/entities/user';
-import { useUsers } from '@/entities/user/use-users.model';
-import { useDeleteUser } from '@/features/user/delete-user/use-delete-user.model';
+import { type User, useUsers } from '@/entities/user';
+import { useDeleteUser } from '@/features/user/delete-user';
 
 import { useModal } from '@/shared/model/hooks';
 import { MODAL_TYPES } from '@/shared/model/hooks/use-modal';
 import { AlertManager } from '@/shared/ui/alert';
 import { Button } from '@/shared/ui/button';
 import { StatCard } from '@/shared/ui/stat-card/stat-card';
-import { UserManagementTable } from './user-table.ui';
+import { UserManagementTable } from './user-table';
 
 export const UserManagementContainer = () => {
   const { users } = useUsers();

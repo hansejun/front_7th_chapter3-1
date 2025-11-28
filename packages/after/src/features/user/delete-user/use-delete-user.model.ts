@@ -1,5 +1,4 @@
-import { userService } from '@/entities/user';
-import { useUsers } from '@/entities/user/use-users.model';
+import { userService, useUsers } from '@/entities/user';
 import { useMutation } from '@/shared/model/hooks';
 import { useAlert } from '@/shared/model/hooks/use-alert';
 

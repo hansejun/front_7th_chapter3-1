@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { POST_CATEGORIES_MAP, POST_STATUSES_MAP } from './post-constants.config';
+import { POST_CATEGORIES_MAP, POST_STATUSES_MAP } from '../config/post-constants';
 
 // Base schema for post creation
 export const createPostSchema = z.object({

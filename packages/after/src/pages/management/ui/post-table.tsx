@@ -3,10 +3,9 @@ import React, { useState } from 'react';
 import { Badge } from '@/shared/ui/badge';
 import { Button } from '@/shared/ui/button';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/shared/ui/table';
-import type { Post } from '@/entities/post';
+import { type Post, POST_STATUSES_MAP } from '@/entities/post';
 import { cn } from '@/shared/lib/utils';
-import { POST_CATEGORY_BADGE_MAP, POST_STATUS_BADGE_MAP } from './constants.config';
-import { POST_STATUSES_MAP } from '@/entities/post/post-constants.config';
+import { POST_CATEGORY_BADGE_MAP, POST_STATUS_BADGE_MAP } from '../config/constants.config';
 
 interface TableProps {
   posts: Post[];

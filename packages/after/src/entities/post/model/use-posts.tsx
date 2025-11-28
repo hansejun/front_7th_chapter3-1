@@ -1,6 +1,6 @@
 import { useSyncExternalStore } from 'react';
-import type { Post } from './post-type.model';
-import { postStore } from './post-store.model';
+import type { Post } from './post-type';
+import { postStore } from './post-store';
 
 interface PostsContextValue {
   posts: Post[];

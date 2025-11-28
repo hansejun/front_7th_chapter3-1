@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { ManagementPage } from '../management/page.ui';
+import { ManagementPage } from '../management/ui/page';
 import { ModalRoot } from '../../app/providers/modal';
 
 describe('ManagementPage - User Management', () => {

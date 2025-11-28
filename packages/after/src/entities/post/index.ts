@@ -1,5 +1,6 @@
-export { type Post } from './post-type.model';
-export { postService } from './post-service.api';
-export { usePosts } from './use-posts.model';
-export { createPostSchema, updatePostSchema } from './post-schema.model';
-export type { CreatePostFormData, UpdatePostFormData } from './post-schema.model';
+export { type Post } from './model/post-type';
+export { usePosts } from './model/use-posts';
+export { createPostSchema, updatePostSchema } from './model/post-schema';
+export { postService } from './api/post-service';
+export type { CreatePostFormData, UpdatePostFormData } from './model/post-schema';
+export { POST_CATEGORIES_MAP, POST_STATUSES_MAP } from './config/post-constants';

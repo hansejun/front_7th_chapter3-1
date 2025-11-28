@@ -1,6 +1,6 @@
 import { createStorageAdapter } from '@/shared/lib/storage';
-import { DEFAULT_POSTS, POST_STATUSES_MAP, POSTS_STORAGE_KEY } from './post-constants.config';
-import type { Post } from './post-type.model';
+
+import type { Post } from '../model/post-type';
 import {
   addNewPost,
   changePostStatus,
@@ -13,7 +13,8 @@ import {
   validateNotPublished,
   validatePostExists,
   validatePostTitle,
-} from './post-utils.lib';
+} from '../lib/post-utils';
+import { DEFAULT_POSTS, POST_STATUSES_MAP, POSTS_STORAGE_KEY } from '../config/post-constants';
 
 // Create storage adapter for posts
 const postStorage = createStorageAdapter<Post[]>(POSTS_STORAGE_KEY, DEFAULT_POSTS);

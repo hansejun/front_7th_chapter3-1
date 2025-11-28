@@ -1,1 +1,1 @@
-export { ManagementPage } from './page.ui';
+export { ManagementPage } from './ui/page';

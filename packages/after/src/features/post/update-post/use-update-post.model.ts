@@ -1,5 +1,10 @@
-import { postService, type Post, updatePostSchema, type UpdatePostFormData } from '@/entities/post';
-import { usePosts } from '@/entities/post/use-posts.model';
+import {
+  postService,
+  usePosts,
+  type Post,
+  updatePostSchema,
+  type UpdatePostFormData,
+} from '@/entities/post';
 import { useMutation } from '@/shared/model/hooks';
 import { useAlert } from '@/shared/model/hooks/use-alert';
 import { useForm } from 'react-hook-form';

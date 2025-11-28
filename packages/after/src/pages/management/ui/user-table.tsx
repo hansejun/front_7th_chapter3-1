@@ -10,10 +10,9 @@ import {
   TableHeader,
   TableRow,
 } from '@/shared/ui/table/table';
-import type { User } from '@/entities/user';
+import { type User, USER_ROLES_MAP } from '@/entities/user';
 import { cn } from '@/shared/lib/utils';
-import { USER_ROLE_BADGE_MAP, USER_STATUS_BADGE_MAP } from './constants.config';
-import { USER_ROLES_MAP } from '@/entities/user/user-constants.config';
+import { USER_ROLE_BADGE_MAP, USER_STATUS_BADGE_MAP } from '../config/constants.config';
 
 interface TableProps {
   users: User[];

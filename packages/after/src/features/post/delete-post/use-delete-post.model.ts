@@ -1,5 +1,4 @@
-import { postService } from '@/entities/post';
-import { usePosts } from '@/entities/post/use-posts.model';
+import { usePosts, postService } from '@/entities/post';
 import { useMutation } from '@/shared/model/hooks';
 import { useAlert } from '@/shared/model/hooks/use-alert';
 

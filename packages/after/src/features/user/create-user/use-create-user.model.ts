@@ -1,10 +1,15 @@
-import { userService, createUserSchema, type CreateUserFormData } from '@/entities/user';
-import { useUsers } from '@/entities/user/use-users.model';
+import {
+  useUsers,
+  USER_ROLES_MAP,
+  USER_STATES_MAP,
+  userService,
+  createUserSchema,
+  type CreateUserFormData,
+} from '@/entities/user';
 import { useMutation } from '@/shared/model/hooks';
 import { useAlert } from '@/shared/model/hooks/use-alert';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { USER_ROLES_MAP, USER_STATES_MAP } from '@/entities/user/user-constants.config';
 
 export const useCreateUser = () => {
   const { refetch: refetchUsers } = useUsers();

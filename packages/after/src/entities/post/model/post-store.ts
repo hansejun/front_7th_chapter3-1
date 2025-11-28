@@ -1,16 +1,16 @@
-import type { User } from './user-type.model';
-import { userService } from './user-service.api';
-import { USERS_STORAGE_KEY } from './user-constants.config';
+import type { Post } from './post-type';
+import { postService } from '../api/post-service';
+import { POSTS_STORAGE_KEY } from '../config/post-constants';
 
-interface UsersState {
-  users: User[];
+interface PostsState {
+  posts: Post[];
   isLoading: boolean;
   error: Error | null;
 }
 
 // 전역 상태
-let state: UsersState = {
-  users: [],
+let state: PostsState = {
+  posts: [],
   isLoading: true,
   error: null,
 };
@@ -31,16 +31,16 @@ function notify() {
 /**
  * 데이터 로드
  */
-async function loadUsers() {
+async function loadPosts() {
   state = { ...state, isLoading: true, error: null };
   notify();
 
   try {
-    const users = await userService.getAll();
-    state = { users, isLoading: false, error: null };
+    const posts = await postService.getAll();
+    state = { posts, isLoading: false, error: null };
     notify();
   } catch (err) {
-    const error = err instanceof Error ? err : new Error('Failed to fetch users');
+    const error = err instanceof Error ? err : new Error('Failed to fetch posts');
     state = { ...state, isLoading: false, error };
     notify();
   }
@@ -55,7 +55,7 @@ function subscribe(listener: () => void) {
   // 첫 구독 시 초기화
   if (!isInitialized) {
     isInitialized = true;
-    loadUsers();
+    loadPosts();
   }
 
   return () => {
@@ -66,16 +66,16 @@ function subscribe(listener: () => void) {
 /**
  * 현재 상태 스냅샷 반환
  */
-function getSnapshot(): UsersState {
+function getSnapshot(): PostsState {
   return state;
 }
 
 /**
  * SSR용 스냅샷 (서버에서는 초기 상태 반환)
  */
-function getServerSnapshot(): UsersState {
+function getServerSnapshot(): PostsState {
   return {
-    users: [],
+    posts: [],
     isLoading: true,
     error: null,
   };
@@ -85,20 +85,20 @@ function getServerSnapshot(): UsersState {
  * 데이터 다시 가져오기
  */
 async function refetch() {
-  await loadUsers();
+  await loadPosts();
 }
 
 // localStorage 변경 감지 (다른 탭에서의 변경)
 if (typeof window !== 'undefined') {
   window.addEventListener('storage', (e) => {
-    if (e.key === USERS_STORAGE_KEY && e.newValue !== null) {
+    if (e.key === POSTS_STORAGE_KEY && e.newValue !== null) {
       // storage 변경 시 데이터 다시 로드
-      loadUsers();
+      loadPosts();
     }
   });
 }
 
-export const userStore = {
+export const postStore = {
   subscribe,
   getSnapshot,
   getServerSnapshot,

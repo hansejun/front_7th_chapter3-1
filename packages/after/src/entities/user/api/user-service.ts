@@ -1,6 +1,6 @@
 import { createStorageAdapter } from '@/shared/lib/storage';
-import { DEFAULT_USERS, USERS_STORAGE_KEY } from './user-constants.config';
-import type { User } from './user-type.model';
+import { DEFAULT_USERS, USERS_STORAGE_KEY } from '../config/user-constants';
+import type { User } from '../model/user-type';
 import {
   checkEmailDuplicated,
   checkUsernameDuplicated,
@@ -12,7 +12,7 @@ import {
   findUserById,
   isUserAlreadyExistsByEmail,
   isUserAlreadyExistsByUsername,
-} from './user-utils.lib';
+} from '../lib/user-utils';
 
 const userStorage = createStorageAdapter<User[]>(USERS_STORAGE_KEY, DEFAULT_USERS);
 

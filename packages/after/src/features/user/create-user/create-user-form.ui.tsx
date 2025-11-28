@@ -1,7 +1,6 @@
 import { Form, FormSelectField, FormInputField } from '@/shared/ui/form';
-import type { CreateUserFormData } from '@/entities/user';
+import { type CreateUserFormData, USER_ROLE_OPTIONS, USER_STATE_OPTIONS } from '@/entities/user';
 import type { UseFormReturn } from 'react-hook-form';
-import { USER_ROLE_OPTIONS, USER_STATE_OPTIONS } from '@/entities/user/user-constants.config';
 
 interface CreateUserFormProps {
   form: UseFormReturn<CreateUserFormData>;

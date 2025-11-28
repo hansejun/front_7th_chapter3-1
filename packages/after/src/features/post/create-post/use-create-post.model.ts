@@ -1,10 +1,15 @@
-import { postService, createPostSchema, type CreatePostFormData } from '@/entities/post';
-import { usePosts } from '@/entities/post/use-posts.model';
+import {
+  usePosts,
+  postService,
+  createPostSchema,
+  POST_CATEGORIES_MAP,
+  POST_STATUSES_MAP,
+  type CreatePostFormData,
+} from '@/entities/post';
 import { useMutation } from '@/shared/model/hooks';
 import { useAlert } from '@/shared/model/hooks/use-alert';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { POST_CATEGORIES_MAP, POST_STATUSES_MAP } from '@/entities/post/post-constants.config';
 
 export const useCreatePost = () => {
   const { refetch: refetchPosts } = usePosts();

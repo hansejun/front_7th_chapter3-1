@@ -1,4 +1,4 @@
-import type { Post, PostCategory, PostStatus } from './post-type.model';
+import type { Post, PostCategory, PostStatus } from '../model/post-type';
 
 /** 포스트 데이터 저장 키 */
 export const POSTS_STORAGE_KEY = 'posts_data';

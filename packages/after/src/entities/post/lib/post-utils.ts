@@ -1,6 +1,6 @@
 import { getCurrentDate, getMaxValueInArrayByKey } from '@/shared/lib/utils';
-import type { Post, PostStatus } from './post-type.model';
-import { POST_STATUSES_MAP } from './post-constants.config';
+import type { Post, PostStatus } from '../model/post-type';
+import { POST_STATUSES_MAP } from '../config/post-constants';
 
 // TODO: 특정 기능에 대한 유틸리티 함수는 features/post로 이동
 

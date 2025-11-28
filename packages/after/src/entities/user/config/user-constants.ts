@@ -1,4 +1,4 @@
-import type { User, UserRole, UserStatus } from './user-type.model';
+import type { User, UserRole, UserStatus } from '../model/user-type';
 
 /** 유저 데이터 저장 키 */
 export const USERS_STORAGE_KEY = 'users_data';

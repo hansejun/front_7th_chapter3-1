@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
-import { ManagementTabs } from './tabs.ui';
-import { UserManagementContainer } from './user-container.ui';
-import { PostManagementContainer } from './post-container.ui';
+import { ManagementTabs } from './tabs';
+import { UserManagementContainer } from './user-container';
+import { PostManagementContainer } from './post-container';
 
 type EntityType = 'user' | 'post';
 
