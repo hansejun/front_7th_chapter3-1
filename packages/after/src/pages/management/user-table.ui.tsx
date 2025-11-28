@@ -98,12 +98,12 @@ export const UserManagementTable: React.FC<TableProps> = ({
         </TableBody>
       </Table>
       {totalPages > 1 && (
-        <div className="mt-[16px] flex justify-center gap-[8px]">
+        <div className="mt-pxr-16 gap-pxr-8 flex justify-center">
           <button
             onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
             disabled={currentPage === 1}
             className={cn(
-              'bg-background border-border text-foreground cursor-pointer rounded-sm px-[12px] py-[6px] disabled:cursor-not-allowed disabled:opacity-60',
+              'bg-background border-border text-foreground px-pxr-12 py-pxr-6 cursor-pointer rounded-sm disabled:cursor-not-allowed disabled:opacity-60',
               currentPage === 1 && 'cursor-not-allowed opacity-60'
             )}
           >
@@ -116,7 +116,7 @@ export const UserManagementTable: React.FC<TableProps> = ({
             onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
             disabled={currentPage === totalPages}
             className={cn(
-              'bg-background border-border text-foreground cursor-pointer rounded-sm px-[12px] py-[6px] disabled:cursor-not-allowed disabled:opacity-60',
+              'bg-background border-border text-foreground px-pxr-12 py-pxr-6 cursor-pointer rounded-sm disabled:cursor-not-allowed disabled:opacity-60',
               currentPage === totalPages && 'cursor-not-allowed opacity-60'
             )}
           >

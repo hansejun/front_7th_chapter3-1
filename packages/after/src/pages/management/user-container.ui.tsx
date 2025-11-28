@@ -31,7 +31,7 @@ export const UserManagementContainer = () => {
 
   return (
     <div>
-      <div className="mb-[15px] text-right">
+      <div className="mb-pxr-15 text-right">
         <Button variant="primary" size="md" onClick={handleOpenCreateUserModal}>
           새로 만들기
         </Button>
@@ -39,7 +39,7 @@ export const UserManagementContainer = () => {
 
       <AlertManager />
 
-      <div className="mb-[15px] grid grid-cols-[repeat(auto-fit,minmax(130px,1fr))] gap-[10px]">
+      <div className="mb-pxr-15 grid grid-cols-[repeat(auto-fit,minmax(130px,1fr))] gap-[10px]">
         <StatCard variant="primary">
           <StatCard.Label>전체</StatCard.Label>
           <StatCard.Value>{stats.total}</StatCard.Value>

@@ -33,7 +33,7 @@ export const PostManagementContainer = () => {
 
   return (
     <div>
-      <div className="mb-[15px] text-right">
+      <div className="mb-pxr-15 text-right">
         <Button variant="primary" size="md" onClick={handleOpenCreatePostModal}>
           새로 만들기
         </Button>
@@ -41,7 +41,7 @@ export const PostManagementContainer = () => {
 
       <AlertManager />
 
-      <div className="mb-[15px] grid grid-cols-[repeat(auto-fit,minmax(130px,1fr))] gap-[10px]">
+      <div className="mb-pxr-15 grid grid-cols-[repeat(auto-fit,minmax(130px,1fr))] gap-[10px]">
         {stats.map((stat) => (
           <StatCard key={stat.label} variant={stat.variant}>
             <StatCard.Label>{stat.label}</StatCard.Label>
